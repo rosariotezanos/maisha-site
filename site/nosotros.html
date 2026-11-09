@@ -23,7 +23,7 @@
 .tl .yr{font:800 clamp(2.2rem,4vw,3.2rem)/1 var(--display);color:var(--orange-ink);letter-spacing:-.02em}
 .tl .txt{display:grid;gap:10px}
 .tl .txt p{color:var(--muted)}
-.tl img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r)}
+.tl img{width:100%;height:auto;border-radius:var(--r)}
 .tl:nth-child(even) .txt{order:2}
 .tl.solo{grid-template-columns:1fr 1fr}
 .tl.solo .txt{grid-column:1}
@@ -43,8 +43,8 @@
 .facts li{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid var(--line);font-size:.97rem}
 .facts li span{color:var(--muted)}
 .facts li b{text-align:right;font-weight:600}
-.kib-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px}
-.kib-photos img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px}
+.kib-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px;align-items:start}
+.kib-photos img{width:100%;height:auto;border-radius:20px}
 @media (max-width:860px){.kib{padding:30px 20px}.kib-grid{grid-template-columns:1fr;gap:36px}}
 
 .team{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
@@ -78,7 +78,7 @@
             </ul>
           </li>
           <li class="has-drop"><a href="index.html#programas">Programas</a>
-            <ul class="drop"><li><a href="programa-acogida.html"><img src="img/acogida-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Acogida<span>Al llegar</span></span></a></li><li><a href="programa-salud.html"><img src="img/salud-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Salud<span>Embarazo y parto</span></span></a></li><li><a href="programa-educacion.html"><img src="img/educacion-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Educación<span>Crianza</span></span></a></li><li><a href="programa-sustentabilidad.html"><img src="img/sustentabilidad-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Sustentabilidad<span>Autonomía</span></span></a></li><li><a href="programa-derechos.html"><img src="img/derechos-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Derechos Humanos<span>En todo el camino</span></span></a></li></ul>
+            <ul class="drop"><li><a href="programa-acogida.html"><img src="img/acogida-hero.jpg" width="1400" height="933" alt=""><span style="color:inherit;font-size:.95rem">Acogida<span>Al llegar</span></span></a></li><li><a href="programa-salud.html"><img src="img/salud-hero.jpg" width="1400" height="933" alt=""><span style="color:inherit;font-size:.95rem">Salud<span>Embarazo y parto</span></span></a></li><li><a href="programa-educacion.html"><img src="img/educacion-hero.jpg" width="1400" height="1050" alt=""><span style="color:inherit;font-size:.95rem">Educación<span>Crianza</span></span></a></li><li><a href="programa-sustentabilidad.html"><img src="img/sustentabilidad-hero.jpg" width="1400" height="933" alt=""><span style="color:inherit;font-size:.95rem">Sustentabilidad<span>Autonomía</span></span></a></li><li><a href="programa-derechos.html"><img src="img/derechos-hero.jpg" width="1400" height="1050" alt=""><span style="color:inherit;font-size:.95rem">Derechos Humanos<span>En todo el camino</span></span></a></li></ul>
           </li>
           <li><a href="voluntariado.html">Voluntariado</a></li>
           <li><a href="market.html">Maisha Market</a></li>
@@ -111,7 +111,7 @@
       <h1 class="h1">Maisha significa <em>vida</em></h1>
       <p class="lead">Somos una fundación que nace de la colaboración entre Chile y Kenia, comprometida con la dignidad de la persona, para acompañar a mujeres, madres y jóvenes.</p>
     </div>
-    <figure class="phero-photo"><img src="img/historia-equipo.jpg" alt="Equipo Maisha junto a madres de Kibera"><span class="hand">Chile ♥ Kenia</span></figure>
+    <figure class="phero-photo"><img src="img/historia-equipo.jpg" width="1400" height="933" alt="Equipo Maisha junto a madres de Kibera"><span class="hand">Chile ♥ Kenia</span></figure>
   </div>
   <nav class="subnav" aria-label="En esta página"><ul>
     <li><a href="#somos">Quiénes somos</a></li><li><a href="#historia">Historia</a></li><li><a href="#kibera">Kenia y Kibera</a></li><li><a href="#equipo">Equipo</a></li><li><a href="#memorias">Memorias</a></li>
@@ -137,7 +137,7 @@
     <div><p class="eyebrow">Nuestra historia</p><h2 class="h2" style="margin-top:12px">Maisha nació en el corazón de <em>Kibera</em></h2></div>
     <p class="lead">Mama Domitila Ayot veía cómo muchas mujeres y adolescentes de su población quedaban embarazadas con escaso o nada de apoyo, en condiciones de pobreza extrema. Decidió aportar con lo poco que podía entregar.</p>
   </div>
-  <ol class="timeline"><li class="tl"><div class="txt"><span class="yr">2009</span><h3>El Centro de Esperanza Edel Quinn</h3><p>Mama Domitila recortó papeles con su número de teléfono y los pegó por Kibera, esperando que quien buscara un hombro donde apoyarse pudiera recurrir a ella. Así nació el Centro de Esperanza Edel Quinn, dedicado a embarazos en crisis.</p></div><img src="img/historia-2009.jpg" alt="" loading="lazy"></li><li class="tl"><div class="txt"><span class="yr">2015</span><h3>Cinco chilenos en Kenia</h3><p>Un grupo de voluntarios chilenos en un hospital de bajos recursos se cruzó con esta pequeña gran iniciativa local y decidió convertirse en una verdadera red de apoyo.</p></div><img src="img/historia-fundadores.jpg" alt="" loading="lazy"></li><li class="tl"><div class="txt"><span class="yr">2016</span><h3>Nace Maisha</h3><p>En alianza con Edel Quinn Centre se forma Maisha, que en suajili significa vida.</p></div><img src="img/historia-chile.jpg" alt="" loading="lazy"></li><li class="tl solo"><div class="txt"><span class="yr">2017</span><h3>Fundación en Chile</h3><p>Maisha se constituye legalmente en Chile como fundación sin fines de lucro operativa en el extranjero.</p></div></li><li class="tl"><div class="txt"><span class="yr">2019</span><h3>Nuevo centro de acogida</h3><p>Se adopta la figura de CBO en Kenia y se inaugura el nuevo centro de acogida para madres junto a la organización África Digna.</p></div><img src="img/historia-2019.jpg" alt="" loading="lazy"></li><li class="tl solo"><div class="txt"><span class="yr">2020</span><h3>Cuatro programas</h3><p>Se consolidan los programas de acogida, salud, educación sexual y sustentabilidad.</p></div></li><li class="tl"><div class="txt"><span class="yr">2022</span><h3>Profesionalización</h3><p>El equipo en Chile y Kenia se profesionaliza, y The Maisha Market se constituye legalmente como tienda solidaria.</p></div><img src="img/historia-equipo.jpg" alt="" loading="lazy"></li><li class="tl"><div class="txt"><span class="yr">2026</span><h3>Nuevas caras e ideas</h3><p>Comenzamos el año con nuevo directorio. El sueño de un Maisha Chile y la casa propia se va haciendo realidad.</p></div><img src="img/comunidad.jpg" alt="" loading="lazy"></li></ol>
+  <ol class="timeline"><li class="tl"><div class="txt"><span class="yr">2009</span><h3>El Centro de Esperanza Edel Quinn</h3><p>Mama Domitila recortó papeles con su número de teléfono y los pegó por Kibera, esperando que quien buscara un hombro donde apoyarse pudiera recurrir a ella. Así nació el Centro de Esperanza Edel Quinn, dedicado a embarazos en crisis.</p></div><img src="img/historia-2009.jpg" width="1111" height="746" alt="" loading="lazy"></li><li class="tl"><div class="txt"><span class="yr">2015</span><h3>Cinco chilenos en Kenia</h3><p>Un grupo de voluntarios chilenos en un hospital de bajos recursos se cruzó con esta pequeña gran iniciativa local y decidió convertirse en una verdadera red de apoyo.</p></div><img src="img/historia-fundadores.jpg" width="1400" height="933" alt="" loading="lazy"></li><li class="tl"><div class="txt"><span class="yr">2016</span><h3>Nace Maisha</h3><p>En alianza con Edel Quinn Centre se forma Maisha, que en suajili significa vida.</p></div><img src="img/historia-chile.jpg" width="1400" height="933" alt="" loading="lazy"></li><li class="tl solo"><div class="txt"><span class="yr">2017</span><h3>Fundación en Chile</h3><p>Maisha se constituye legalmente en Chile como fundación sin fines de lucro operativa en el extranjero.</p></div></li><li class="tl"><div class="txt"><span class="yr">2019</span><h3>Nuevo centro de acogida</h3><p>Se adopta la figura de CBO en Kenia y se inaugura el nuevo centro de acogida para madres junto a la organización África Digna.</p></div><img src="img/historia-2019.jpg" width="1400" height="935" alt="" loading="lazy"></li><li class="tl solo"><div class="txt"><span class="yr">2020</span><h3>Cuatro programas</h3><p>Se consolidan los programas de acogida, salud, educación sexual y sustentabilidad.</p></div></li><li class="tl"><div class="txt"><span class="yr">2022</span><h3>Profesionalización</h3><p>El equipo en Chile y Kenia se profesionaliza, y The Maisha Market se constituye legalmente como tienda solidaria.</p></div><img src="img/historia-equipo.jpg" width="1400" height="933" alt="" loading="lazy"></li><li class="tl"><div class="txt"><span class="yr">2026</span><h3>Nuevas caras e ideas</h3><p>Comenzamos el año con nuevo directorio. El sueño de un Maisha Chile y la casa propia se va haciendo realidad.</p></div><img src="img/comunidad.jpg" width="1400" height="933" alt="" loading="lazy"></li></ol>
 </div></section>
 
 <section class="sec" id="kibera"><div class="wrap">
@@ -161,7 +161,7 @@
         </ul>
       </div>
     </div>
-    <div class="kib-photos"><img src="img/kibera-techos.jpg" alt="Techos de zinc de Kibera" loading="lazy"><img src="img/kibera.jpg" alt="Calle comercial en Kibera" loading="lazy"></div>
+    <div class="kib-photos"><img src="img/kibera-techos.jpg" width="1400" height="933" alt="Techos de zinc de Kibera" loading="lazy"><img src="img/kibera.jpg" width="1280" height="852" alt="Calle comercial en Kibera" loading="lazy"></div>
   </div>
 </div></section>
 
@@ -174,12 +174,12 @@
 <section class="sec" id="memorias"><div class="wrap">
   <div class="panel" style="padding:48px">
     <div class="memos">
-      <img src="img/memoria-2025.jpg" alt="Portada de la Memoria 2025">
+      <img src="img/memoria-2025.jpg" width="1196" height="1479" alt="Portada de la Memoria 2025">
       <div>
         <p class="eyebrow">Memorias</p>
         <h2 class="h2" style="margin-top:12px">#ImpactoMaisha</h2>
         <p class="lead" style="margin-top:14px">Nuestra memoria anual 2025 reúne el impacto de la fundación, testimonios y el trabajo de estos años.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px"><a class="btn btn-navy" href="#memorias">Leer en español</a><a class="btn btn-line" href="#memorias">Read in English</a></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px"><a class="btn btn-navy" href="memorias/memoria-2025-es.pdf" target="_blank" rel="noopener">Leer en español</a><a class="btn btn-line" href="memorias/memoria-2025-en.pdf" target="_blank" rel="noopener">Read in English</a></div>
         <p style="margin-top:36px;font-weight:600">Agenda 2030</p>
         <p style="color:var(--muted);font-size:.95rem">Con nuestras acciones contribuimos a estos Objetivos de Desarrollo Sostenible de la ONU.</p>
         <ul class="ods">

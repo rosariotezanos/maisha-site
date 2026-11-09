@@ -5,7 +5,16 @@ Cada página comparte header, footer y estilos. Los programas usan una sola plan
 alimentada por datos (PROGRAMS), igual que será un documento "programa" en Sanity.
 Uso:  python3 _build/build.py   (desde la carpeta maisha-rediseno)
 """
-import html, json, os, shutil, sys
+import html, json, os, re, shutil, sys
+from PIL import Image
+
+_DIMS = {}
+def _dims(m):
+    p = m.group(1)
+    if p not in _DIMS:
+        with Image.open(os.path.join(SRC, p)) as im: _DIMS[p] = im.size
+    w, h = _DIMS[p]
+    return f'<img src="{p}" width="{w}" height="{h}"'
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = ROOT
@@ -29,10 +38,12 @@ PROGRAMS = [
        does=[("Acompañamiento 24/7","Apoyo telefónico permanente, visitas domiciliarias y un hogar temporal para madres que no cuentan con una red de apoyo."),
              ("Necesidades básicas","Entregamos insumos, alimentación y cuidado a cada mujer y a su recién nacido."),
              ("Comunidad","Organizamos encuentros de madres con la comunidad local y con la red de voluntarios Maisha en terreno.")],
-       stats=[("255","Mujeres","han recibido acompañamiento durante su embarazo y postparto."),
-              ("133","Madres","han vivido en el centro de acogida Maisha."),
-              ("115","Con apoyo telefónico","han recibido asistencia de nuestro equipo local en Kenia."),
-              ("102","Toto Care Box","donadas a madres y recién nacidos.")],
+       stats=[("435","Mujeres","han recibido acompañamiento durante su embarazo y postparto."),
+              ("232","Con apoyo telefónico","han recibido asistencia de nuestro equipo local en Kenia."),
+              ("133","Madres indoor","han vivido temporalmente en el centro de acogida Maisha."),
+              ("48","Madres outdoor","acompañadas y visitadas regularmente en su casa."),
+              ("136","Toto Care Box","donadas, con un ajuar completo para los primeros meses."),
+              ("100%","Continuó su embarazo","de las madres acompañadas por el programa.")],
        gallery=["acogida-1","acogida-2","acogida-3","acogida-totocarebox","acogida-4"],
        quote=("Recibir y acoger a cada mamá Maisha, escuchar sus historias, llegar a un nivel de intimidad donde me confiaron sus vivencias, sus alegrías y sus tristezas. De pronto habíamos atravesado todas las barreras culturales. En ese momento éramos dos mujeres completamente distintas y tan similares a la vez, riendo y llorando juntas.",
               "Margarita Cury","Voluntaria Acogida 2022","acogida-testimonio")),
@@ -44,10 +55,12 @@ PROGRAMS = [
        does=[("Control y parto","Ofrecemos controles prenatales, atención del parto y consejería en lactancia materna."),
              ("Seguimiento en casa","Acompañamos a madres y recién nacidos con visitas domiciliarias continuas."),
              ("Capacidades locales","Educamos y capacitamos al personal de salud local para potenciar habilidades en la propia comunidad.")],
-       stats=[("100%","Lactancia materna","exclusiva en los primeros meses del recién nacido."),
-              ("637","Controles prenatales","a Madres Maisha, y 3.548 a madres de otras comunidades."),
-              ("402","Partos atendidos","por voluntarios Maisha: 88 a Madres Maisha y 314 a otras comunidades."),
-              ("64","Mamás Maisha","completaron el ciclo de capacitación en autocuidado y cuidado del recién nacido.")],
+       stats=[("100%","Lactancia materna","exclusiva durante los primeros meses."),
+              ("895","Controles prenatales","a Madres Maisha, y 5.244 a madres de otras comunidades."),
+              ("463","Partos atendidos","120 de Madres Maisha y 343 de madres de otras comunidades."),
+              ("276","Ecografías","obstétricas realizadas a Madres Maisha."),
+              ("123","Madres capacitadas","en prevención y cuidado de ellas y sus recién nacidos."),
+              ("327","Personal de salud","local capacitado.")],
        gallery=["salud-equipo","salud-1","salud-2","salud-3","salud-4"],
        quote=("Levantas un poco la vista y entre la lluvia y el viento miles de techos de zinc se asoman sobre uno de los slums más grandes del mundo. Y es aquí el origen de cada una de las mamás de Maisha. Un origen adverso, que con el correr de los años estando en Kenia no deja de sorprenderme y revolverme la cabeza, el corazón y la guata.",
               "Catalina Bustos","Asesora Programa Salud","salud-1")),
@@ -61,8 +74,12 @@ PROGRAMS = [
              ("Monitores locales","Capacitamos a monitores de la comunidad de Kibera para que el programa se replique de forma continua en Kenia.")],
        extra=("Menstruación Sin Reglas","Informada · Ecológica · Accesible",
               "En Kenia la menstruación es uno de los principales motivos de ausentismo escolar, y en Chile es un problema para mujeres en situación de calle, privadas de libertad o en campamentos. Por eso recaudamos fondos para entregar toallas higiénicas reutilizables a niñas y jóvenes en Kenia y Chile. Cada entrega va acompañada de un taller sobre el ciclo menstrual y la higiene femenina.","educacion-toallas"),
-       stats=[("73","Madres Maisha","se han beneficiado del programa educativo en sexualidad y afectividad.")],
-       stats_note="Faltan las cifras de Menstruación Sin Reglas (beneficiarias y toallas entregadas).",
+       stats=[("3.640","Beneficiarios","directos del programa educativo en colegios y comunidades."),
+              ("108","Madres Maisha","se han beneficiado del programa en sexualidad y afectividad."),
+              ("74","Comunidades y escuelas","donde se ha implementado el programa en Kenia."),
+              ("63","Voluntarios y monitores","capacitados para aplicar el programa."),
+              ("14.899","Toallas reutilizables","entregadas a niñas y adolescentes por Menstruación Sin Reglas."),
+              ("3.916","Beneficiarias","de la campaña educativa: 3.841 en Kenia y 75 en Chile.")],
        gallery=["educacion-1","educacion-2","educacion-3","educacion-4","educacion-5"],
        quote=("Puedo decir que el programa de toallitas higiénicas ha creado autoestima entre las niñas. También ha reducido la carga para los padres porque es reutilizable. Gracias a la comunidad Maisha por las toallas sanitarias reutilizables.",
               "Corazon Ong’ayo","Profesora, Grace Humanitas Educational Centre","educacion-3")),
@@ -71,24 +88,25 @@ PROGRAMS = [
        title="Herramientas para salir adelante",
        intro="Empoderamos a las madres con herramientas que les permiten mantener a sus familias de manera autónoma y segura.",
        hand="Hecho por mamás Maisha",
-       does=[("Oficios","Habilidades técnicas en costura, peluquería, computación y finanzas."),
+       does=[("Oficios","Capacitaciones en costura, computación, y finanzas y emprendimiento."),
              ("Ingresos propios","Estrategias de ahorro y actividades generadoras de ingresos, como la confección para The Maisha Market."),
              ("Desarrollo personal","Instancias recreativas y de aprendizaje que amplían horizontes y fortalecen la confianza.")],
-       stats=[("111","Beneficiarias directas","han participado de nuestros programas de sustentabilidad."),
-              ("436","Sesiones","impartidas para fortalecer el aprendizaje."),
-              ("4","Oficios","costura, peluquería, computación y finanzas.")],
+       stats=[("144","Beneficiarias directas","han participado de nuestros programas de sustentabilidad."),
+              ("803","Sesiones","impartidas para fortalecer el aprendizaje."),
+              ("50","Mujeres","capacitadas en costura y finanzas con el Fondo Chile en 2025.")],
        gallery=["sustentabilidad-1","sustentabilidad-2","sustentabilidad-3","sustentabilidad-4","market-feria"],
        quote=("Le quiero decir a Maisha que continúen con los programas que les entregan a las mamás. Es bueno ver cómo hay mujeres a las que se les paga por producir toallitas reutilizables y con eso pueden comprar la leche para sus hijos.",
               "Tall Oluoko","Profesor de Costura, Programa Sustentabilidad","sustentabilidad-2")),
   dict(slug="derechos", name="Derechos Humanos", stage="En todo el camino", img="derechos-hero",
        short="Educación cívica para que madres y jóvenes conozcan y defiendan sus derechos.",
        title="Conocer y defender los propios derechos",
-       intro="A través de este programa buscamos empoderar a las madres y jóvenes de la comunidad de Maisha promoviendo sus derechos fundamentales.",
+       intro="Nuestro quinto y más nuevo programa empodera a madres y jóvenes de los slums de Nairobi promoviendo sus derechos fundamentales y la educación cívica.",
        hand="Dignidad",
-       does=[("Educación cívica","Talleres para que madres y jóvenes conozcan sus derechos y cómo ejercerlos."),
-             ("Equidad","Promovemos la igualdad de oportunidades y la no discriminación."),
-             ("Red local","Trabajamos con actores locales de Kibera para que cada mujer sepa dónde pedir ayuda.")],
-       stats=[], stats_note="Este programa no tiene página en el sitio actual: falta el texto oficial, las cifras y un testimonio.",
+       does=[("Derechos Humanos y Ciudadanía","En 2025, con el fondo PAEE de la Cancillería de Chile, ejecutamos el primer proyecto del programa."),
+             ("Junto a Strathmore","Formamos a jóvenes en Derechos Humanos y Educación Cívica con la Escuela de Derecho de la Universidad de Strathmore."),
+             ("Graduación","El ciclo cerró con una ceremonia de graduación en la Strathmore Law Clinic.")],
+       stats=[("278","Jóvenes","de slums de Nairobi capacitados en Derechos Humanos y Educación Cívica."),
+              ("2025","Primer proyecto","del nuevo y quinto programa Maisha.")],
        gallery=["derechos-grupo","derechos-manos","comunidad","historia-equipo","historia-2021"],
        quote=None),
 ]
@@ -202,6 +220,7 @@ def page(filename, title, active, body, css='', js=''):
                '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">'
                '<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}'
                'body{margin:0}[hidden]{display:none!important}</style></head><body>\n' + doc + '</body></html>')
+    doc = re.sub(r'<img src="(img/[^"]+)"', _dims, doc)
     with open(os.path.join(ROOT, filename), 'w', encoding='utf-8') as f:
         f.write(doc)
 
@@ -237,7 +256,7 @@ def build_home():
 .hero{padding-top:14px}
 .hero-box{position:relative;border-radius:calc(var(--r) + 8px);overflow:hidden;min-height:clamp(560px,50vw,700px);display:grid;align-items:end;color:#fff;background:var(--navy)}
 .hero-box > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 30%}
-.hero-box::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,24,48,.8),rgba(11,24,48,.45) 45%,rgba(11,24,48,0) 72%),linear-gradient(0deg,rgba(11,24,48,.5),transparent 45%)}
+.hero-box::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,19,38,.82),rgba(8,19,38,.45) 45%,rgba(8,19,38,0) 72%),linear-gradient(0deg,rgba(8,19,38,.5),transparent 45%)}
 .hero-in{position:relative;padding:150px 56px 56px;display:grid;gap:22px}
 .hero h1{font-size:var(--step-4);font-weight:700;max-width:15ch}
 .hero h1 em{font-style:normal;color:var(--orange)}
@@ -248,14 +267,14 @@ def build_home():
 .help p{font:600 .9rem/1.3 var(--display)}
 .help p span{display:block;font:500 .8rem var(--body);color:var(--muted)}
 @media (max-width:900px){.help{position:relative;right:auto;bottom:auto;margin:0 16px 16px;max-width:none}}
-@media (max-width:760px){.hero-box{min-height:0}.hero-box > img{object-position:78% 20%}.hero-box::before{background:linear-gradient(0deg,rgba(11,24,48,.95) 35%,rgba(11,24,48,.3) 75%,rgba(11,24,48,.15))}.hero-in{padding:300px 22px 56px}}
+@media (max-width:760px){.hero-box{min-height:0;display:block;padding-top:76px}.hero-box > img{position:static;height:auto;border-radius:0}.hero-box::before{display:none}.hero-in{padding:26px 22px 30px}}
 
 .intro{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 .intro > *{min-width:0}
 .statement{font:600 var(--step-3)/1.18 var(--display);letter-spacing:-.015em;text-wrap:balance}
 .statement span{color:var(--orange-ink)}
 .collage{position:relative;padding:0 0 70px 50px}
-.collage .a{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r)}
+.collage .a{width:100%;height:auto;border-radius:var(--r)}
 .collage .b{position:absolute;left:0;bottom:0;width:44%;aspect-ratio:1;object-fit:cover;border-radius:50%;border:8px solid var(--paper)}
 .collage .hand{position:absolute;right:8px;bottom:18px;transform:rotate(-5deg)}
 @media (max-width:860px){.intro{grid-template-columns:1fr;gap:36px}.collage{padding:0 0 60px 30px}}
@@ -270,15 +289,15 @@ def build_home():
 @media (max-width:900px){.impact{padding:32px 22px}.impact-grid{grid-template-columns:1fr;gap:40px}}
 @media (max-width:440px){.impact .stats{grid-template-columns:1fr}}
 
-.ways{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:18px}
-.way{position:relative;display:grid;align-content:end;min-height:380px;border-radius:var(--r);overflow:hidden;text-decoration:none;color:#fff;background:var(--navy)}
-.way img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.ways{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.way{position:relative;display:flex;flex-direction:column;border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--on-navy);background:var(--navy)}
+.way img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;object-position:50% 20%;transition:transform .4s ease}
 .way:hover img{transform:scale(1.04)}
-.way > div{position:relative;padding:90px 26px 26px;background:linear-gradient(0deg,rgba(11,24,48,.92) 40%,transparent);display:grid;gap:8px}
+.way > div{padding:22px 26px 26px;display:grid;gap:8px;flex:1;align-content:start}
 .way h3{font-size:var(--step-2);font-weight:700}
 .way p{color:rgba(255,255,255,.85);font-size:.96rem}
 .way .go{font-weight:600;color:var(--orange)}
-@media (max-width:900px){.ways{grid-template-columns:1fr}.way{min-height:300px}}
+@media (max-width:900px){.ways{grid-template-columns:1fr}}
 
 .allies{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px 40px;color:var(--logo-ink)}
 .allies .mark{height:52px;width:120px;opacity:.75}
@@ -341,7 +360,7 @@ def build_home():
       <div class="memo">
         <img src="img/memoria-2025.jpg" alt="Portada de la Memoria 2025">
         <p>Testimonios y resultados en nuestra memoria anual.</p>
-        <a class="btn btn-donate btn-sm" href="nosotros.html#memorias">Leer Memoria 2025</a>
+        <a class="btn btn-donate btn-sm" href="memorias/memoria-2025-es.pdf" target="_blank" rel="noopener">Leer Memoria 2025</a>
       </div>
     </div>
   </div>
@@ -394,7 +413,7 @@ def build_nosotros():
 .tl .yr{font:800 clamp(2.2rem,4vw,3.2rem)/1 var(--display);color:var(--orange-ink);letter-spacing:-.02em}
 .tl .txt{display:grid;gap:10px}
 .tl .txt p{color:var(--muted)}
-.tl img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r)}
+.tl img{width:100%;height:auto;border-radius:var(--r)}
 .tl:nth-child(even) .txt{order:2}
 .tl.solo{grid-template-columns:1fr 1fr}
 .tl.solo .txt{grid-column:1}
@@ -414,8 +433,8 @@ def build_nosotros():
 .facts li{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid var(--line);font-size:.97rem}
 .facts li span{color:var(--muted)}
 .facts li b{text-align:right;font-weight:600}
-.kib-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px}
-.kib-photos img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px}
+.kib-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px;align-items:start}
+.kib-photos img{width:100%;height:auto;border-radius:20px}
 @media (max-width:860px){.kib{padding:30px 20px}.kib-grid{grid-template-columns:1fr;gap:36px}}
 
 .team{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
@@ -534,7 +553,7 @@ def build_nosotros():
         <p class="eyebrow">Memorias</p>
         <h2 class="h2" style="margin-top:12px">#ImpactoMaisha</h2>
         <p class="lead" style="margin-top:14px">Nuestra memoria anual 2025 reúne el impacto de la fundación, testimonios y el trabajo de estos años.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px"><a class="btn btn-navy" href="#memorias">Leer en español</a><a class="btn btn-line" href="#memorias">Read in English</a></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px"><a class="btn btn-navy" href="memorias/memoria-2025-es.pdf" target="_blank" rel="noopener">Leer en español</a><a class="btn btn-line" href="memorias/memoria-2025-en.pdf" target="_blank" rel="noopener">Read in English</a></div>
         <p style="margin-top:36px;font-weight:600">Agenda 2030</p>
         <p style="color:var(--muted);font-size:.95rem">Con nuestras acciones contribuimos a estos Objetivos de Desarrollo Sostenible de la ONU.</p>
         <ul class="ods">
@@ -563,7 +582,7 @@ PROG_CSS = '''
 .pimpact .stats{margin-top:34px}
 @media (max-width:760px){.pimpact{padding:32px 22px}}
 .extra{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center;padding:44px}
-.extra img{width:100%;max-width:340px;margin-inline:auto}
+.extra img{width:100%;height:auto;max-width:340px;margin-inline:auto;border-radius:20px}
 @media (max-width:860px){.extra{grid-template-columns:1fr;padding:28px 22px}}
 .others{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .other{display:flex;gap:14px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:18px;text-decoration:none;background:var(--card);transition:border-color .15s}
@@ -644,8 +663,8 @@ def build_voluntariado():
 @media (max-width:860px){.steps{grid-template-columns:1fr}}
 .vform{padding:44px;display:grid;grid-template-columns:.9fr 1.1fr;gap:48px}
 .vform > *{min-width:0}
-.vform img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
-@media (max-width:860px){.vform{grid-template-columns:1fr;padding:26px 20px}.vform img{aspect-ratio:16/10}}
+.vform img{width:100%;height:auto;border-radius:var(--r);align-self:start}
+@media (max-width:860px){.vform{grid-template-columns:1fr;padding:26px 20px}}
 '''
     areas = ''.join(f'<option>{e(p["name"])}</option>' for p in PROGRAMS)
     body = f'''
@@ -727,7 +746,7 @@ def build_dona():
 .small{font-size:.82rem;color:var(--muted);text-align:center}
 .what{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .what .card{overflow:hidden}
-.what img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.what img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;object-position:50% 25%}
 .what div{padding:18px 20px 22px}
 .what b{display:block;font:800 1.6rem var(--display);color:var(--orange-ink)}
 .what p{color:var(--muted);font-size:.95rem;margin-top:4px}
@@ -826,7 +845,7 @@ def build_market():
 .mk-head{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end}
 .mk-head > *{min-width:0}
 .mk-banner{position:relative;border-radius:var(--r);overflow:hidden}
-.mk-banner img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.mk-banner img{width:100%;height:auto}
 .mk-banner .hand{position:absolute;left:16px;bottom:14px;background:var(--card);padding:10px 16px;border-radius:12px;transform:rotate(-3deg)}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:44px 0 26px}
 .chips button{font:500 .93rem var(--display);padding:.6em 1.1em;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
@@ -836,7 +855,7 @@ def build_market():
 .product .ph{position:relative;border-radius:20px;overflow:hidden;background:var(--sand)}
 .product img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .35s ease}
 .product:hover img{transform:scale(1.04)}
-.product .add{position:absolute;right:10px;bottom:10px;font:600 .88rem var(--display);border:0;border-radius:999px;padding:.7em 1.1em;background:var(--orange);color:#10233F;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.15)}
+.product .add{position:absolute;right:10px;bottom:10px;font:600 .88rem var(--display);border:0;border-radius:999px;padding:.7em 1.1em;background:var(--orange);color:#081326;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.15)}
 .product h3{font-size:1.02rem;font-weight:600}
 .product p{display:flex;justify-content:space-between;color:var(--muted);font-size:.93rem}
 .product p b{color:var(--ink);font-variant-numeric:tabular-nums}
@@ -933,7 +952,7 @@ def build_market():
 if __name__ == '__main__':
     if DEPLOY:
         shutil.rmtree(ROOT, ignore_errors=True); os.makedirs(ROOT)
-        for d in ('assets','img'): shutil.copytree(os.path.join(SRC,d), os.path.join(ROOT,d))
+        for d in ('assets','img','memorias'): shutil.copytree(os.path.join(SRC,d), os.path.join(ROOT,d))
     build_home(); build_nosotros(); build_voluntariado(); build_dona(); build_market()
     for p in PROGRAMS: build_program(p)
     print('ok')

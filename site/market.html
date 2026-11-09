@@ -8,7 +8,7 @@
 .mk-head{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end}
 .mk-head > *{min-width:0}
 .mk-banner{position:relative;border-radius:var(--r);overflow:hidden}
-.mk-banner img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.mk-banner img{width:100%;height:auto}
 .mk-banner .hand{position:absolute;left:16px;bottom:14px;background:var(--card);padding:10px 16px;border-radius:12px;transform:rotate(-3deg)}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:44px 0 26px}
 .chips button{font:500 .93rem var(--display);padding:.6em 1.1em;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
@@ -18,7 +18,7 @@
 .product .ph{position:relative;border-radius:20px;overflow:hidden;background:var(--sand)}
 .product img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .35s ease}
 .product:hover img{transform:scale(1.04)}
-.product .add{position:absolute;right:10px;bottom:10px;font:600 .88rem var(--display);border:0;border-radius:999px;padding:.7em 1.1em;background:var(--orange);color:#10233F;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.15)}
+.product .add{position:absolute;right:10px;bottom:10px;font:600 .88rem var(--display);border:0;border-radius:999px;padding:.7em 1.1em;background:var(--orange);color:#081326;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.15)}
 .product h3{font-size:1.02rem;font-weight:600}
 .product p{display:flex;justify-content:space-between;color:var(--muted);font-size:.93rem}
 .product p b{color:var(--ink);font-variant-numeric:tabular-nums}
@@ -61,7 +61,7 @@
             </ul>
           </li>
           <li class="has-drop"><a href="index.html#programas">Programas</a>
-            <ul class="drop"><li><a href="programa-acogida.html"><img src="img/acogida-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Acogida<span>Al llegar</span></span></a></li><li><a href="programa-salud.html"><img src="img/salud-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Salud<span>Embarazo y parto</span></span></a></li><li><a href="programa-educacion.html"><img src="img/educacion-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Educación<span>Crianza</span></span></a></li><li><a href="programa-sustentabilidad.html"><img src="img/sustentabilidad-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Sustentabilidad<span>Autonomía</span></span></a></li><li><a href="programa-derechos.html"><img src="img/derechos-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Derechos Humanos<span>En todo el camino</span></span></a></li></ul>
+            <ul class="drop"><li><a href="programa-acogida.html"><img src="img/acogida-hero.jpg" width="1400" height="933" alt=""><span style="color:inherit;font-size:.95rem">Acogida<span>Al llegar</span></span></a></li><li><a href="programa-salud.html"><img src="img/salud-hero.jpg" width="1400" height="933" alt=""><span style="color:inherit;font-size:.95rem">Salud<span>Embarazo y parto</span></span></a></li><li><a href="programa-educacion.html"><img src="img/educacion-hero.jpg" width="1400" height="1050" alt=""><span style="color:inherit;font-size:.95rem">Educación<span>Crianza</span></span></a></li><li><a href="programa-sustentabilidad.html"><img src="img/sustentabilidad-hero.jpg" width="1400" height="933" alt=""><span style="color:inherit;font-size:.95rem">Sustentabilidad<span>Autonomía</span></span></a></li><li><a href="programa-derechos.html"><img src="img/derechos-hero.jpg" width="1400" height="1050" alt=""><span style="color:inherit;font-size:.95rem">Derechos Humanos<span>En todo el camino</span></span></a></li></ul>
           </li>
           <li><a href="voluntariado.html">Voluntariado</a></li>
           <li><a href="market.html" aria-current="page">Maisha Market</a></li>
@@ -94,47 +94,47 @@
       <h1 class="h1">The Maisha <em>Market</em></h1>
       <p class="lead" style="margin-top:18px">Productos 100% solidarios, hechos a mano con telas africanas. Todo lo recaudado nos ayuda a acoger a más Madres Maisha en nuestra casa de acogida en Kenia.</p>
     </div>
-    <figure class="mk-banner"><img src="img/sustentabilidad-hero.jpg" alt="Madre Maisha cosiendo en el taller"><span class="hand">Hecho en Kenia</span></figure>
+    <figure class="mk-banner"><img src="img/sustentabilidad-hero.jpg" width="1400" height="933" alt="Madre Maisha cosiendo en el taller"><span class="hand">Hecho en Kenia</span></figure>
   </div>
   <div class="chips" role="group" aria-label="Categorías"><button type="button" aria-pressed="true" data-cat="">Todos</button><button type="button" aria-pressed="false" data-cat="Accesorios">Accesorios</button><button type="button" aria-pressed="false" data-cat="Corazón Sagrado">Corazón Sagrado</button><button type="button" aria-pressed="false" data-cat="Deco">Deco</button><button type="button" aria-pressed="false" data-cat="Infantil">Infantil</button></div>
   <div class="products"><article class="product" data-cat="Accesorios">
-  <div class="ph"><img src="img/market/p00.jpg" alt="Necessaire" loading="lazy"><button class="add" type="button" data-i="0">Agregar</button></div>
+  <div class="ph"><img src="img/market/p00.jpg" width="700" height="700" alt="Necessaire" loading="lazy"><button class="add" type="button" data-i="0">Agregar</button></div>
   <h3>Necessaire</h3><p><span>Accesorios</span><b>$12.000</b></p>
 </article><article class="product" data-cat="Accesorios">
-  <div class="ph"><img src="img/market/p01.jpg" alt="Joyero" loading="lazy"><button class="add" type="button" data-i="1">Agregar</button></div>
+  <div class="ph"><img src="img/market/p01.jpg" width="700" height="700" alt="Joyero" loading="lazy"><button class="add" type="button" data-i="1">Agregar</button></div>
   <h3>Joyero</h3><p><span>Accesorios</span><b>$14.000</b></p>
 </article><article class="product" data-cat="Deco">
-  <div class="ph"><img src="img/market/p02.jpg" alt="Simio" loading="lazy"><button class="add" type="button" data-i="2">Agregar</button></div>
+  <div class="ph"><img src="img/market/p02.jpg" width="700" height="700" alt="Simio" loading="lazy"><button class="add" type="button" data-i="2">Agregar</button></div>
   <h3>Simio</h3><p><span>Deco</span><b>$15.000</b></p>
 </article><article class="product" data-cat="Deco">
-  <div class="ph"><img src="img/market/p03.jpg" alt="Estrellita Nyota" loading="lazy"><button class="add" type="button" data-i="3">Agregar</button></div>
+  <div class="ph"><img src="img/market/p03.jpg" width="700" height="700" alt="Estrellita Nyota" loading="lazy"><button class="add" type="button" data-i="3">Agregar</button></div>
   <h3>Estrellita Nyota</h3><p><span>Deco</span><b>$5.500</b></p>
 </article><article class="product" data-cat="Accesorios">
-  <div class="ph"><img src="img/market/p04.jpg" alt="Lanyard Masai Mara" loading="lazy"><button class="add" type="button" data-i="4">Agregar</button></div>
+  <div class="ph"><img src="img/market/p04.jpg" width="700" height="700" alt="Lanyard Masai Mara" loading="lazy"><button class="add" type="button" data-i="4">Agregar</button></div>
   <h3>Lanyard Masai Mara</h3><p><span>Accesorios</span><b>$8.000</b></p>
 </article><article class="product" data-cat="Accesorios">
-  <div class="ph"><img src="img/market/p05.jpg" alt="Kesi Big" loading="lazy"><button class="add" type="button" data-i="5">Agregar</button></div>
+  <div class="ph"><img src="img/market/p05.jpg" width="700" height="700" alt="Kesi Big" loading="lazy"><button class="add" type="button" data-i="5">Agregar</button></div>
   <h3>Kesi Big</h3><p><span>Accesorios</span><b>$8.000</b></p>
 </article><article class="product" data-cat="Accesorios">
-  <div class="ph"><img src="img/market/p06.jpg" alt="Tote Bag Nairobi" loading="lazy"><button class="add" type="button" data-i="6">Agregar</button></div>
+  <div class="ph"><img src="img/market/p06.jpg" width="700" height="700" alt="Tote Bag Nairobi" loading="lazy"><button class="add" type="button" data-i="6">Agregar</button></div>
   <h3>Tote Bag Nairobi</h3><p><span>Accesorios</span><b>$8.500</b></p>
 </article><article class="product" data-cat="Accesorios">
-  <div class="ph"><img src="img/market/p07.jpg" alt="Tote Bag Wambui" loading="lazy"><button class="add" type="button" data-i="7">Agregar</button></div>
+  <div class="ph"><img src="img/market/p07.jpg" width="700" height="700" alt="Tote Bag Wambui" loading="lazy"><button class="add" type="button" data-i="7">Agregar</button></div>
   <h3>Tote Bag Wambui</h3><p><span>Accesorios</span><b>$12.000</b></p>
 </article><article class="product" data-cat="Corazón Sagrado">
-  <div class="ph"><img src="img/market/p08.jpg" alt="Corazón Sagrado Big" loading="lazy"><button class="add" type="button" data-i="8">Agregar</button></div>
+  <div class="ph"><img src="img/market/p08.jpg" width="700" height="700" alt="Corazón Sagrado Big" loading="lazy"><button class="add" type="button" data-i="8">Agregar</button></div>
   <h3>Corazón Sagrado Big</h3><p><span>Corazón Sagrado</span><b>$8.000</b></p>
 </article><article class="product" data-cat="Infantil">
-  <div class="ph"><img src="img/market/p09.jpg" alt="Porta chupetes Baby" loading="lazy"><button class="add" type="button" data-i="9">Agregar</button></div>
+  <div class="ph"><img src="img/market/p09.jpg" width="700" height="700" alt="Porta chupetes Baby" loading="lazy"><button class="add" type="button" data-i="9">Agregar</button></div>
   <h3>Porta chupetes Baby</h3><p><span>Infantil</span><b>$9.500</b></p>
 </article><article class="product" data-cat="Infantil">
-  <div class="ph"><img src="img/market/p10.jpg" alt="Babero Baby" loading="lazy"><button class="add" type="button" data-i="10">Agregar</button></div>
+  <div class="ph"><img src="img/market/p10.jpg" width="700" height="700" alt="Babero Baby" loading="lazy"><button class="add" type="button" data-i="10">Agregar</button></div>
   <h3>Babero Baby</h3><p><span>Infantil</span><b>$8.500</b></p>
 </article><article class="product" data-cat="Deco">
-  <div class="ph"><img src="img/market/p11.jpg" alt="Jirafa L" loading="lazy"><button class="add" type="button" data-i="11">Agregar</button></div>
+  <div class="ph"><img src="img/market/p11.jpg" width="700" height="700" alt="Jirafa L" loading="lazy"><button class="add" type="button" data-i="11">Agregar</button></div>
   <h3>Jirafa L</h3><p><span>Deco</span><b>$12.000</b></p>
 </article><article class="product" data-cat="Deco">
-  <div class="ph"><img src="img/market/p12.jpg" alt="Elefante M" loading="lazy"><button class="add" type="button" data-i="12">Agregar</button></div>
+  <div class="ph"><img src="img/market/p12.jpg" width="700" height="700" alt="Elefante M" loading="lazy"><button class="add" type="button" data-i="12">Agregar</button></div>
   <h3>Elefante M</h3><p><span>Deco</span><b>$8.000</b></p>
 </article></div>
 </div></section>
