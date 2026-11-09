@@ -21,7 +21,7 @@
   --on-navy:#F7F2EA;
   --on-navy-muted:#B7C1D5;
 
-  --display:"Wix Madefor Display","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --display:"Space Grotesk","Avenir Next","Segoe UI",system-ui,sans-serif;
   --body:"Wix Madefor Text","Helvetica Neue",Arial,system-ui,sans-serif;
   --hand:"Caveat","Segoe Print","Bradley Hand",cursive;
 
@@ -48,7 +48,7 @@ html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto} *{transition:none!important}}
 body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:clip}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--paper)}
-h1,h2,h3,h4{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.015em}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.11;margin:0;text-wrap:balance;letter-spacing:-.01em}
 p{margin:0}
 a{color:inherit}
 img{display:block;max-width:100%;height:auto}
@@ -61,9 +61,9 @@ figure{margin:0}
 .sec{padding-block:88px}
 .sec.tight{padding-block:48px}
 @media (max-width:700px){.sec{padding-block:60px}}
-.eyebrow{font:700 .76rem var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--orange-ink)}
-.lead{font-size:var(--step-1);color:var(--muted);max-width:60ch}
-.h2{font-size:var(--step-3);font-weight:700}
+.eyebrow{font:500 .85rem var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-ink)}
+.lead{font:400 var(--step-1)/1.4 var(--display);color:var(--muted);max-width:60ch}
+.h2{font-size:var(--step-3);font-weight:500}
 .h2 em,.h1 em{font-style:normal;color:var(--orange-ink)}
 .head{display:grid;gap:14px;margin-bottom:44px;max-width:760px}
 .hand{font-family:var(--hand);font-weight:600;color:var(--orange-ink);font-size:1.6rem;line-height:1}
@@ -71,7 +71,7 @@ figure{margin:0}
 .prose strong{color:var(--ink)}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;font:600 1rem/1 var(--display);padding:1em 1.6em;border-radius:999px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .15s ease,filter .15s ease;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;font:600 1rem/1 var(--body);padding:1em 1.6em;border-radius:999px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .15s ease,filter .15s ease;white-space:nowrap}
 .btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
 .btn-donate{background:var(--orange);color:#081326}
 .btn-navy{background:var(--navy);color:var(--on-navy)}
@@ -140,7 +140,7 @@ header.site > .wrap{pointer-events:auto}
 .crumbs a{text-decoration:none}
 .crumbs a:hover{color:var(--orange-ink)}
 .crumbs span[aria-hidden]{opacity:.5}
-.h1{font-size:var(--step-4);font-weight:700}
+.h1{font-size:var(--step-4);font-weight:700;line-height:1.08}
 .phero .lead{margin-top:20px}
 .phero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .phero-photo{position:relative}
@@ -188,8 +188,8 @@ footer.site{margin-top:40px}
 
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:28px}
-.stat b{display:block;font:800 clamp(2.4rem,4.6vw,3.6rem)/1 var(--display);color:var(--orange);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.stat strong{display:block;margin-top:10px;font:700 .8rem var(--body);letter-spacing:.13em;text-transform:uppercase}
+.stat b{display:block;font:700 clamp(2.4rem,4.6vw,3.6rem)/1 var(--display);color:var(--orange);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat strong{display:block;margin-top:10px;font:500 .86rem var(--display);letter-spacing:.12em;text-transform:uppercase}
 .stat p{margin-top:6px;font-size:.95rem;color:var(--muted)}
 .navy-panel .stat p{color:var(--on-navy-muted)}
 
@@ -198,7 +198,7 @@ footer.site{margin-top:40px}
 .quote img{width:100%;height:auto;border-radius:var(--r)}
 .quote blockquote{margin:0}
 .quote blockquote p{font:600 clamp(1.3rem,2.2vw,1.75rem)/1.35 var(--display);text-wrap:pretty}
-.quote blockquote p::before{content:"“";display:block;font:800 4.5rem/0.7 var(--display);color:var(--orange);margin-bottom:10px}
+.quote blockquote p::before{content:"“";display:block;font:700 4.5rem/0.7 var(--display);color:var(--orange);margin-bottom:10px}
 .quote cite{display:block;margin-top:22px;font-style:normal;color:var(--muted)}
 .quote cite strong{display:block;color:var(--ink);font-size:1.05rem}
 @media (max-width:860px){.quote{grid-template-columns:1fr;gap:28px}.quote img{border-radius:var(--r)}}
@@ -222,7 +222,7 @@ footer.site{margin-top:40px}
 .prog img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;object-position:50% 25%}
 .prog .body{display:flex;flex-direction:column;gap:8px;padding:18px 20px 22px;flex:1}
 .prog .stage{font:700 .7rem var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.prog h3{font-size:1.2rem;font-weight:700}
+.prog h3{font-size:1.25rem;font-weight:600}
 .prog p{font-size:.93rem;color:var(--muted)}
 .prog .go{margin-top:auto;padding-top:6px;font-weight:600;font-size:.93rem;color:var(--orange-ink)}
 .thread{position:absolute;left:0;right:0;top:-38px;height:60px;width:100%;pointer-events:none;color:var(--orange)}
@@ -244,3 +244,18 @@ footer.site{margin-top:40px}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 .grid-2 > *{min-width:0}
 @media (max-width:860px){.grid-2{grid-template-columns:1fr;gap:36px}}
+
+/* Íconos Maisha */
+.ico{display:block;width:48px;height:48px;color:var(--ink)}
+.ico .l{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.78}
+.ico .f{fill:var(--orange)}
+.ico .fs{fill:none;stroke:var(--orange);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.ico .fs-w{fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.stat-ico{width:60px;height:60px;margin-bottom:14px}
+.navy-panel .ico{color:var(--on-navy)}
+.navy-panel .ico .l{opacity:.9}
+.prog{position:relative}
+.prog .badge{top:auto;margin:0;transform:translateY(-50%);position:relative;left:16px;width:62px;height:62px;border-radius:50%;background:var(--card);display:grid;place-items:center;box-shadow:0 6px 18px rgba(8,19,38,.14);margin-bottom:-24px;z-index:1}
+.prog .badge .ico{width:38px;height:38px}
+.prog-tag{display:flex;align-items:center;gap:12px;margin-bottom:16px;font:500 .85rem var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-ink)}
+.prog-tag .ico{width:46px;height:46px;padding:6px;border-radius:14px;background:var(--sand);box-sizing:content-box}

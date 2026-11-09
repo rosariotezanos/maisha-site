@@ -7,6 +7,8 @@ Uso:  python3 _build/build.py   (desde la carpeta maisha-rediseno)
 """
 import html, json, os, re, shutil, sys
 from PIL import Image
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from icons import icon
 
 _DIMS = {}
 def _dims(m):
@@ -26,7 +28,7 @@ e = html.escape
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@500;600;700;800'
+         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700'
          '&family=Wix+Madefor+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@600&display=swap">')
 
 PROGRAMS = [
@@ -38,12 +40,12 @@ PROGRAMS = [
        does=[("Acompañamiento 24/7","Apoyo telefónico permanente, visitas domiciliarias y un hogar temporal para madres que no cuentan con una red de apoyo."),
              ("Necesidades básicas","Entregamos insumos, alimentación y cuidado a cada mujer y a su recién nacido."),
              ("Comunidad","Organizamos encuentros de madres con la comunidad local y con la red de voluntarios Maisha en terreno.")],
-       stats=[("435","Mujeres","han recibido acompañamiento durante su embarazo y postparto."),
-              ("232","Con apoyo telefónico","han recibido asistencia de nuestro equipo local en Kenia."),
-              ("133","Madres indoor","han vivido temporalmente en el centro de acogida Maisha."),
-              ("48","Madres outdoor","acompañadas y visitadas regularmente en su casa."),
-              ("136","Toto Care Box","donadas, con un ajuar completo para los primeros meses."),
-              ("100%","Continuó su embarazo","de las madres acompañadas por el programa.")],
+       stats=[("435","Mujeres","han recibido acompañamiento durante su embarazo y postparto.","embarazada"),
+              ("232","Con apoyo telefónico","han recibido asistencia de nuestro equipo local en Kenia.","telefono"),
+              ("133","Madres indoor","han vivido temporalmente en el centro de acogida Maisha.","casa"),
+              ("48","Madres outdoor","acompañadas y visitadas regularmente en su casa.","visita"),
+              ("136","Toto Care Box","donadas, con un ajuar completo para los primeros meses.","regalo"),
+              ("100%","Continuó su embarazo","de las madres acompañadas por el programa.","corazon")],
        gallery=["acogida-1","acogida-2","acogida-3","acogida-totocarebox","acogida-4"],
        quote=("Recibir y acoger a cada mamá Maisha, escuchar sus historias, llegar a un nivel de intimidad donde me confiaron sus vivencias, sus alegrías y sus tristezas. De pronto habíamos atravesado todas las barreras culturales. En ese momento éramos dos mujeres completamente distintas y tan similares a la vez, riendo y llorando juntas.",
               "Margarita Cury","Voluntaria Acogida 2022","acogida-testimonio")),
@@ -55,12 +57,12 @@ PROGRAMS = [
        does=[("Control y parto","Ofrecemos controles prenatales, atención del parto y consejería en lactancia materna."),
              ("Seguimiento en casa","Acompañamos a madres y recién nacidos con visitas domiciliarias continuas."),
              ("Capacidades locales","Educamos y capacitamos al personal de salud local para potenciar habilidades en la propia comunidad.")],
-       stats=[("100%","Lactancia materna","exclusiva durante los primeros meses."),
-              ("895","Controles prenatales","a Madres Maisha, y 5.244 a madres de otras comunidades."),
-              ("463","Partos atendidos","120 de Madres Maisha y 343 de madres de otras comunidades."),
-              ("276","Ecografías","obstétricas realizadas a Madres Maisha."),
-              ("123","Madres capacitadas","en prevención y cuidado de ellas y sus recién nacidos."),
-              ("327","Personal de salud","local capacitado.")],
+       stats=[("100%","Lactancia materna","exclusiva durante los primeros meses.","gota"),
+              ("895","Controles prenatales","a Madres Maisha, y 5.244 a madres de otras comunidades.","estetoscopio"),
+              ("463","Partos atendidos","120 de Madres Maisha y 343 de madres de otras comunidades.","bebe"),
+              ("276","Ecografías","obstétricas realizadas a Madres Maisha.","ecografia"),
+              ("123","Madres capacitadas","en prevención y cuidado de ellas y sus recién nacidos.","birrete"),
+              ("327","Personal de salud","local capacitado.","grupo")],
        gallery=["salud-equipo","salud-1","salud-2","salud-3","salud-4"],
        quote=("Levantas un poco la vista y entre la lluvia y el viento miles de techos de zinc se asoman sobre uno de los slums más grandes del mundo. Y es aquí el origen de cada una de las mamás de Maisha. Un origen adverso, que con el correr de los años estando en Kenia no deja de sorprenderme y revolverme la cabeza, el corazón y la guata.",
               "Catalina Bustos","Asesora Programa Salud","salud-1")),
@@ -74,12 +76,12 @@ PROGRAMS = [
              ("Monitores locales","Capacitamos a monitores de la comunidad de Kibera para que el programa se replique de forma continua en Kenia.")],
        extra=("Menstruación Sin Reglas","Informada · Ecológica · Accesible",
               "En Kenia la menstruación es uno de los principales motivos de ausentismo escolar, y en Chile es un problema para mujeres en situación de calle, privadas de libertad o en campamentos. Por eso recaudamos fondos para entregar toallas higiénicas reutilizables a niñas y jóvenes en Kenia y Chile. Cada entrega va acompañada de un taller sobre el ciclo menstrual y la higiene femenina.","educacion-toallas"),
-       stats=[("3.640","Beneficiarios","directos del programa educativo en colegios y comunidades."),
-              ("108","Madres Maisha","se han beneficiado del programa en sexualidad y afectividad."),
-              ("74","Comunidades y escuelas","donde se ha implementado el programa en Kenia."),
-              ("63","Voluntarios y monitores","capacitados para aplicar el programa."),
-              ("14.899","Toallas reutilizables","entregadas a niñas y adolescentes por Menstruación Sin Reglas."),
-              ("3.916","Beneficiarias","de la campaña educativa: 3.841 en Kenia y 75 en Chile.")],
+       stats=[("3.640","Beneficiarios","directos del programa educativo en colegios y comunidades.","grupo"),
+              ("108","Madres Maisha","se han beneficiado del programa en sexualidad y afectividad.","embarazada"),
+              ("74","Comunidades y escuelas","donde se ha implementado el programa en Kenia.","escuela"),
+              ("63","Voluntarios y monitores","capacitados para aplicar el programa.","birrete"),
+              ("14.899","Toallas reutilizables","entregadas a niñas y adolescentes por Menstruación Sin Reglas.","toalla"),
+              ("3.916","Beneficiarias","de la campaña educativa: 3.841 en Kenia y 75 en Chile.","grupo")],
        gallery=["educacion-1","educacion-2","educacion-3","educacion-4","educacion-5"],
        quote=("Puedo decir que el programa de toallitas higiénicas ha creado autoestima entre las niñas. También ha reducido la carga para los padres porque es reutilizable. Gracias a la comunidad Maisha por las toallas sanitarias reutilizables.",
               "Corazon Ong’ayo","Profesora, Grace Humanitas Educational Centre","educacion-3")),
@@ -91,9 +93,9 @@ PROGRAMS = [
        does=[("Oficios","Capacitaciones en costura, computación, y finanzas y emprendimiento."),
              ("Ingresos propios","Estrategias de ahorro y actividades generadoras de ingresos, como la confección para The Maisha Market."),
              ("Desarrollo personal","Instancias recreativas y de aprendizaje que amplían horizontes y fortalecen la confianza.")],
-       stats=[("144","Beneficiarias directas","han participado de nuestros programas de sustentabilidad."),
-              ("803","Sesiones","impartidas para fortalecer el aprendizaje."),
-              ("50","Mujeres","capacitadas en costura y finanzas con el Fondo Chile en 2025.")],
+       stats=[("144","Beneficiarias directas","han participado de nuestros programas de sustentabilidad.","grupo"),
+              ("803","Sesiones","impartidas para fortalecer el aprendizaje.","sesiones"),
+              ("50","Mujeres","capacitadas en costura y finanzas con el Fondo Chile en 2025.","hilo")],
        gallery=["sustentabilidad-1","sustentabilidad-2","sustentabilidad-3","sustentabilidad-4","market-feria"],
        quote=("Le quiero decir a Maisha que continúen con los programas que les entregan a las mamás. Es bueno ver cómo hay mujeres a las que se les paga por producir toallitas reutilizables y con eso pueden comprar la leche para sus hijos.",
               "Tall Oluoko","Profesor de Costura, Programa Sustentabilidad","sustentabilidad-2")),
@@ -105,8 +107,8 @@ PROGRAMS = [
        does=[("Derechos Humanos y Ciudadanía","En 2025, con el fondo PAEE de la Cancillería de Chile, ejecutamos el primer proyecto del programa."),
              ("Junto a Strathmore","Formamos a jóvenes en Derechos Humanos y Educación Cívica con la Escuela de Derecho de la Universidad de Strathmore."),
              ("Graduación","El ciclo cerró con una ceremonia de graduación en la Strathmore Law Clinic.")],
-       stats=[("278","Jóvenes","de slums de Nairobi capacitados en Derechos Humanos y Educación Cívica."),
-              ("2025","Primer proyecto","del nuevo y quinto programa Maisha.")],
+       stats=[("278","Jóvenes","de slums de Nairobi capacitados en Derechos Humanos y Educación Cívica.","birrete"),
+              ("2025","Primer proyecto","del nuevo y quinto programa Maisha.","bandera")],
        gallery=["derechos-grupo","derechos-manos","comunidad","historia-equipo","historia-2021"],
        quote=None),
 ]
@@ -226,7 +228,7 @@ def page(filename, title, active, body, css='', js=''):
 
 
 def stats_html(stats, note=None):
-    s = ''.join(f'<div class="stat"><b>{e(n)}</b><strong>{e(l)}</strong><p>{e(d)}</p></div>' for n, l, d in stats)
+    s = ''.join(f'<div class="stat">{icon(st[3], "ico stat-ico") if len(st) > 3 else ""}<b>{e(st[0])}</b><strong>{e(st[1])}</strong><p>{e(st[2])}</p></div>' for st in stats)
     return s, (f'<p class="note" style="margin-top:22px">{e(note)}</p>' if note else '')
 
 
@@ -242,6 +244,7 @@ def quote_html(q):
 def prog_cards():
     cards = ''.join(f'''<li><a class="prog" href="programa-{p["slug"]}.html">
       <img src="img/{p["img"]}.jpg" alt="" loading="lazy">
+      <span class="badge">{icon(p["slug"])}</span>
       <div class="body"><span class="stage">{e(p["stage"])}</span><h3>{e(p["name"])}</h3><p>{e(p["short"])}</p><span class="go">Conocer →</span></div>
     </a></li>''' for p in PROGRAMS)
     thread = ('<svg class="thread" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">'
@@ -256,11 +259,11 @@ def build_home():
 .hero{padding-top:14px}
 .hero-box{position:relative;border-radius:calc(var(--r) + 8px);overflow:hidden;min-height:clamp(560px,50vw,700px);display:grid;align-items:end;color:#fff;background:var(--navy)}
 .hero-box > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 30%}
-.hero-box::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,19,38,.82),rgba(8,19,38,.45) 45%,rgba(8,19,38,0) 72%),linear-gradient(0deg,rgba(8,19,38,.5),transparent 45%)}
+.hero-box::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,16,34,.72),rgba(6,16,34,.38) 48%,rgba(6,16,34,.08) 75%),linear-gradient(0deg,rgba(6,16,34,.45),transparent 45%),rgba(9,24,52,.30)}
 .hero-in{position:relative;padding:150px 56px 56px;display:grid;gap:22px}
-.hero h1{font-size:var(--step-4);font-weight:700;max-width:15ch}
+.hero h1{font-size:var(--step-4);font-weight:700;max-width:15ch;line-height:1.08}
 .hero h1 em{font-style:normal;color:var(--orange)}
-.hero-in > p{font-size:var(--step-1);max-width:46ch;color:rgba(255,255,255,.88)}
+.hero-in > p{font:400 var(--step-1)/1.35 var(--display);max-width:46ch;color:rgba(255,255,255,.9)}
 .hero .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
 .hero .btn-line{color:#fff}
 .help{position:absolute;right:28px;bottom:28px;z-index:2;display:flex;align-items:center;gap:14px;background:var(--card);color:var(--ink);border-radius:18px;padding:14px 14px 14px 18px;box-shadow:0 16px 34px rgba(0,0,0,.22);max-width:360px}
@@ -301,7 +304,7 @@ def build_home():
 
 .allies{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px 40px;color:var(--logo-ink)}
 .allies .mark{height:52px;width:120px;opacity:.75}
-.allies .amref{font:800 1rem/1.05 var(--display);opacity:.75}
+.allies .amref{font:700 1rem/1.05 var(--display);opacity:.75}
 .allies .amref small{display:block;font-weight:600;font-size:.75rem}
 '''
     body = f'''
@@ -351,10 +354,10 @@ def build_home():
         <p class="eyebrow">#ImpactoMaisha</p>
         <h2 class="h2" style="margin-top:12px">Lo que hemos logrado juntos en Kibera</h2>
         <div class="stats">
-          <div class="stat"><b>435</b><strong>Mujeres</strong><p>acompañadas durante su embarazo y postparto.</p></div>
-          <div class="stat"><b>133</b><strong>Madres</strong><p>han vivido en el centro de acogida.</p></div>
-          <div class="stat"><b>482</b><strong>Talleres</strong><p>y convivencias realizadas.</p></div>
-          <div class="stat"><b>100%</b><strong>De las madres</strong><p>continuaron con su embarazo.</p></div>
+          <div class="stat">{icon("embarazada", "ico stat-ico")}<b>435</b><strong>Mujeres</strong><p>acompañadas durante su embarazo y postparto.</p></div>
+          <div class="stat">{icon("casa", "ico stat-ico")}<b>133</b><strong>Madres</strong><p>han vivido en el centro de acogida.</p></div>
+          <div class="stat">{icon("grupo", "ico stat-ico")}<b>482</b><strong>Talleres</strong><p>y convivencias realizadas.</p></div>
+          <div class="stat">{icon("corazon", "ico stat-ico")}<b>100%</b><strong>De las madres</strong><p>continuaron con su embarazo.</p></div>
         </div>
       </div>
       <div class="memo">
@@ -410,7 +413,7 @@ def build_nosotros():
 .timeline::before{content:"";position:absolute;left:calc(50% - 1px);top:10px;bottom:10px;border-left:2px dashed var(--orange);opacity:.6}
 .tl{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;position:relative}
 .tl::after{content:"";position:absolute;left:calc(50% - 9px);top:50%;width:18px;height:18px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 6px var(--paper)}
-.tl .yr{font:800 clamp(2.2rem,4vw,3.2rem)/1 var(--display);color:var(--orange-ink);letter-spacing:-.02em}
+.tl .yr{font:700 clamp(2.2rem,4vw,3.2rem)/1 var(--display);color:var(--orange-ink);letter-spacing:-.02em}
 .tl .txt{display:grid;gap:10px}
 .tl .txt p{color:var(--muted)}
 .tl img{width:100%;height:auto;border-radius:var(--r)}
@@ -447,7 +450,7 @@ def build_nosotros():
 @media (max-width:520px){.team{grid-template-columns:1fr}}
 
 .ods{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;list-style:none;padding:0;margin:22px 0 0;max-width:520px}
-.ods li{aspect-ratio:1;border-radius:8px;color:#fff;display:grid;place-items:center;font:800 1.05rem var(--display)}
+.ods li{aspect-ratio:1;border-radius:8px;color:#fff;display:grid;place-items:center;font:700 1.05rem var(--display)}
 .memos{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center}
 .memos img{width:220px;border-radius:6px;transform:rotate(-2deg);box-shadow:0 24px 40px -18px rgba(16,35,63,.5)}
 @media (max-width:700px){.memos{grid-template-columns:1fr}.memos img{width:180px}}
@@ -574,7 +577,7 @@ def build_nosotros():
 PROG_CSS = '''
 .does{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .does .card{padding:28px;display:grid;gap:10px;align-content:start}
-.does .card i{width:38px;height:38px;border-radius:12px;background:var(--orange-soft);color:var(--orange-ink);display:grid;place-items:center;font:800 1rem var(--display);font-style:normal}
+.does .card i{width:38px;height:38px;border-radius:12px;background:var(--orange-soft);color:var(--orange-ink);display:grid;place-items:center;font:700 1rem var(--display);font-style:normal}
 .does h3{font-size:1.15rem}
 .does p{color:var(--muted);font-size:.97rem}
 @media (max-width:900px){.does{grid-template-columns:1fr}}
@@ -587,7 +590,7 @@ PROG_CSS = '''
 .others{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .other{display:flex;gap:14px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:18px;text-decoration:none;background:var(--card);transition:border-color .15s}
 .other:hover{border-color:var(--orange)}
-.other img{width:64px;height:64px;border-radius:14px;object-fit:cover;flex:none}
+.oico{width:56px;height:56px;border-radius:16px;background:var(--sand);display:grid;place-items:center;flex:none}.oico .ico{width:34px;height:34px}
 .other b{display:block;font:600 1rem var(--display)}
 .other span{font-size:.82rem;color:var(--muted)}
 @media (max-width:1000px){.others{grid-template-columns:1fr 1fr}}
@@ -614,13 +617,13 @@ def build_program(p):
   <div><p class="eyebrow">Iniciativa</p><h2 class="h2" style="margin-top:12px">{e(t)}</h2><p class="hand" style="margin-top:10px">{e(sub)}</p><p class="lead" style="margin-top:16px;font-size:1.05rem">{e(d)}</p></div>
 </div></div></section>'''
     gallery = ''.join(f'<img src="img/{g}.jpg" alt="" loading="lazy">' for g in p["gallery"])
-    others = ''.join(f'<a class="other" href="programa-{o["slug"]}.html"><img src="img/{o["img"]}.jpg" alt=""><div><b>{e(o["name"])}</b><span>{e(o["stage"])}</span></div></a>'
+    others = ''.join(f'<a class="other" href="programa-{o["slug"]}.html"><span class="oico">{icon(o["slug"])}</span><div><b>{e(o["name"])}</b><span>{e(o["stage"])}</span></div></a>'
                      for o in PROGRAMS if o["slug"] != p["slug"])
     body = f'''
 <section class="phero"><div class="wrap phero-grid">
   <div>
     <nav class="crumbs" aria-label="Ruta"><a href="index.html">Inicio</a><span aria-hidden="true">/</span><a href="index.html#programas">Programas</a><span aria-hidden="true">/</span><span>{e(p["name"])}</span></nav>
-    <p class="eyebrow" style="margin-bottom:14px">Programa {e(p["name"])} · {e(p["stage"])}</p>
+    <p class="prog-tag">{icon(p["slug"])}<span>Programa {e(p["name"])} · {e(p["stage"])}</span></p>
     <h1 class="h1">{e(p["title"])}</h1>
     <p class="lead">{e(p["intro"])}</p>
     <div class="phero-cta"><a class="btn btn-donate" href="dona.html">Apoyar este programa</a><a class="btn btn-line" href="voluntariado.html">Ser voluntario</a></div>
@@ -657,7 +660,7 @@ def build_voluntariado():
     css = '''
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;list-style:none;padding:0;margin:0;counter-reset:s}
 .steps li{position:relative;padding:28px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);display:grid;gap:10px;align-content:start}
-.steps li::before{counter-increment:s;content:counter(s);width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--orange);color:#10233F;font:800 1.05rem var(--display)}
+.steps li::before{counter-increment:s;content:counter(s);width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--orange);color:#10233F;font:700 1.05rem var(--display)}
 .steps h3{font-size:1.15rem}
 .steps p{color:var(--muted);font-size:.97rem}
 @media (max-width:860px){.steps{grid-template-columns:1fr}}
@@ -748,7 +751,7 @@ def build_dona():
 .what .card{overflow:hidden}
 .what img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;object-position:50% 25%}
 .what div{padding:18px 20px 22px}
-.what b{display:block;font:800 1.6rem var(--display);color:var(--orange-ink)}
+.what b{display:block;font:700 1.6rem var(--display);color:var(--orange-ink)}
 .what p{color:var(--muted);font-size:.95rem;margin-top:4px}
 @media (max-width:960px){.dona-grid{grid-template-columns:1fr}.what{grid-template-columns:1fr 1fr}}
 @media (max-width:480px){.amounts{grid-template-columns:1fr 1fr}.what{grid-template-columns:1fr}.dcard{padding:22px}}
