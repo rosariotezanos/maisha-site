@@ -1,0 +1,148 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}body{margin:0}[hidden]{display:none!important}</style></head><body>
+<title>Voluntariado · Fundación Maisha</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@500;600;700;800&family=Wix+Madefor+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;list-style:none;padding:0;margin:0;counter-reset:s}
+.steps li{position:relative;padding:28px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);display:grid;gap:10px;align-content:start}
+.steps li::before{counter-increment:s;content:counter(s);width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--orange);color:#10233F;font:800 1.05rem var(--display)}
+.steps h3{font-size:1.15rem}
+.steps p{color:var(--muted);font-size:.97rem}
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+.vform{padding:44px;display:grid;grid-template-columns:.9fr 1.1fr;gap:48px}
+.vform > *{min-width:0}
+.vform img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
+@media (max-width:860px){.vform{grid-template-columns:1fr;padding:26px 20px}.vform img{aspect-ratio:16/10}}
+</style>
+<header class="site">
+  <div class="wrap">
+    <div class="pill">
+      <a class="logo" href="index.html" aria-label="Fundación Maisha, inicio"><span class="mark" aria-hidden="true"></span></a>
+      <nav aria-label="Principal">
+        <ul class="menu">
+          <li class="has-drop"><a href="nosotros.html">Nosotros</a>
+            <ul class="drop">
+              <li><a href="nosotros.html#somos">Quiénes somos</a></li>
+              <li><a href="nosotros.html#historia">Nuestra historia</a></li>
+              <li><a href="nosotros.html#kibera">Kenia y Kibera</a></li>
+              <li><a href="nosotros.html#equipo">Equipo</a></li>
+              <li><a href="nosotros.html#memorias">Memorias</a></li>
+            </ul>
+          </li>
+          <li class="has-drop"><a href="index.html#programas">Programas</a>
+            <ul class="drop"><li><a href="programa-acogida.html"><img src="img/acogida-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Acogida<span>Al llegar</span></span></a></li><li><a href="programa-salud.html"><img src="img/salud-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Salud<span>Embarazo y parto</span></span></a></li><li><a href="programa-educacion.html"><img src="img/educacion-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Educación<span>Crianza</span></span></a></li><li><a href="programa-sustentabilidad.html"><img src="img/sustentabilidad-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Sustentabilidad<span>Autonomía</span></span></a></li><li><a href="programa-derechos.html"><img src="img/derechos-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Derechos Humanos<span>En todo el camino</span></span></a></li></ul>
+          </li>
+          <li><a href="voluntariado.html" aria-current="page">Voluntariado</a></li>
+          <li><a href="market.html">Maisha Market</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <span class="lang"><strong>ES</strong> / EN</span>
+        <a class="cart-btn" href="market.html#carrito" aria-label="Carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1.2 10.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg><b data-cart-count hidden>0</b></a>
+        <a class="btn btn-donate btn-sm" href="dona.html">Donar</a>
+        <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h18M4 13h18M4 18h12"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile" id="mobile-menu" hidden>
+      <details><summary>Nosotros</summary><div><a href="nosotros.html#somos">Quiénes somos</a><a href="nosotros.html#historia">Nuestra historia</a><a href="nosotros.html#kibera">Kenia y Kibera</a><a href="nosotros.html#equipo">Equipo</a><a href="nosotros.html#memorias">Memorias</a></div></details>
+      <details><summary>Programas</summary><div><a href="programa-acogida.html">Acogida</a><a href="programa-salud.html">Salud</a><a href="programa-educacion.html">Educación</a><a href="programa-sustentabilidad.html">Sustentabilidad</a><a href="programa-derechos.html">Derechos Humanos</a></div></details>
+      <a href="voluntariado.html">Voluntariado</a>
+      <a href="market.html">Maisha Market</a>
+      <a href="#contacto">Contacto · ES / EN</a>
+    </div>
+  </div>
+</header>
+<main>
+
+<section class="phero"><div class="wrap phero-grid">
+  <div>
+    <nav class="crumbs" aria-label="Ruta"><a href="index.html">Inicio</a><span aria-hidden="true">/</span><span>Voluntariado</span></nav>
+    <h1 class="h1">Involúcrate y sé <em>voluntario</em></h1>
+    <p class="lead">En Maisha trabajamos por el bienestar de mujeres embarazadas en contextos vulnerables en Kenia. Junto a voluntarios y socios entregamos herramientas, cuidado y espacios seguros para proteger la dignidad de cada mujer.</p>
+    <div class="phero-cta"><a class="btn btn-donate" href="#postular">Postular</a><a class="btn btn-line" href="#boletin">Boletín voluntarios</a></div>
+  </div>
+  <figure class="phero-photo"><img src="img/voluntaria.jpg" alt="Voluntaria de Maisha junto a madres del taller de costura"><span class="hand">Voluntaria 2025</span></figure>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="grid-2">
+    <div><p class="eyebrow">Por qué sumarte</p><h2 class="h2" style="margin-top:12px">Un puente de esperanza</h2></div>
+    <p class="lead">Al unirte, tu dedicación ayuda a estas mujeres a descubrir su potencial, empoderarse y construir un futuro mejor para ellas y sus familias. Puedes aportar desde la salud, la educación, la psicología, el diseño o cualquier otra área.</p>
+  </div>
+</div></section>
+
+<section class="sec" id="boletin" style="padding-top:20px"><div class="wrap">
+  <div class="head"><p class="eyebrow">Cómo postular</p><h2 class="h2">Tres pasos para llegar a Kibera</h2></div>
+  <ol class="steps">
+    <li><h3>Lee el boletín</h3><p>Ahí está la información de cada programa y los requisitos para viajar a Kenia.</p><a class="link" href="#boletin">Descargar boletín →</a></li>
+    <li><h3>Completa el formulario</h3><p>Cuéntanos quién eres y en qué programa te gustaría participar.</p><a class="link" href="#postular">Ir al formulario →</a></li>
+    <li><h3>Conversemos</h3><p>Nuestra coordinación de voluntariado te contactará para los siguientes pasos.</p></li>
+  </ol>
+</div></section>
+
+<section class="sec" style="padding-top:20px"><div class="wrap"><div class="gallery">
+  <img src="img/voluntariado-1.jpg" alt="" loading="lazy"><img src="img/voluntariado-2.jpg" alt="" loading="lazy"><img src="img/acogida-testimonio.jpg" alt="" loading="lazy"><img src="img/salud-2.jpg" alt="" loading="lazy"><img src="img/voluntariado-4.jpg" alt="" loading="lazy">
+</div></div></section>
+
+<section class="sec" id="postular" style="padding-top:20px"><div class="wrap">
+  <div class="panel vform">
+    <img src="img/voluntariado-3.jpg" alt="Grupo de voluntarios Maisha con la bandera de la fundación">
+    <form data-demo>
+      <h2 class="h2">Quiero ser voluntario</h2>
+      <p class="lead" style="margin:10px 0 26px;font-size:1.05rem">Introduce tus datos y nos pondremos en contacto contigo. ¡Estamos muy felices de que quieras ser parte de la familia Maisha!</p>
+      <div class="form-grid">
+        <div class="field"><label for="v-nombre">Nombre</label><input id="v-nombre" required></div>
+        <div class="field"><label for="v-apellido">Apellidos</label><input id="v-apellido"></div>
+        <div class="field full"><label for="v-email">Email</label><input id="v-email" type="email" required></div>
+        <div class="field full"><label for="v-area">Interesado en</label><select id="v-area"><option>Acogida</option><option>Salud</option><option>Educación</option><option>Sustentabilidad</option><option>Derechos Humanos</option><option>Otro</option></select></div>
+        <div class="field full"><label for="v-msg">Mensaje</label><textarea id="v-msg" required></textarea></div>
+        <div class="full"><button class="btn btn-donate" type="submit">Enviar postulación</button></div>
+        <p class="ok-msg full" hidden>¡Gracias! Te escribiremos a la brevedad.</p>
+      </div>
+    </form>
+  </div>
+</div></section>
+
+</main>
+<footer class="site" id="contacto">
+  <div class="kanga" aria-hidden="true"></div>
+  <div class="foot">
+    <div class="wrap foot-top">
+      <div>
+        <a class="logo" href="index.html" aria-label="Fundación Maisha"><span class="mark" aria-hidden="true"></span></a>
+        <div class="contact">
+          <p><b>Contacto</b>contacto@fundacionmaisha.com<br>+56 9 8901 2205</p>
+          <p><b>Chile · Kenia</b>Santiago y Kibera, Nairobi</p>
+        </div>
+      </div>
+      <div>
+        <h4>Fundación</h4>
+        <ul><li><a href="nosotros.html#somos">Quiénes somos</a></li><li><a href="nosotros.html#historia">Historia</a></li><li><a href="nosotros.html#kibera">Kenia y Kibera</a></li><li><a href="nosotros.html#memorias">Memorias</a></li></ul>
+      </div>
+      <div>
+        <h4>Participa</h4>
+        <ul><li><a href="dona.html">Dona</a></li><li><a href="dona.html#socio">Hazte socio</a></li><li><a href="voluntariado.html">Voluntariado</a></li><li><a href="market.html">The Maisha Market</a></li></ul>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <p style="color:var(--on-navy-muted);font-size:.94rem;margin-bottom:14px">Recibe noticias de Chile y Kenia.</p>
+        <form class="news-form" id="nl-form">
+          <input id="nl-email" type="email" placeholder="tu@correo.cl" aria-label="Correo electrónico" required>
+          <button type="submit">Suscribirme</button>
+        </form>
+        <p class="form-msg" id="nl-msg" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <span>© 2026 Fundación Maisha · Built by Studio X Design Lab</span>
+      <nav aria-label="Redes"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Facebook</a><a href="#">YouTube</a></nav>
+    </div>
+  </div>
+</footer>
+<a class="wa" href="#contacto" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg></a>
+<script src="assets/site.js"></script>
+
+</body></html>

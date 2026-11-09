@@ -1,0 +1,224 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}body{margin:0}[hidden]{display:none!important}</style></head><body>
+<title>The Maisha Market</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@500;600;700;800&family=Wix+Madefor+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.mk-hero{padding-top:120px}
+.mk-head{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end}
+.mk-head > *{min-width:0}
+.mk-banner{position:relative;border-radius:var(--r);overflow:hidden}
+.mk-banner img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.mk-banner .hand{position:absolute;left:16px;bottom:14px;background:var(--card);padding:10px 16px;border-radius:12px;transform:rotate(-3deg)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:44px 0 26px}
+.chips button{font:500 .93rem var(--display);padding:.6em 1.1em;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--navy);color:var(--on-navy);border-color:var(--navy)}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.product{display:grid;gap:10px}
+.product .ph{position:relative;border-radius:20px;overflow:hidden;background:var(--sand)}
+.product img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .35s ease}
+.product:hover img{transform:scale(1.04)}
+.product .add{position:absolute;right:10px;bottom:10px;font:600 .88rem var(--display);border:0;border-radius:999px;padding:.7em 1.1em;background:var(--orange);color:#10233F;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.15)}
+.product h3{font-size:1.02rem;font-weight:600}
+.product p{display:flex;justify-content:space-between;color:var(--muted);font-size:.93rem}
+.product p b{color:var(--ink);font-variant-numeric:tabular-nums}
+@media (max-width:1000px){.products{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:700px){.mk-head{grid-template-columns:1fr}.products{grid-template-columns:1fr 1fr;gap:14px}.product .add{padding:.6em .9em;font-size:.8rem}}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.why .card{padding:26px}
+.why h3{font-size:1.1rem;margin-bottom:6px}
+.why p{color:var(--muted);font-size:.96rem}
+@media (max-width:800px){.why{grid-template-columns:1fr}}
+.drawer{position:fixed;inset:0;z-index:70;display:flex;justify-content:flex-end;background:rgba(11,24,48,.45)}
+.drawer[hidden]{display:none}
+.drawer aside{width:min(420px,100%);height:100%;background:var(--paper);display:flex;flex-direction:column;padding:calc(22px + env(safe-area-inset-top,0px)) max(22px,env(safe-area-inset-right,0px)) calc(22px + env(safe-area-inset-bottom,0px)) 22px;box-shadow:-20px 0 40px rgba(0,0,0,.2)}
+.drawer header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.drawer h2{font-size:var(--step-2)}
+.drawer .x{border:0;background:var(--sand);color:var(--ink);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.2rem}
+.lines{flex:1;overflow:auto;display:grid;gap:14px;align-content:start}
+.line{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center}
+.line img{width:64px;height:64px;border-radius:12px;object-fit:cover}
+.line b{display:block;font:600 .95rem var(--display)}
+.line span{font-size:.85rem;color:var(--muted)}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.total{display:flex;justify-content:space-between;font:700 1.1rem var(--display);padding:18px 0;border-top:1px solid var(--line);margin-top:12px}
+.empty{color:var(--muted);text-align:center;padding:40px 0}
+</style>
+<header class="site">
+  <div class="wrap">
+    <div class="pill">
+      <a class="logo" href="index.html" aria-label="Fundación Maisha, inicio"><span class="mark" aria-hidden="true"></span></a>
+      <nav aria-label="Principal">
+        <ul class="menu">
+          <li class="has-drop"><a href="nosotros.html">Nosotros</a>
+            <ul class="drop">
+              <li><a href="nosotros.html#somos">Quiénes somos</a></li>
+              <li><a href="nosotros.html#historia">Nuestra historia</a></li>
+              <li><a href="nosotros.html#kibera">Kenia y Kibera</a></li>
+              <li><a href="nosotros.html#equipo">Equipo</a></li>
+              <li><a href="nosotros.html#memorias">Memorias</a></li>
+            </ul>
+          </li>
+          <li class="has-drop"><a href="index.html#programas">Programas</a>
+            <ul class="drop"><li><a href="programa-acogida.html"><img src="img/acogida-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Acogida<span>Al llegar</span></span></a></li><li><a href="programa-salud.html"><img src="img/salud-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Salud<span>Embarazo y parto</span></span></a></li><li><a href="programa-educacion.html"><img src="img/educacion-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Educación<span>Crianza</span></span></a></li><li><a href="programa-sustentabilidad.html"><img src="img/sustentabilidad-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Sustentabilidad<span>Autonomía</span></span></a></li><li><a href="programa-derechos.html"><img src="img/derechos-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Derechos Humanos<span>En todo el camino</span></span></a></li></ul>
+          </li>
+          <li><a href="voluntariado.html">Voluntariado</a></li>
+          <li><a href="market.html" aria-current="page">Maisha Market</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <span class="lang"><strong>ES</strong> / EN</span>
+        <a class="cart-btn" href="market.html#carrito" aria-label="Carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1.2 10.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg><b data-cart-count hidden>0</b></a>
+        <a class="btn btn-donate btn-sm" href="dona.html">Donar</a>
+        <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h18M4 13h18M4 18h12"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile" id="mobile-menu" hidden>
+      <details><summary>Nosotros</summary><div><a href="nosotros.html#somos">Quiénes somos</a><a href="nosotros.html#historia">Nuestra historia</a><a href="nosotros.html#kibera">Kenia y Kibera</a><a href="nosotros.html#equipo">Equipo</a><a href="nosotros.html#memorias">Memorias</a></div></details>
+      <details><summary>Programas</summary><div><a href="programa-acogida.html">Acogida</a><a href="programa-salud.html">Salud</a><a href="programa-educacion.html">Educación</a><a href="programa-sustentabilidad.html">Sustentabilidad</a><a href="programa-derechos.html">Derechos Humanos</a></div></details>
+      <a href="voluntariado.html">Voluntariado</a>
+      <a href="market.html">Maisha Market</a>
+      <a href="#contacto">Contacto · ES / EN</a>
+    </div>
+  </div>
+</header>
+<main>
+
+<section class="mk-hero"><div class="wrap">
+  <div class="mk-head">
+    <div>
+      <nav class="crumbs" aria-label="Ruta"><a href="index.html">Inicio</a><span aria-hidden="true">/</span><span>The Maisha Market</span></nav>
+      <h1 class="h1">The Maisha <em>Market</em></h1>
+      <p class="lead" style="margin-top:18px">Productos 100% solidarios, hechos a mano con telas africanas. Todo lo recaudado nos ayuda a acoger a más Madres Maisha en nuestra casa de acogida en Kenia.</p>
+    </div>
+    <figure class="mk-banner"><img src="img/sustentabilidad-hero.jpg" alt="Madre Maisha cosiendo en el taller"><span class="hand">Hecho en Kenia</span></figure>
+  </div>
+  <div class="chips" role="group" aria-label="Categorías"><button type="button" aria-pressed="true" data-cat="">Todos</button><button type="button" aria-pressed="false" data-cat="Accesorios">Accesorios</button><button type="button" aria-pressed="false" data-cat="Corazón Sagrado">Corazón Sagrado</button><button type="button" aria-pressed="false" data-cat="Deco">Deco</button><button type="button" aria-pressed="false" data-cat="Infantil">Infantil</button></div>
+  <div class="products"><article class="product" data-cat="Accesorios">
+  <div class="ph"><img src="img/market/p00.jpg" alt="Necessaire" loading="lazy"><button class="add" type="button" data-i="0">Agregar</button></div>
+  <h3>Necessaire</h3><p><span>Accesorios</span><b>$12.000</b></p>
+</article><article class="product" data-cat="Accesorios">
+  <div class="ph"><img src="img/market/p01.jpg" alt="Joyero" loading="lazy"><button class="add" type="button" data-i="1">Agregar</button></div>
+  <h3>Joyero</h3><p><span>Accesorios</span><b>$14.000</b></p>
+</article><article class="product" data-cat="Deco">
+  <div class="ph"><img src="img/market/p02.jpg" alt="Simio" loading="lazy"><button class="add" type="button" data-i="2">Agregar</button></div>
+  <h3>Simio</h3><p><span>Deco</span><b>$15.000</b></p>
+</article><article class="product" data-cat="Deco">
+  <div class="ph"><img src="img/market/p03.jpg" alt="Estrellita Nyota" loading="lazy"><button class="add" type="button" data-i="3">Agregar</button></div>
+  <h3>Estrellita Nyota</h3><p><span>Deco</span><b>$5.500</b></p>
+</article><article class="product" data-cat="Accesorios">
+  <div class="ph"><img src="img/market/p04.jpg" alt="Lanyard Masai Mara" loading="lazy"><button class="add" type="button" data-i="4">Agregar</button></div>
+  <h3>Lanyard Masai Mara</h3><p><span>Accesorios</span><b>$8.000</b></p>
+</article><article class="product" data-cat="Accesorios">
+  <div class="ph"><img src="img/market/p05.jpg" alt="Kesi Big" loading="lazy"><button class="add" type="button" data-i="5">Agregar</button></div>
+  <h3>Kesi Big</h3><p><span>Accesorios</span><b>$8.000</b></p>
+</article><article class="product" data-cat="Accesorios">
+  <div class="ph"><img src="img/market/p06.jpg" alt="Tote Bag Nairobi" loading="lazy"><button class="add" type="button" data-i="6">Agregar</button></div>
+  <h3>Tote Bag Nairobi</h3><p><span>Accesorios</span><b>$8.500</b></p>
+</article><article class="product" data-cat="Accesorios">
+  <div class="ph"><img src="img/market/p07.jpg" alt="Tote Bag Wambui" loading="lazy"><button class="add" type="button" data-i="7">Agregar</button></div>
+  <h3>Tote Bag Wambui</h3><p><span>Accesorios</span><b>$12.000</b></p>
+</article><article class="product" data-cat="Corazón Sagrado">
+  <div class="ph"><img src="img/market/p08.jpg" alt="Corazón Sagrado Big" loading="lazy"><button class="add" type="button" data-i="8">Agregar</button></div>
+  <h3>Corazón Sagrado Big</h3><p><span>Corazón Sagrado</span><b>$8.000</b></p>
+</article><article class="product" data-cat="Infantil">
+  <div class="ph"><img src="img/market/p09.jpg" alt="Porta chupetes Baby" loading="lazy"><button class="add" type="button" data-i="9">Agregar</button></div>
+  <h3>Porta chupetes Baby</h3><p><span>Infantil</span><b>$9.500</b></p>
+</article><article class="product" data-cat="Infantil">
+  <div class="ph"><img src="img/market/p10.jpg" alt="Babero Baby" loading="lazy"><button class="add" type="button" data-i="10">Agregar</button></div>
+  <h3>Babero Baby</h3><p><span>Infantil</span><b>$8.500</b></p>
+</article><article class="product" data-cat="Deco">
+  <div class="ph"><img src="img/market/p11.jpg" alt="Jirafa L" loading="lazy"><button class="add" type="button" data-i="11">Agregar</button></div>
+  <h3>Jirafa L</h3><p><span>Deco</span><b>$12.000</b></p>
+</article><article class="product" data-cat="Deco">
+  <div class="ph"><img src="img/market/p12.jpg" alt="Elefante M" loading="lazy"><button class="add" type="button" data-i="12">Agregar</button></div>
+  <h3>Elefante M</h3><p><span>Deco</span><b>$8.000</b></p>
+</article></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="why">
+    <div class="card"><h3>Hecho a mano</h3><p>Cuidadosamente confeccionado para ti, con mucho amor.</p></div>
+    <div class="card"><h3>Productos con sentido</h3><p>Cada compra ayuda a mantener la casa de acogida para Madres Maisha.</p></div>
+    <div class="card"><h3>Hecho en Kenia</h3><p>Gran parte de nuestros productos los confeccionan Madres Maisha.</p></div>
+  </div>
+  <div class="panel cta-card" style="margin-top:28px">
+    <div><h2 class="h2">Regalos corporativos</h2><p>Regalos con propósito para tu empresa o evento. Pide nuestro catálogo.</p></div>
+    <div class="row"><a class="btn btn-navy" href="#contacto">Pedir catálogo</a></div>
+  </div>
+</div></section>
+
+<div class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-labelledby="cart-h">
+  <aside>
+    <header><h2 id="cart-h">Tu carrito</h2><button class="x" id="x" type="button" aria-label="Cerrar carrito">×</button></header>
+    <div class="lines" id="lines"></div>
+    <div class="total"><span>Total</span><span id="total">$0</span></div>
+    <button class="btn btn-donate" id="checkout" type="button">Ir a pagar</button>
+    <p class="ok-msg" id="co-msg" hidden style="margin-top:12px">Prototipo: aquí se abre el checkout de Shopify.</p>
+  </aside>
+</div>
+
+</main>
+<footer class="site" id="contacto">
+  <div class="kanga" aria-hidden="true"></div>
+  <div class="foot">
+    <div class="wrap foot-top">
+      <div>
+        <a class="logo" href="index.html" aria-label="Fundación Maisha"><span class="mark" aria-hidden="true"></span></a>
+        <div class="contact">
+          <p><b>Contacto</b>contacto@fundacionmaisha.com<br>+56 9 8901 2205</p>
+          <p><b>Chile · Kenia</b>Santiago y Kibera, Nairobi</p>
+        </div>
+      </div>
+      <div>
+        <h4>Fundación</h4>
+        <ul><li><a href="nosotros.html#somos">Quiénes somos</a></li><li><a href="nosotros.html#historia">Historia</a></li><li><a href="nosotros.html#kibera">Kenia y Kibera</a></li><li><a href="nosotros.html#memorias">Memorias</a></li></ul>
+      </div>
+      <div>
+        <h4>Participa</h4>
+        <ul><li><a href="dona.html">Dona</a></li><li><a href="dona.html#socio">Hazte socio</a></li><li><a href="voluntariado.html">Voluntariado</a></li><li><a href="market.html">The Maisha Market</a></li></ul>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <p style="color:var(--on-navy-muted);font-size:.94rem;margin-bottom:14px">Recibe noticias de Chile y Kenia.</p>
+        <form class="news-form" id="nl-form">
+          <input id="nl-email" type="email" placeholder="tu@correo.cl" aria-label="Correo electrónico" required>
+          <button type="submit">Suscribirme</button>
+        </form>
+        <p class="form-msg" id="nl-msg" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <span>© 2026 Fundación Maisha · Built by Studio X Design Lab</span>
+      <nav aria-label="Redes"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Facebook</a><a href="#">YouTube</a></nav>
+    </div>
+  </div>
+</footer>
+<a class="wa" href="#contacto" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg></a>
+<script src="assets/site.js"></script>
+<script>var PRODUCTS=[{"n": "Necessaire", "c": "Accesorios", "p": 12000, "img": "img/market/p00.jpg"}, {"n": "Joyero", "c": "Accesorios", "p": 14000, "img": "img/market/p01.jpg"}, {"n": "Simio", "c": "Deco", "p": 15000, "img": "img/market/p02.jpg"}, {"n": "Estrellita Nyota", "c": "Deco", "p": 5500, "img": "img/market/p03.jpg"}, {"n": "Lanyard Masai Mara", "c": "Accesorios", "p": 8000, "img": "img/market/p04.jpg"}, {"n": "Kesi Big", "c": "Accesorios", "p": 8000, "img": "img/market/p05.jpg"}, {"n": "Tote Bag Nairobi", "c": "Accesorios", "p": 8500, "img": "img/market/p06.jpg"}, {"n": "Tote Bag Wambui", "c": "Accesorios", "p": 12000, "img": "img/market/p07.jpg"}, {"n": "Corazón Sagrado Big", "c": "Corazón Sagrado", "p": 8000, "img": "img/market/p08.jpg"}, {"n": "Porta chupetes Baby", "c": "Infantil", "p": 9500, "img": "img/market/p09.jpg"}, {"n": "Babero Baby", "c": "Infantil", "p": 8500, "img": "img/market/p10.jpg"}, {"n": "Jirafa L", "c": "Deco", "p": 12000, "img": "img/market/p11.jpg"}, {"n": "Elefante M", "c": "Deco", "p": 8000, "img": "img/market/p12.jpg"}];
+(function(){
+  var C=window.maishaCart, cart=C.read(), dr=document.getElementById('drawer'), lines=document.getElementById('lines'), tot=document.getElementById('total'), msg=document.getElementById('co-msg');
+  var fmt=function(n){return '$'+n.toLocaleString('es-CL');};
+  function render(){
+    C.write(cart);
+    if(!cart.length){lines.innerHTML='<p class="empty">Tu carrito está vacío.</p>';tot.textContent=fmt(0);return;}
+    lines.innerHTML=cart.map(function(l,k){var p=PRODUCTS[l.i];return '<div class="line"><img src="'+p.img+'" alt=""><div><b>'+p.n+'</b><span>'+fmt(p.p)+'</span></div><div class="qty"><button type="button" data-k="'+k+'" data-d="-1" aria-label="Quitar uno">−</button>'+l.q+'<button type="button" data-k="'+k+'" data-d="1" aria-label="Agregar uno">+</button></div></div>';}).join('');
+    tot.textContent=fmt(cart.reduce(function(a,l){return a+PRODUCTS[l.i].p*l.q;},0));
+  }
+  function open(){dr.hidden=false;msg.hidden=true;}
+  document.querySelectorAll('.add').forEach(function(b){b.onclick=function(){var i=+b.dataset.i,f=cart.filter(function(l){return l.i===i;})[0];if(f)f.q++;else cart.push({i:i,q:1});render();open();};});
+  lines.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var k=+b.dataset.k;cart[k].q+=+b.dataset.d;if(cart[k].q<1)cart.splice(k,1);render();});
+  document.getElementById('x').onclick=function(){dr.hidden=true;};
+  dr.addEventListener('click',function(e){if(e.target===dr)dr.hidden=true;});
+  document.querySelectorAll('.cart-btn').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();open();});});
+  document.getElementById('checkout').onclick=function(){msg.hidden=false;};
+  var chips=[].slice.call(document.querySelectorAll('.chips button'));
+  chips.forEach(function(c){c.onclick=function(){chips.forEach(function(x){x.setAttribute('aria-pressed',String(x===c));});document.querySelectorAll('.product').forEach(function(p){p.hidden=!!c.dataset.cat&&p.dataset.cat!==c.dataset.cat;});};});
+  if(location.hash==='#carrito') open();
+  render();
+})();</script>
+</body></html>

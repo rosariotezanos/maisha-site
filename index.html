@@ -1,0 +1,238 @@
+<title>Fundación Maisha</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@500;600;700;800&family=Wix+Madefor+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.hero{padding-top:14px}
+.hero-box{position:relative;border-radius:calc(var(--r) + 8px);overflow:hidden;min-height:clamp(560px,50vw,700px);display:grid;align-items:end;color:#fff;background:var(--navy)}
+.hero-box > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 30%}
+.hero-box::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,24,48,.8),rgba(11,24,48,.45) 45%,rgba(11,24,48,0) 72%),linear-gradient(0deg,rgba(11,24,48,.5),transparent 45%)}
+.hero-in{position:relative;padding:150px 56px 56px;display:grid;gap:22px}
+.hero h1{font-size:var(--step-4);font-weight:700;max-width:15ch}
+.hero h1 em{font-style:normal;color:var(--orange)}
+.hero-in > p{font-size:var(--step-1);max-width:46ch;color:rgba(255,255,255,.88)}
+.hero .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.hero .btn-line{color:#fff}
+.help{position:absolute;right:28px;bottom:28px;z-index:2;display:flex;align-items:center;gap:14px;background:var(--card);color:var(--ink);border-radius:18px;padding:14px 14px 14px 18px;box-shadow:0 16px 34px rgba(0,0,0,.22);max-width:360px}
+.help p{font:600 .9rem/1.3 var(--display)}
+.help p span{display:block;font:500 .8rem var(--body);color:var(--muted)}
+@media (max-width:900px){.help{position:relative;right:auto;bottom:auto;margin:0 16px 16px;max-width:none}}
+@media (max-width:760px){.hero-box{min-height:0}.hero-box > img{object-position:78% 20%}.hero-box::before{background:linear-gradient(0deg,rgba(11,24,48,.95) 35%,rgba(11,24,48,.3) 75%,rgba(11,24,48,.15))}.hero-in{padding:300px 22px 56px}}
+
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.intro > *{min-width:0}
+.statement{font:600 var(--step-3)/1.18 var(--display);letter-spacing:-.015em;text-wrap:balance}
+.statement span{color:var(--orange-ink)}
+.collage{position:relative;padding:0 0 70px 50px}
+.collage .a{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r)}
+.collage .b{position:absolute;left:0;bottom:0;width:44%;aspect-ratio:1;object-fit:cover;border-radius:50%;border:8px solid var(--paper)}
+.collage .hand{position:absolute;right:8px;bottom:18px;transform:rotate(-5deg)}
+@media (max-width:860px){.intro{grid-template-columns:1fr;gap:36px}.collage{padding:0 0 60px 30px}}
+
+.impact{padding:56px}
+.impact-grid{display:grid;grid-template-columns:1.5fr .7fr;gap:56px;align-items:center}
+.impact .map{position:absolute;right:-140px;top:-120px;width:560px;aspect-ratio:1;color:var(--orange);opacity:.14;-webkit-mask-image:url(img/mapa-nairobi.png);mask-image:url(img/mapa-nairobi.png);pointer-events:none}
+.impact .stats{margin-top:40px;grid-template-columns:repeat(2,1fr)}
+.memo{position:relative;display:grid;gap:14px;justify-items:start}
+.memo img{width:100%;max-width:240px;border-radius:6px;transform:rotate(3deg);box-shadow:0 24px 40px -18px rgba(0,0,0,.6)}
+.memo p{color:var(--on-navy-muted);font-size:.95rem}
+@media (max-width:900px){.impact{padding:32px 22px}.impact-grid{grid-template-columns:1fr;gap:40px}}
+@media (max-width:440px){.impact .stats{grid-template-columns:1fr}}
+
+.ways{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:18px}
+.way{position:relative;display:grid;align-content:end;min-height:380px;border-radius:var(--r);overflow:hidden;text-decoration:none;color:#fff;background:var(--navy)}
+.way img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.way:hover img{transform:scale(1.04)}
+.way > div{position:relative;padding:90px 26px 26px;background:linear-gradient(0deg,rgba(11,24,48,.92) 40%,transparent);display:grid;gap:8px}
+.way h3{font-size:var(--step-2);font-weight:700}
+.way p{color:rgba(255,255,255,.85);font-size:.96rem}
+.way .go{font-weight:600;color:var(--orange)}
+@media (max-width:900px){.ways{grid-template-columns:1fr}.way{min-height:300px}}
+
+.allies{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px 40px;color:var(--logo-ink)}
+.allies .mark{height:52px;width:120px;opacity:.75}
+.allies .amref{font:800 1rem/1.05 var(--display);opacity:.75}
+.allies .amref small{display:block;font-weight:600;font-size:.75rem}
+</style>
+<header class="site">
+  <div class="wrap">
+    <div class="pill">
+      <a class="logo" href="index.html" aria-label="Fundación Maisha, inicio"><span class="mark" aria-hidden="true"></span></a>
+      <nav aria-label="Principal">
+        <ul class="menu">
+          <li class="has-drop"><a href="nosotros.html">Nosotros</a>
+            <ul class="drop">
+              <li><a href="nosotros.html#somos">Quiénes somos</a></li>
+              <li><a href="nosotros.html#historia">Nuestra historia</a></li>
+              <li><a href="nosotros.html#kibera">Kenia y Kibera</a></li>
+              <li><a href="nosotros.html#equipo">Equipo</a></li>
+              <li><a href="nosotros.html#memorias">Memorias</a></li>
+            </ul>
+          </li>
+          <li class="has-drop"><a href="index.html#programas">Programas</a>
+            <ul class="drop"><li><a href="programa-acogida.html"><img src="img/acogida-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Acogida<span>Al llegar</span></span></a></li><li><a href="programa-salud.html"><img src="img/salud-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Salud<span>Embarazo y parto</span></span></a></li><li><a href="programa-educacion.html"><img src="img/educacion-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Educación<span>Crianza</span></span></a></li><li><a href="programa-sustentabilidad.html"><img src="img/sustentabilidad-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Sustentabilidad<span>Autonomía</span></span></a></li><li><a href="programa-derechos.html"><img src="img/derechos-hero.jpg" alt=""><span style="color:inherit;font-size:.95rem">Derechos Humanos<span>En todo el camino</span></span></a></li></ul>
+          </li>
+          <li><a href="voluntariado.html">Voluntariado</a></li>
+          <li><a href="market.html">Maisha Market</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <span class="lang"><strong>ES</strong> / EN</span>
+        <a class="cart-btn" href="market.html#carrito" aria-label="Carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1.2 10.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg><b data-cart-count hidden>0</b></a>
+        <a class="btn btn-donate btn-sm" href="dona.html">Donar</a>
+        <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h18M4 13h18M4 18h12"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile" id="mobile-menu" hidden>
+      <details><summary>Nosotros</summary><div><a href="nosotros.html#somos">Quiénes somos</a><a href="nosotros.html#historia">Nuestra historia</a><a href="nosotros.html#kibera">Kenia y Kibera</a><a href="nosotros.html#equipo">Equipo</a><a href="nosotros.html#memorias">Memorias</a></div></details>
+      <details><summary>Programas</summary><div><a href="programa-acogida.html">Acogida</a><a href="programa-salud.html">Salud</a><a href="programa-educacion.html">Educación</a><a href="programa-sustentabilidad.html">Sustentabilidad</a><a href="programa-derechos.html">Derechos Humanos</a></div></details>
+      <a href="voluntariado.html">Voluntariado</a>
+      <a href="market.html">Maisha Market</a>
+      <a href="#contacto">Contacto · ES / EN</a>
+    </div>
+  </div>
+</header>
+<main>
+
+<section class="hero"><div class="wrap">
+  <div class="hero-box">
+    <img src="img/madre-bebe.jpg" alt="Madre sonriendo mientras sostiene a su bebé recién nacido">
+    <div class="hero-in">
+      <h1>Creemos en un mundo donde ninguna mujer enfrenta su embarazo <em>sola</em>.</h1>
+      <p>Maisha es una fundación chilena que acompaña a mujeres embarazadas, madres y jóvenes en contextos vulnerables en Kenia.</p>
+      <div class="row"><a class="btn btn-donate" href="dona.html">Quiero donar</a><a class="btn btn-line" href="nosotros.html">Conócenos</a></div>
+    </div>
+    <div class="help" aria-label="Línea de apoyo">
+      <p>Pregnant and need support?<span>We're here to help, 24/7.</span></p>
+      <a class="btn btn-donate btn-sm" href="#contacto">Call now</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap intro">
+  <div>
+    <p class="eyebrow" style="margin-bottom:18px">Maisha significa vida</p>
+    <p class="statement">Nacimos en el corazón de Kibera para <span>acompañar a cada madre</span> desde el embarazo hasta su autonomía.</p>
+    <p class="lead" style="margin-top:22px">Desde 2016, junto a Mama Domitila y el Centro de Esperanza Edel Quinn, somos una red de apoyo entre Chile y Kenia para que toda madre reciba a su hijo en condiciones dignas.</p>
+    <a class="btn btn-navy" href="nosotros.html#historia" style="margin-top:28px">Nuestra historia</a>
+  </div>
+  <figure class="collage">
+    <img class="a" src="img/equipo.jpg" alt="Madres con sus bebés y voluntarias de Maisha en Kibera">
+    <img class="b" src="img/domitila.jpg" alt="Mujer de la comunidad de Kibera">
+    <span class="hand">Karibu, bienvenida</span>
+  </figure>
+</div></section>
+
+<section class="sec" id="programas" style="padding-top:20px"><div class="wrap">
+  <div class="head">
+    <p class="eyebrow">Nuestros programas</p>
+    <h2 class="h2">Cinco programas que siguen <em>el camino de cada madre</em></h2>
+    <p class="lead">Detrás de cada mujer hay una historia que merece ser acompañada.</p>
+  </div>
+  <div style="padding-top:30px"><ol class="prog-grid"><svg class="thread" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C 150 0, 250 60, 360 30 S 600 0, 720 34 S 960 60, 1080 24 S 1180 20, 1200 30" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 9" stroke-linecap="round"/></svg><li><a class="prog" href="programa-acogida.html">
+      <img src="img/acogida-hero.jpg" alt="" loading="lazy">
+      <div class="body"><span class="stage">Al llegar</span><h3>Acogida</h3><p>Acompañamiento integral a embarazadas en crisis durante el embarazo y el postparto.</p><span class="go">Conocer →</span></div>
+    </a></li><li><a class="prog" href="programa-salud.html">
+      <img src="img/salud-hero.jpg" alt="" loading="lazy">
+      <div class="body"><span class="stage">Embarazo y parto</span><h3>Salud</h3><p>Controles prenatales, atención del parto y consejería en lactancia materna.</p><span class="go">Conocer →</span></div>
+    </a></li><li><a class="prog" href="programa-educacion.html">
+      <img src="img/educacion-hero.jpg" alt="" loading="lazy">
+      <div class="body"><span class="stage">Crianza</span><h3>Educación</h3><p>Educación afectiva y sexual, y la iniciativa Menstruación Sin Reglas.</p><span class="go">Conocer →</span></div>
+    </a></li><li><a class="prog" href="programa-sustentabilidad.html">
+      <img src="img/sustentabilidad-hero.jpg" alt="" loading="lazy">
+      <div class="body"><span class="stage">Autonomía</span><h3>Sustentabilidad</h3><p>Oficios, ahorro y emprendimiento para sostener a la familia de forma autónoma.</p><span class="go">Conocer →</span></div>
+    </a></li><li><a class="prog" href="programa-derechos.html">
+      <img src="img/derechos-hero.jpg" alt="" loading="lazy">
+      <div class="body"><span class="stage">En todo el camino</span><h3>Derechos Humanos</h3><p>Educación cívica para que madres y jóvenes conozcan y defiendan sus derechos.</p><span class="go">Conocer →</span></div>
+    </a></li></ol></div>
+</div></section>
+
+<section class="sec" style="padding-top:20px"><div class="wrap">
+  <div class="navy-panel impact">
+    <span class="mark map" aria-hidden="true"></span>
+    <div class="impact-grid">
+      <div>
+        <p class="eyebrow">#ImpactoMaisha</p>
+        <h2 class="h2" style="margin-top:12px">Lo que hemos logrado juntos en Kibera</h2>
+        <div class="stats">
+          <div class="stat"><b>435</b><strong>Mujeres</strong><p>acompañadas durante su embarazo y postparto.</p></div>
+          <div class="stat"><b>133</b><strong>Madres</strong><p>han vivido en el centro de acogida.</p></div>
+          <div class="stat"><b>482</b><strong>Talleres</strong><p>y convivencias realizadas.</p></div>
+          <div class="stat"><b>100%</b><strong>De las madres</strong><p>continuaron con su embarazo.</p></div>
+        </div>
+      </div>
+      <div class="memo">
+        <img src="img/memoria-2025.jpg" alt="Portada de la Memoria 2025">
+        <p>Testimonios y resultados en nuestra memoria anual.</p>
+        <a class="btn btn-donate btn-sm" href="nosotros.html#memorias">Leer Memoria 2025</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap quote">
+  <img src="img/acogida-testimonio.jpg" alt="" loading="lazy">
+  <blockquote><p>Recibir y acoger a cada mamá Maisha, escuchar sus historias, llegar a un nivel de intimidad donde me confiaron sus vivencias, sus alegrías y sus tristezas. De pronto habíamos atravesado todas las barreras culturales. En ese momento éramos dos mujeres completamente distintas y tan similares a la vez, riendo y llorando juntas.</p><cite><strong>Margarita Cury</strong>Voluntaria Acogida 2022</cite></blockquote>
+</div></section>
+
+<section class="sec" style="padding-top:20px"><div class="wrap">
+  <div class="head"><p class="eyebrow">¡Involúcrate!</p><h2 class="h2">Sé parte de la familia Maisha</h2></div>
+  <div class="ways">
+    <a class="way" href="voluntariado.html"><img src="img/voluntaria.jpg" alt="" loading="lazy"><div><p class="eyebrow" style="color:var(--orange)">Voluntariado</p><h3>Viaja a Kenia y sé un puente de esperanza</h3><span class="go">Postular →</span></div></a>
+    <a class="way" href="dona.html#socio"><img src="img/acogida-5.jpg" alt="" loading="lazy"><div><p class="eyebrow" style="color:var(--orange)">Socios</p><h3>Aporta cada mes</h3><span class="go">Hazte socio →</span></div></a>
+    <a class="way" href="market.html"><img src="img/market-feria.jpg" alt="" loading="lazy"><div><p class="eyebrow" style="color:var(--orange)">Tienda</p><h3>The Maisha Market</h3><span class="go">Ir a la tienda →</span></div></a>
+  </div>
+</div></section>
+
+<section class="sec tight"><div class="wrap">
+  <p class="eyebrow" style="margin-bottom:26px">Alianzas por el mundo</p>
+  <div class="allies">
+    <span class="mark" style="-webkit-mask-image:url(img/logo-aiep.png);mask-image:url(img/logo-aiep.png)" role="img" aria-label="AIEP"></span>
+    <span class="mark" style="-webkit-mask-image:url(img/logo-totocarebox.png);mask-image:url(img/logo-totocarebox.png)" role="img" aria-label="TotoCareBox"></span>
+    <span class="mark" style="-webkit-mask-image:url(img/logo-teenstar.png);mask-image:url(img/logo-teenstar.png)" role="img" aria-label="Teen STAR"></span>
+    <span class="mark" style="-webkit-mask-image:url(img/logo-reamedica.png);mask-image:url(img/logo-reamedica.png)" role="img" aria-label="ReaMedica Health"></span>
+    <span class="amref">amref<small>health africa</small></span>
+  </div>
+</div></section>
+
+</main>
+<footer class="site" id="contacto">
+  <div class="kanga" aria-hidden="true"></div>
+  <div class="foot">
+    <div class="wrap foot-top">
+      <div>
+        <a class="logo" href="index.html" aria-label="Fundación Maisha"><span class="mark" aria-hidden="true"></span></a>
+        <div class="contact">
+          <p><b>Contacto</b>contacto@fundacionmaisha.com<br>+56 9 8901 2205</p>
+          <p><b>Chile · Kenia</b>Santiago y Kibera, Nairobi</p>
+        </div>
+      </div>
+      <div>
+        <h4>Fundación</h4>
+        <ul><li><a href="nosotros.html#somos">Quiénes somos</a></li><li><a href="nosotros.html#historia">Historia</a></li><li><a href="nosotros.html#kibera">Kenia y Kibera</a></li><li><a href="nosotros.html#memorias">Memorias</a></li></ul>
+      </div>
+      <div>
+        <h4>Participa</h4>
+        <ul><li><a href="dona.html">Dona</a></li><li><a href="dona.html#socio">Hazte socio</a></li><li><a href="voluntariado.html">Voluntariado</a></li><li><a href="market.html">The Maisha Market</a></li></ul>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <p style="color:var(--on-navy-muted);font-size:.94rem;margin-bottom:14px">Recibe noticias de Chile y Kenia.</p>
+        <form class="news-form" id="nl-form">
+          <input id="nl-email" type="email" placeholder="tu@correo.cl" aria-label="Correo electrónico" required>
+          <button type="submit">Suscribirme</button>
+        </form>
+        <p class="form-msg" id="nl-msg" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <span>© 2026 Fundación Maisha · Built by Studio X Design Lab</span>
+      <nav aria-label="Redes"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Facebook</a><a href="#">YouTube</a></nav>
+    </div>
+  </div>
+</footer>
+<a class="wa" href="#contacto" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg></a>
+<script src="assets/site.js"></script>
+
