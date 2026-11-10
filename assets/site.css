@@ -247,12 +247,14 @@ footer.site{margin-top:40px}
 
 /* Íconos Maisha */
 .ico{display:block;width:48px;height:48px;color:var(--ink)}
-.ico .l{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.78}
+.ico .l{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.ico{--icon-ink:#3E4659}
+.prog .badge .ico,.stat-ico,.oico .ico,.prog-tag .ico{color:#3E4659}
 .ico .f{fill:var(--orange)}
 .ico .fs{fill:none;stroke:var(--orange);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .ico .fs-w{fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.stat-ico{width:42px;height:42px;padding:15px;box-sizing:content-box;border-radius:50%;background:var(--card);margin-bottom:18px;box-shadow:0 8px 20px rgba(0,0,0,.18)}
-.navy-panel .stat-ico{color:var(--ink)}
+.stat-ico{width:40px;height:40px;padding:16px;box-sizing:content-box;border-radius:50%;background:var(--card);margin-bottom:18px;box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.navy-panel .stat-ico{color:#3E4659;background:#FFFFFF}
 :root[data-theme="dark"] .navy-panel .stat-ico{background:#FFFFFF;color:#17213A}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .navy-panel .stat-ico{background:#FFFFFF;color:#17213A}}
 .prog{position:relative}
@@ -270,3 +272,7 @@ footer.site{margin-top:40px}
 .other:hover .oico{transform:scale(1.08);background:var(--orange-soft)}
 .phero:hover .prog-tag .ico{transform:rotate(-6deg) scale(1.06)}
 @media (prefers-reduced-motion: reduce){.stat:hover .stat-ico,.prog:hover .badge,.other:hover .oico{transform:none}.stat:hover .ico .f,.prog:hover .ico .f,.other:hover .ico .f,.stat:hover .ico .fs,.prog:hover .ico .fs{transform:none}}
+/* Los íconos van siempre sobre círculos claros, también en modo oscuro */
+.prog .badge,.stat-ico{background:#FFFFFF}
+:root[data-theme="dark"] .oico,:root[data-theme="dark"] .prog-tag .ico{background:#FFFFFF}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .oico,:root:not([data-theme="light"]) .prog-tag .ico{background:#FFFFFF}}
