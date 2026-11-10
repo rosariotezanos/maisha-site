@@ -444,17 +444,33 @@ def build_nosotros():
 .kib-photos img{width:100%;height:auto;border-radius:20px}
 @media (max-width:860px){.kib{padding:30px 20px}.kib-grid{grid-template-columns:1fr;gap:36px}}
 
-.team{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.member{display:flex;gap:14px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
-.member i{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--orange-soft);color:var(--orange-ink);font:700 .95rem var(--display);font-style:normal}
-.member b{display:block;font:600 .98rem var(--display)}
-.member span{font-size:.85rem;color:var(--muted)}
+.team{display:grid;grid-template-columns:repeat(5,1fr);gap:22px 18px}
+.member{margin:0;display:grid;gap:12px;align-content:start}
+.member .ph{border-radius:20px;overflow:hidden;background:var(--sand);aspect-ratio:1}
+.member img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;transition:transform .4s ease}
+.member:hover img{transform:scale(1.05)}
+.member b{display:block;font:600 1.02rem/1.25 var(--display)}
+.member span{display:block;margin-top:2px;font-size:.88rem;line-height:1.35;color:var(--muted)}
+@media (max-width:1100px){.team{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:800px){.team{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:520px){.team{grid-template-columns:1fr 1fr;gap:18px 12px}}
 .team-h{font:700 .8rem var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:36px 0 14px}
-@media (max-width:1000px){.team{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:520px){.team{grid-template-columns:1fr}}
 
 .ods{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;list-style:none;padding:0;margin:22px 0 0;max-width:520px}
-.ods li{aspect-ratio:1;border-radius:8px;color:#fff;display:grid;place-items:center;font:700 1.05rem var(--display)}
+.ods li{position:relative;aspect-ratio:1;border-radius:8px;color:#fff;display:grid;place-items:center;font:700 1.05rem var(--display);cursor:help;transition:transform .2s ease}
+.ods li:hover,.ods li:focus-visible{transform:translateY(-3px);outline:none}
+.ods .tip{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translate(-50%,6px);width:280px;max-width:calc(100vw - 40px);background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:0 18px 40px rgba(8,19,38,.2);font:400 .88rem/1.45 var(--body);text-align:left;opacity:0;visibility:hidden;transition:opacity .18s ease,transform .18s ease;z-index:30;pointer-events:none}
+.ods .tip b{display:block;font:600 .95rem/1.25 var(--display);margin-bottom:6px}
+.ods .tip em{display:block;font-style:normal;margin-top:8px;padding-top:8px;border-top:1px solid var(--line);color:var(--muted)}
+.ods .tip::after{content:"";position:absolute;top:100%;left:50%;margin-left:-7px;border:7px solid transparent;border-top-color:var(--card)}
+.ods li:hover .tip,.ods li:focus .tip{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.ods li:nth-child(-n+2) .tip{left:0;transform:translate(0,6px)}.ods li:nth-child(-n+2):hover .tip,.ods li:nth-child(-n+2):focus .tip{transform:none}.ods li:nth-child(-n+2) .tip::after{left:22px}
+.ods li:nth-last-child(-n+2) .tip{left:auto;right:0;transform:translate(0,6px)}.ods li:nth-last-child(-n+2):hover .tip,.ods li:nth-last-child(-n+2):focus .tip{transform:none}.ods li:nth-last-child(-n+2) .tip::after{left:auto;right:15px}
+@media (max-width:560px){.ods{position:relative;grid-template-columns:repeat(4,1fr);gap:10px;max-width:none}.ods li{position:static;font-size:1.2rem}
+.ods li:hover,.ods li:focus-visible{transform:none;box-shadow:0 0 0 3px var(--orange)}
+.ods .tip,.ods li:nth-child(n) .tip{left:0;right:0;width:auto;max-width:none;transform:translateY(6px)}
+.ods li:nth-child(n):hover .tip,.ods li:nth-child(n):focus .tip{transform:none}
+.ods .tip::after{display:none}}
 .memos{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center}
 .memos img{width:220px;border-radius:6px;transform:rotate(-2deg);box-shadow:0 24px 40px -18px rgba(16,35,63,.5)}
 @media (max-width:700px){.memos{grid-template-columns:1fr}.memos img{width:180px}}
@@ -464,11 +480,17 @@ def build_nosotros():
       ("Equipo", [("Rocío Rivero","Directora Ejecutiva"),("Verónica Córdova","Coordinación de Operaciones en Kenia"),("Montana Njaaga","Coordinadora de Operaciones en Kenia"),("Bernardita Sanhueza","Coordinación de Voluntariado"),("Rosario Mozó","Socios"),("Consuelo Gutiérrez","The Maisha Market"),("Florencia Torrejón","Ventas The Maisha Market")]),
       ("Asesores", [("Cristina Alonso","Programa de Salud"),("Rosario Larraín","Programa de Acogida"),("Manuela Kawas","Programa de Sustentabilidad"),("Nicole Espinoza","Programa de Educación Sexual"),("Francisco Cáceres","Psicólogo, Voluntariado")]),
     ]
+    def _slug(n):
+        import unicodedata
+        key = {'Domtila Ayot':'domtila','Montana Njaaga':'montana','Christine Chassin-Trubert':'chassin'}.get(n)
+        if key: return key
+        last = n.split()[-1]
+        return unicodedata.normalize('NFKD', last).encode('ascii','ignore').decode().lower()
     def ini(n):
         p = [w for w in n.replace('Mª','M').split() if w[0].isupper()]
         return (p[0][0] + p[-1][0]).upper()
     team_html = ''.join(f'<p class="team-h">{g}</p><div class="team">' + ''.join(
-        f'<div class="member"><i aria-hidden="true">{ini(n)}</i><div><b>{e(n)}</b><span>{e(r)}</span></div></div>' for n, r in ms) + '</div>' for g, ms in team)
+        f'<figure class="member"><div class="ph"><img src="img/equipo/{_slug(n)}.jpg" alt="{e(n)}" loading="lazy"></div><figcaption><b>{e(n)}</b><span>{e(r)}</span></figcaption></figure>' for n, r in ms) + '</div>' for g, ms in team)
 
     tl = [
       ("2009","El Centro de Esperanza Edel Quinn","Mama Domitila recortó papeles con su número de teléfono y los pegó por Kibera, esperando que quien buscara un hombro donde apoyarse pudiera recurrir a ella. Así nació el Centro de Esperanza Edel Quinn, dedicado a embarazos en crisis.","historia-2009"),
@@ -549,7 +571,7 @@ def build_nosotros():
 <section class="sec" id="equipo" style="padding-top:20px"><div class="wrap">
   <div class="head" style="margin-bottom:10px"><p class="eyebrow">Equipo</p><h2 class="h2">Las personas detrás de Maisha</h2></div>
   {team_html}
-  <p class="note" style="margin-top:22px">Las fotos de cada persona se agregan desde el administrador de contenido.</p>
+  
 </div></section>
 
 <section class="sec" id="memorias"><div class="wrap">
@@ -563,12 +585,7 @@ def build_nosotros():
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px"><a class="btn btn-navy" href="memorias/memoria-2025-es.pdf" target="_blank" rel="noopener">Leer en español</a><a class="btn btn-line" href="memorias/memoria-2025-en.pdf" target="_blank" rel="noopener">Read in English</a></div>
         <p style="margin-top:36px;font-weight:600">Agenda 2030</p>
         <p style="color:var(--muted);font-size:.95rem">Con nuestras acciones contribuimos a estos Objetivos de Desarrollo Sostenible de la ONU.</p>
-        <ul class="ods">
-          <li style="background:#E5243B">1<span class="vh">Fin de la pobreza</span></li><li style="background:#4C9F38">3<span class="vh">Salud y bienestar</span></li>
-          <li style="background:#FF3A21">5<span class="vh">Igualdad de género</span></li><li style="background:#A21942">8<span class="vh">Trabajo decente</span></li>
-          <li style="background:#DD1367">10<span class="vh">Reducción de las desigualdades</span></li><li style="background:#3F7E44">13<span class="vh">Acción por el clima</span></li>
-          <li style="background:#00689D">16<span class="vh">Paz y justicia</span></li><li style="background:#19486A">17<span class="vh">Alianzas</span></li>
-        </ul>
+        <ul class="ods"><li tabindex="0" style="background:#E5243B" aria-describedby="ods-1">1<span class="tip" role="tooltip" id="ods-1"><b>ODS 1 · Fin de la pobreza</b>Poner fin a la pobreza en todas sus formas en todo el mundo.<em>En Maisha: Acompañamos a madres de Kibera, uno de los asentamientos informales más grandes de África.</em></span></li><li tabindex="0" style="background:#4C9F38" aria-describedby="ods-3">3<span class="tip" role="tooltip" id="ods-3"><b>ODS 3 · Salud y bienestar</b>Garantizar una vida sana y promover el bienestar para todos en todas las edades.<em>En Maisha: Controles prenatales, atención del parto y salud mental para madres y recién nacidos.</em></span></li><li tabindex="0" style="background:#FF3A21" aria-describedby="ods-5">5<span class="tip" role="tooltip" id="ods-5"><b>ODS 5 · Igualdad de género</b>Lograr la igualdad entre los géneros y empoderar a todas las mujeres y las niñas.<em>En Maisha: Educación y herramientas para que mujeres y niñas decidan sobre su vida.</em></span></li><li tabindex="0" style="background:#A21942" aria-describedby="ods-8">8<span class="tip" role="tooltip" id="ods-8"><b>ODS 8 · Trabajo decente y crecimiento económico</b>Promover el crecimiento económico inclusivo, el empleo pleno y productivo y el trabajo decente para todos.<em>En Maisha: Capacitación en oficios, finanzas y emprendimiento en el programa de Sustentabilidad.</em></span></li><li tabindex="0" style="background:#DD1367" aria-describedby="ods-10">10<span class="tip" role="tooltip" id="ods-10"><b>ODS 10 · Reducción de las desigualdades</b>Reducir la desigualdad en los países y entre ellos.<em>En Maisha: Acceso a salud, educación y oportunidades para quienes viven en los slums de Nairobi.</em></span></li><li tabindex="0" style="background:#3F7E44" aria-describedby="ods-13">13<span class="tip" role="tooltip" id="ods-13"><b>ODS 13 · Acción por el clima</b>Adoptar medidas urgentes para combatir el cambio climático y sus efectos.<em>En Maisha: Toallas higiénicas reutilizables con Menstruación Sin Reglas: informada, ecológica y accesible.</em></span></li><li tabindex="0" style="background:#00689D" aria-describedby="ods-16">16<span class="tip" role="tooltip" id="ods-16"><b>ODS 16 · Paz, justicia e instituciones sólidas</b>Promover sociedades pacíficas e inclusivas y facilitar el acceso a la justicia para todos.<em>En Maisha: Formación en Derechos Humanos y Educación Cívica junto a la Universidad de Strathmore.</em></span></li><li tabindex="0" style="background:#19486A" aria-describedby="ods-17">17<span class="tip" role="tooltip" id="ods-17"><b>ODS 17 · Alianzas para lograr los objetivos</b>Fortalecer las alianzas mundiales para el desarrollo sostenible.<em>En Maisha: Trabajamos con AIEP, Teen STAR, TotoCareBox, ReaMedica, Amref y Fundación Kianda.</em></span></li></ul>
       </div>
     </div>
   </div>
