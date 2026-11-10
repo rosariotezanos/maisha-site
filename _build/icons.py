@@ -12,6 +12,11 @@ def _hand(x, y, s, cls):
             '<path class="l" d="M-5 1v-9M-1.7 0v-12M1.7 0v-11M5 1v-8M-7 7l-4-5"/></g>')
 
 ICONS = {
+  'balanza': '<path class="l" d="M24 6v34M14 42h20M9 12h30M24 6v6"/>'
+             '<path class="l" d="M9 12 3.5 25a5.5 5.5 0 0 0 11 0zM39 12l-5.5 13a5.5 5.5 0 0 0 11 0z"/>'
+             '<circle class="f" cx="24" cy="12" r="3.2"/>',
+  'mano': '<path class="l" d="M4 30h7l9 5h9a3 3 0 0 0 0-6h-7M24 29l9.5-3.6a3 3 0 0 1 2.2 5.6L24 38H14l-10-4"/>'
+          '<path class="f" d="M27 22c-4.4-2.9-6.8-5.2-6.8-7.9a3.4 3.4 0 0 1 6.8-1.1 3.4 3.4 0 0 1 6.8 1.1c0 2.7-2.4 5-6.8 7.9z"/>',
   # ---- Kenia (montaña luminosa) y Kibera (bosque)
   'montana': '<path class="l" d="M3 42 18 18l6 9 5-7 16 22z"/>'
              '<path class="f" d="M18 18l-4.6 7.4 2.6 1.8 2.4-2 2.4 2 1.6-1.4z"/>'

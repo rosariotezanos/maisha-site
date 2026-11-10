@@ -402,15 +402,34 @@ def build_home():
 def build_nosotros():
     css = '''
 .sec[id]{scroll-margin-top:170px}
-.mvv{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.mvv .card{padding:30px;display:grid;gap:10px;align-content:start}
-.mvv h3{font-size:var(--step-1)}
-.mvv p{color:var(--muted)}
-.values{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:56px}
-.values h3{font-size:1.05rem;margin-bottom:8px}
-.values h3::before{content:"";display:block;width:26px;height:4px;border-radius:2px;background:var(--orange);margin-bottom:14px}
-.values p{color:var(--muted);font-size:.95rem}
-@media (max-width:900px){.mvv{grid-template-columns:1fr}.values{grid-template-columns:1fr 1fr}}
+/* Grilla de 4 columnas compartida por Quiénes somos, Valores e Historia */
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.span2{grid-column:span 2}
+.about{align-items:stretch}
+.about-intro{grid-column:span 2;display:grid;gap:16px;align-content:center;padding-right:clamp(0px,4vw,56px)}
+.about-intro .h2 em{font-style:normal;color:var(--orange-ink)}
+.mv{position:relative;overflow:hidden;border-radius:var(--r);padding:32px 30px 34px;display:grid;gap:12px;align-content:start;box-shadow:0 18px 40px -18px rgba(8,19,38,.35);transition:transform .25s ease}
+.mv:hover{transform:translateY(-4px)}
+.mv h3{font-size:var(--step-2);font-weight:600;line-height:1.15}
+.mv p:last-child{line-height:1.5}
+.mv-navy{background:var(--navy);color:var(--on-navy)}
+.mv-navy .eyebrow{color:var(--orange)}
+.mv-navy p:last-child{color:var(--on-navy-muted)}
+.mv-orange{background:var(--orange);color:#081326}
+.mv-orange .eyebrow{color:#081326;opacity:.7}
+.mv::after{content:"";position:absolute;right:-40px;bottom:-40px;width:150px;height:150px;border-radius:50%;border:22px solid currentColor;opacity:.07}
+.values-wrap{margin-top:64px}
+.values-wrap > .eyebrow{margin-bottom:20px}
+.value{display:grid;gap:10px;align-content:start;background:var(--sand);border-radius:var(--r);padding:28px 26px 30px;transition:transform .25s ease}
+.value:hover{transform:translateY(-4px)}
+.val-ico{width:36px;height:36px;padding:14px;box-sizing:content-box;border-radius:50%;background:#FFFFFF;color:#3E4659;box-shadow:0 8px 20px rgba(8,19,38,.08);margin-bottom:6px}
+.value:hover .val-ico{transform:translateY(-4px) scale(1.05)}
+.value:hover .ico .f,.value:hover .ico .fs{transform:scale(1.18)}
+.value h3{font-size:1.15rem;font-weight:600}
+.value p{color:var(--muted);font-size:.95rem;line-height:1.45}
+.hist-head{align-items:end;margin-bottom:72px}
+@media (max-width:980px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.about-intro{grid-column:1/-1;padding-right:0}.hist-head .span2{grid-column:1/-1}}
+@media (max-width:560px){.g4{grid-template-columns:1fr}.span2,.about-intro{grid-column:auto}.value{padding:24px 22px 26px}}
 @media (max-width:480px){.values{grid-template-columns:1fr}}
 
 .timeline{position:relative;list-style:none;margin:0;padding:0;display:grid;gap:36px}
@@ -527,23 +546,30 @@ def build_nosotros():
 </div></section>
 
 <section class="sec" id="somos"><div class="wrap">
-  <div class="mvv">
-    <div class="card"><p class="eyebrow">Somos</p><h3>Una red entre Chile y Kenia</h3><p>Comprometida con la dignidad de la persona, trabajando por acompañar a mujeres, madres y jóvenes.</p></div>
-    <div class="card"><p class="eyebrow">Misión</p><h3>Acompañar y ofrecer oportunidades</h3><p>Acompañar y ofrecer oportunidades de crecimiento a embarazadas, madres y jóvenes en contextos vulnerables.</p></div>
-    <div class="card"><p class="eyebrow">Visión</p><h3>Toda madre, en condiciones dignas</h3><p>Ser la principal red de acompañamiento para mujeres, logrando que toda madre reciba a su hijo en las condiciones dignas que ambos merecen.</p></div>
+  <div class="g4 about">
+    <div class="about-intro">
+      <p class="eyebrow">Quiénes somos</p>
+      <h2 class="h2">Una red entre <em>Chile</em> y <em>Kenia</em></h2>
+      <p class="lead">Somos una fundación comprometida con la dignidad de la persona, que trabaja por acompañar a mujeres, madres y jóvenes.</p>
+    </div>
+    <div class="mv mv-navy"><p class="eyebrow">Misión</p><h3>Acompañar y ofrecer oportunidades</h3><p>Acompañar y ofrecer oportunidades de crecimiento a embarazadas, madres y jóvenes en contextos vulnerables.</p></div>
+    <div class="mv mv-orange"><p class="eyebrow">Visión</p><h3>Toda madre, en condiciones dignas</h3><p>Ser la principal red de acompañamiento para mujeres, logrando que toda madre reciba a su hijo en las condiciones dignas que ambos merecen.</p></div>
   </div>
-  <div class="values">
-    <div><h3>Respeto a la vida</h3><p>Estamos comprometidos con el respeto a la vida y la dignidad de la persona humana.</p></div>
-    <div><h3>Responsabilidad</h3><p>Un acompañamiento concreto a embarazadas, madres y adolescentes que requieren una red de apoyo.</p></div>
-    <div><h3>Cooperación</h3><p>Trabajamos en equipo, de forma horizontal y apoyándonos en actores locales.</p></div>
-    <div><h3>Equidad</h3><p>Igualdad de oportunidades y no discriminación.</p></div>
+  <div class="values-wrap">
+    <p class="eyebrow">Nuestros valores</p>
+    <div class="g4 values">
+      <div class="value">{icon("corazon", "ico val-ico")}<h3>Respeto a la vida</h3><p>Estamos comprometidos con el respeto a la vida y la dignidad de la persona humana.</p></div>
+      <div class="value">{icon("mano", "ico val-ico")}<h3>Responsabilidad</h3><p>Un acompañamiento concreto a embarazadas, madres y adolescentes que requieren una red de apoyo.</p></div>
+      <div class="value">{icon("grupo", "ico val-ico")}<h3>Cooperación</h3><p>Trabajamos en equipo, de forma horizontal y apoyándonos en actores locales.</p></div>
+      <div class="value">{icon("balanza", "ico val-ico")}<h3>Equidad</h3><p>Igualdad de oportunidades y no discriminación.</p></div>
+    </div>
   </div>
 </div></section>
 
 <section class="sec" id="historia" style="padding-top:20px"><div class="wrap">
-  <div class="grid-2" style="margin-bottom:72px">
-    <div><p class="eyebrow">Nuestra historia</p><h2 class="h2" style="margin-top:12px">Maisha nació en el corazón de <em>Kibera</em></h2></div>
-    <p class="lead">Mama Domitila Ayot veía cómo muchas mujeres y adolescentes de su población quedaban embarazadas con escaso o nada de apoyo, en condiciones de pobreza extrema. Decidió aportar con lo poco que podía entregar.</p>
+  <div class="g4 hist-head">
+    <div class="span2"><p class="eyebrow">Nuestra historia</p><h2 class="h2" style="margin-top:12px">Maisha nació en el corazón de <em>Kibera</em></h2></div>
+    <p class="lead span2">Mama Domitila Ayot veía cómo muchas mujeres y adolescentes de su población quedaban embarazadas con escaso o nada de apoyo, en condiciones de pobreza extrema. Decidió aportar con lo poco que podía entregar.</p>
   </div>
   <ol class="timeline">{tl_html}</ol>
 </div></section>
