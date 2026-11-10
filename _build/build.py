@@ -434,21 +434,26 @@ def build_nosotros():
 }
 
 .kib{padding:56px}
-.kib-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.kib-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(56px,8vw,128px)}
+.kib-head{display:flex;align-items:center;gap:18px}
+.kib-head .eyebrow{margin-bottom:4px}
+.kib-ico{width:52px;height:52px;padding:12px;box-sizing:content-box;border-radius:50%;background:#FFFFFF;color:#3E4659;box-shadow:0 8px 20px rgba(8,19,38,.10);flex:none}
+.kib-mean{margin-top:18px;padding:14px 18px;border-radius:14px;background:var(--card);border-left:3px solid var(--orange);font-size:1rem;color:var(--muted)}
+.kib-mean b{color:var(--ink);font-weight:600}
 .kib-grid > *{min-width:0}
 .facts{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:0}
 .facts li{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid var(--line);font-size:.97rem}
 .facts li span{color:var(--muted)}
 .facts li b{text-align:right;font-weight:600}
-.kib-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px;align-items:start}
-.kib-photos img{width:100%;height:auto;border-radius:20px}
-@media (max-width:860px){.kib{padding:30px 20px}.kib-grid{grid-template-columns:1fr;gap:36px}}
+.kib-photos{display:grid;grid-template-columns:1fr 1fr;gap:clamp(56px,8vw,128px);margin-top:56px;align-items:start}
+.kib-photos img{width:72%;height:auto;border-radius:20px;justify-self:center}
+@media (max-width:860px){.kib{padding:30px 20px}.kib-grid{grid-template-columns:1fr;gap:48px}.kib-photos{gap:16px}.kib-photos img{width:100%}}
 
 .team{display:grid;grid-template-columns:repeat(5,1fr);gap:22px 18px}
 .member{margin:0;display:grid;gap:12px;align-content:start}
 .member .ph{border-radius:20px;overflow:hidden;background:var(--sand);aspect-ratio:1}
-.member img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;transition:transform .4s ease}
-.member:hover img{transform:scale(1.05)}
+.member img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;filter:grayscale(1);transition:transform .4s ease,filter .4s ease}
+.member:hover img{transform:scale(1.05);filter:grayscale(0)}
 .member b{display:block;font:600 1.02rem/1.25 var(--display)}
 .member span{display:block;margin-top:2px;font-size:.88rem;line-height:1.35;color:var(--muted)}
 @media (max-width:1100px){.team{grid-template-columns:repeat(4,1fr)}}
@@ -547,8 +552,8 @@ def build_nosotros():
   <div class="panel kib">
     <div class="kib-grid">
       <div>
-        <p class="eyebrow">Sobre Kenia</p>
-        <h2 class="h2" style="margin-top:12px">La “montaña luminosa”</h2>
+        <div class="kib-head">{icon("montana", "ico kib-ico")}<div><p class="eyebrow">Sobre Kenia</p><h2 class="h2">Kenia</h2></div></div>
+        <p class="kib-mean">Su nombre viene del Monte Kenia. En algunas lenguas locales significa <b>“montaña luminosa”</b>.</p>
         <p class="lead" style="margin-top:14px;font-size:1.05rem">Un país del este de África conocido por su variedad de paisajes, animales y personas de 44 etnias.</p>
         <ul class="facts">
           <li><span>Capital</span><b>Nairobi</b></li><li><span>Población</span><b>56,2 millones</b></li>
@@ -556,8 +561,8 @@ def build_nosotros():
         </ul>
       </div>
       <div>
-        <p class="eyebrow">Sobre Kibera</p>
-        <h2 class="h2" style="margin-top:12px">“Bosque” o “jungla”</h2>
+        <div class="kib-head">{icon("bosque", "ico kib-ico")}<div><p class="eyebrow">Sobre Kibera</p><h2 class="h2">Kibera</h2></div></div>
+        <p class="kib-mean">Su nombre significa <b>“bosque”</b> o <b>“jungla”</b>.</p>
         <p class="lead" style="margin-top:14px;font-size:1.05rem">El slum más grande de Kenia y el segundo de África: una población informal en los suburbios de Nairobi con escaso acceso a servicios básicos.</p>
         <ul class="facts">
           <li><span>Densidad</span><b>+2.000 personas por hectárea</b></li><li><span>Ubicación</span><b>Suburbios de Nairobi</b></li><li><span>Donde trabajamos</span><b>Centro de acogida Maisha</b></li>

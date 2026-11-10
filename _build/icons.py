@@ -12,6 +12,14 @@ def _hand(x, y, s, cls):
             '<path class="l" d="M-5 1v-9M-1.7 0v-12M1.7 0v-11M5 1v-8M-7 7l-4-5"/></g>')
 
 ICONS = {
+  # ---- Kenia (montaña luminosa) y Kibera (bosque)
+  'montana': '<path class="l" d="M3 42 18 18l6 9 5-7 16 22z"/>'
+             '<path class="f" d="M18 18l-4.6 7.4 2.6 1.8 2.4-2 2.4 2 1.6-1.4z"/>'
+             '<circle class="f" cx="37" cy="10" r="4"/>'
+             '<path class="fs" d="M37 2v1.5M37 16.5V18M29 10h1.5M43.5 10H45M31.3 4.3l1 1M41.7 14.7l1 1M42.7 4.3l-1 1"/>',
+  'bosque': '<path class="l" d="M15 42V33M33 42V35M3 42h42"/>'
+            '<path class="f" d="M15 6 6 22h4.5L5 33h20l-5.5-11H24z"/>'
+            '<path class="l" d="M33 12l-8 13h4l-5 10h18l-5-10h4z"/>',
   # ---- programas (rediseño de los 5 íconos del sitio actual)
   'acogida': '<path class="l" d="M7 22 24 8l17 14v17a3 3 0 0 1-3 3H10a3 3 0 0 1-3-3z"/>'
              '<path class="f" d="M24 36c-5.6-3.7-8.6-6.6-8.6-10a4.3 4.3 0 0 1 8.6-1.4 4.3 4.3 0 0 1 8.6 1.4c0 3.4-3 6.3-8.6 10z"/>',
