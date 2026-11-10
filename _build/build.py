@@ -256,17 +256,19 @@ def prog_cards():
 # ---------------------------------------------------------------- INICIO
 def build_home():
     css = '''
-.hero{padding-top:14px}
-.hero-box{position:relative;border-radius:calc(var(--r) + 8px);overflow:hidden;min-height:clamp(560px,50vw,700px);display:grid;align-items:end;color:#fff;background:var(--navy)}
+.hero{padding-top:0}
+.hero > .wrap{max-width:none;padding-left:0;padding-right:0}
+:root{--edge:max(24px,calc((100vw - 1480px) / 2 + 24px))}
+.hero-box{position:relative;border-radius:0;overflow:hidden;min-height:clamp(600px,52vw,780px);display:grid;align-items:end;color:#fff;background:var(--navy)}
 .hero-box > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 30%}
 .hero-box::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(6,16,34,.86) 0%,rgba(6,16,34,.7) 28%,rgba(6,16,34,.32) 46%,rgba(6,16,34,0) 60%)}
-.hero-in{position:relative;z-index:2;padding:150px 56px 56px;display:grid;gap:22px}
+.hero-in{position:relative;z-index:2;padding:170px var(--edge) 64px;display:grid;gap:22px}
 .hero h1{font-size:var(--step-4);font-weight:700;max-width:15ch;line-height:1.08}
 .hero h1 em{font-style:normal;color:var(--orange)}
 .hero-in > p{font:400 var(--step-1)/1.35 var(--display);max-width:46ch;color:rgba(255,255,255,.9)}
 .hero .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
 .hero .btn-line{color:#fff}
-.help{position:absolute;right:28px;bottom:28px;z-index:2;display:flex;align-items:center;gap:14px;background:var(--card);color:var(--ink);border-radius:18px;padding:14px 14px 14px 18px;box-shadow:0 16px 34px rgba(0,0,0,.22);max-width:360px}
+.help{position:absolute;right:var(--edge);bottom:32px;z-index:2;display:flex;align-items:center;gap:14px;background:var(--card);color:var(--ink);border-radius:18px;padding:14px 14px 14px 18px;box-shadow:0 16px 34px rgba(0,0,0,.22);max-width:360px}
 .help p{font:600 .9rem/1.3 var(--display)}
 .help p span{display:block;font:500 .8rem var(--body);color:var(--muted)}
 @media (max-width:900px){.help{position:relative;right:auto;bottom:auto;margin:0 16px 16px;max-width:none}}
