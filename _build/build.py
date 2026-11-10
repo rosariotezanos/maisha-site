@@ -259,8 +259,8 @@ def build_home():
 .hero{padding-top:14px}
 .hero-box{position:relative;border-radius:calc(var(--r) + 8px);overflow:hidden;min-height:clamp(560px,50vw,700px);display:grid;align-items:end;color:#fff;background:var(--navy)}
 .hero-box > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 30%}
-.hero-box::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,16,34,.72),rgba(6,16,34,.38) 48%,rgba(6,16,34,.08) 75%),linear-gradient(0deg,rgba(6,16,34,.45),transparent 45%),rgba(9,24,52,.30)}
-.hero-in{position:relative;padding:150px 56px 56px;display:grid;gap:22px}
+.hero-box::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(6,16,34,.78),rgba(6,16,34,.45) 50%,rgba(6,16,34,.15) 85%),linear-gradient(0deg,rgba(6,16,34,.4),transparent 45%),rgba(9,24,52,.25)}
+.hero-in{position:relative;z-index:2;padding:150px 56px 56px;display:grid;gap:22px}
 .hero h1{font-size:var(--step-4);font-weight:700;max-width:15ch;line-height:1.08}
 .hero h1 em{font-style:normal;color:var(--orange)}
 .hero-in > p{font:400 var(--step-1)/1.35 var(--display);max-width:46ch;color:rgba(255,255,255,.9)}
