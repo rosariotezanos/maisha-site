@@ -263,16 +263,18 @@ def build_home():
 .hero-box > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 30%}
 .hero-box::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(6,16,34,.86) 0%,rgba(6,16,34,.7) 28%,rgba(6,16,34,.32) 46%,rgba(6,16,34,0) 60%)}
 .hero-in{position:relative;z-index:2;padding:170px var(--edge) 64px;display:grid;gap:22px}
-.hero h1{font-size:var(--step-4);font-weight:700;max-width:15ch;line-height:1.08}
+.hero h1{font-size:var(--step-4);font-weight:700;line-height:1.08}
+.hero h1 span{display:block}
 .hero h1 em{font-style:normal;color:var(--orange)}
-.hero-in > p{font:400 var(--step-1)/1.35 var(--display);max-width:46ch;color:rgba(255,255,255,.9)}
+.hero-in > p{font:400 var(--step-1)/1.4 var(--display);color:rgba(255,255,255,.9)}
+.hero .sub span{display:block}
 .hero .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
 .hero .btn-line{color:#fff}
 .help{position:absolute;right:var(--edge);bottom:32px;z-index:2;display:flex;align-items:center;gap:14px;background:var(--card);color:var(--ink);border-radius:18px;padding:14px 14px 14px 18px;box-shadow:0 16px 34px rgba(0,0,0,.22);max-width:360px}
 .help p{font:600 .9rem/1.3 var(--display)}
 .help p span{display:block;font:500 .8rem var(--body);color:var(--muted)}
 @media (max-width:900px){.help{position:relative;right:auto;bottom:auto;margin:16px 16px 0;max-width:none;box-shadow:0 8px 24px rgba(8,19,38,.12);border:1px solid var(--line)}}
-@media (max-width:760px){.hero-box{min-height:660px;display:flex;flex-direction:column;justify-content:flex-end}.hero-box > img{object-position:79% 0%}.hero-box::before{background:linear-gradient(0deg,rgba(6,16,34,.95) 0%,rgba(6,16,34,.85) 34%,rgba(6,16,34,.4) 52%,rgba(6,16,34,0) 64%)}.hero-in{padding:0 20px 28px;gap:14px}.hero h1{font-size:2.05rem}.hero-in > p{font-size:1rem}.hero .row .btn{padding:.9em 1.3em}}
+@media (max-width:760px){.hero-box{min-height:660px;display:flex;flex-direction:column;justify-content:flex-end}.hero-box > img{object-position:79% 0%}.hero-box::before{background:linear-gradient(0deg,rgba(6,16,34,.95) 0%,rgba(6,16,34,.85) 34%,rgba(6,16,34,.4) 52%,rgba(6,16,34,0) 64%)}.hero-in{padding:0 20px 28px;gap:14px}.hero h1{font-size:2.3rem}.hero-in > p{font-size:1rem;text-wrap:pretty}.hero .sub span{display:inline}.hero h1 span{display:inline}.hero .row .btn{padding:.9em 1.3em}}
 
 .intro{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 .intro > *{min-width:0}
@@ -314,8 +316,8 @@ def build_home():
   <div class="hero-box">
     <img src="img/madre-bebe.jpg" alt="Madre sonriendo mientras sostiene a su bebé recién nacido">
     <div class="hero-in">
-      <h1>Creemos en un mundo donde ninguna mujer enfrenta su embarazo <em>sola</em>.</h1>
-      <p>Maisha es una fundación chilena que acompaña a mujeres embarazadas, madres y jóvenes en contextos vulnerables en Kenia.</p>
+      <h1><span>Porque todo embarazo</span> <span>merece <em>compañía</em>.</span></h1>
+      <p class="sub"><span>Maisha es una fundación chilena que acompaña</span> <span>a mujeres embarazadas, madres y jóvenes</span> <span>en contextos vulnerables en Kenia.</span></p>
       <div class="row"><a class="btn btn-donate" href="dona.html">Quiero donar</a><a class="btn btn-line" href="nosotros.html">Conócenos</a></div>
     </div>
   </div>
