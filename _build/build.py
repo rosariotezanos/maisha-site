@@ -318,15 +318,23 @@ def build_home():
 .collage .hand{position:absolute;right:8px;bottom:18px;transform:rotate(-5deg)}
 @media (max-width:860px){.intro{grid-template-columns:1fr;gap:36px}.collage{padding:0 0 60px 30px}}
 
-.impact{padding:56px}
-.impact-grid{display:grid;grid-template-columns:1.5fr .7fr;gap:56px;align-items:center}
-.impact .map{position:absolute;right:-140px;top:-120px;width:560px;aspect-ratio:1;color:var(--orange);opacity:.14;-webkit-mask-image:url(img/mapa-nairobi.png);mask-image:url(img/mapa-nairobi.png);pointer-events:none}
-.impact .stats{margin-top:40px;grid-template-columns:repeat(2,1fr)}
+.impact{position:relative;overflow:hidden;border-radius:calc(var(--r) + 6px);padding:56px;background:linear-gradient(135deg,var(--orange-soft) 0%,var(--sand) 55%,var(--sand) 100%)}
+.impact-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(40px,6vw,96px);align-items:center}
+.impact .map{position:absolute;right:-120px;top:-140px;width:560px;aspect-ratio:1;color:var(--orange);opacity:.18;-webkit-mask-image:url(img/mapa-nairobi.png);mask-image:url(img/mapa-nairobi.png);-webkit-mask-size:contain;mask-size:contain;pointer-events:none}
+.impact .h2{max-width:22ch}
+.impact .stats{margin-top:44px;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.impact .stat{padding:0 22px;border-left:1px solid rgba(8,19,38,.10)}
+.impact .stat:first-child{padding-left:0;border-left:0}
+.impact .stat b{color:var(--ink);font-size:clamp(2.2rem,3.6vw,3rem)}
+.impact .stat strong{color:var(--orange-ink);font-size:.78rem}
+.impact .stat p{color:var(--muted);font-size:.9rem}
+.impact .stat-ico{width:34px;height:34px;padding:11px;box-shadow:0 6px 16px rgba(8,19,38,.08);margin-bottom:16px}
 .memo{position:relative;display:grid;gap:14px;justify-items:start}
-.memo img{width:100%;max-width:240px;border-radius:6px;transform:rotate(3deg);box-shadow:0 24px 40px -18px rgba(0,0,0,.6)}
-.memo p{color:var(--on-navy-muted);font-size:.95rem}
+.memo img{width:100%;max-width:220px;border-radius:6px;transform:rotate(3deg);box-shadow:0 24px 40px -18px rgba(8,19,38,.45)}
+.memo p{color:var(--muted);font-size:.95rem}
+@media (max-width:1100px){.impact .stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:32px}.impact .stat:nth-child(3){padding-left:0;border-left:0}}
 @media (max-width:900px){.impact{padding:32px 22px}.impact-grid{grid-template-columns:1fr;gap:40px}}
-@media (max-width:440px){.impact .stats{grid-template-columns:1fr}}
+@media (max-width:560px){.impact .stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:30px}.impact .stat{padding:0 0 0 16px}.impact .stat:nth-child(odd){padding-left:0;border-left:0}.impact .stat:nth-child(even){border-left:1px solid rgba(8,19,38,.10)}.impact .stat b{font-size:2.1rem}.memo img{max-width:170px}}
 
 .ways{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .way{position:relative;display:flex;flex-direction:column;border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--on-navy);background:var(--navy)}
@@ -383,7 +391,7 @@ def build_home():
 </div></section>
 
 <section class="sec" style="padding-top:20px"><div class="wrap">
-  <div class="navy-panel impact" data-reveal="fade">
+  <div class="impact" data-reveal="fade">
     <span class="mark map" aria-hidden="true"></span>
     <div class="impact-grid">
       <div>
