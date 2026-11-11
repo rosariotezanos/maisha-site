@@ -254,7 +254,7 @@ VIDEOS = [
   ("DWMm_LqEFuI", "Una chilena en Nairobi", "Capítulo completo de Siempre hay un Chileno en Nairobi. Maisha aparece en el minuto 19:00.", "Capítulo completo"),
   ("KAhoDj_Bq88", "Desconocidos TV", "Sebastián y Wenceslao, médicos y cofundadores de Maisha, cuentan su experiencia.", "Capítulo 87"),
 ]
-PLAY = '<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></span>'
+PLAY = '<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path transform="translate(-1.6 0)" d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></span>'
 
 
 def video_link(vid, title, cls, inner):
