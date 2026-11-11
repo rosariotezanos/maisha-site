@@ -48,3 +48,22 @@
   },{rootMargin:'0px 0px -8% 0px',threshold:0.12});
   els.forEach(function(el){ if(!el.classList.contains('is-in')) io.observe(el); });
 })();
+
+// Videos: se reproducen dentro de la página en el sitio publicado; si la página está embebida (vista previa), se abren en YouTube
+(function(){
+  var embedded; try{ embedded = window.self !== window.top; }catch(e){ embedded = true; }
+  if(embedded) return;
+  document.querySelectorAll('[data-video]').forEach(function(a){
+    a.addEventListener('click',function(ev){
+      ev.preventDefault();
+      var box=a.classList.contains('vcard')?a.querySelector('.vthumb'):a;
+      if(box.querySelector('iframe')) return;
+      var f=document.createElement('iframe');
+      f.src='https://www.youtube-nocookie.com/embed/'+a.getAttribute('data-video')+'?autoplay=1&rel=0';
+      f.title=a.getAttribute('aria-label')||'Video';
+      f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen=true;
+      box.appendChild(f);
+    });
+  });
+})();

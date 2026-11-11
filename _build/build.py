@@ -135,6 +135,7 @@ def header(active):
               <li><a href="nosotros.html#historia">Nuestra historia</a></li>
               <li><a href="nosotros.html#kibera">Kenia y Kibera</a></li>
               <li><a href="nosotros.html#equipo">Equipo</a></li>
+              <li><a href="nosotros.html#medios">En los medios</a></li>
               <li><a href="nosotros.html#memorias">Memorias</a></li>
             </ul>
           </li>
@@ -155,7 +156,7 @@ def header(active):
       </div>
     </div>
     <div class="mobile" id="mobile-menu" hidden>
-      <details><summary>Nosotros</summary><div><a href="nosotros.html#somos">Quiénes somos</a><a href="nosotros.html#historia">Nuestra historia</a><a href="nosotros.html#kibera">Kenia y Kibera</a><a href="nosotros.html#equipo">Equipo</a><a href="nosotros.html#memorias">Memorias</a></div></details>
+      <details><summary>Nosotros</summary><div><a href="nosotros.html#somos">Quiénes somos</a><a href="nosotros.html#historia">Nuestra historia</a><a href="nosotros.html#kibera">Kenia y Kibera</a><a href="nosotros.html#equipo">Equipo</a><a href="nosotros.html#medios">En los medios</a><a href="nosotros.html#memorias">Memorias</a></div></details>
       <details><summary>Programas</summary><div>{prog_mobile}</div></details>
       <a href="voluntariado.html">Voluntariado</a>
       <a href="market.html">Maisha Market</a>
@@ -243,6 +244,22 @@ def quote_html(q):
 
 def quote_html_reveal(q):
     return quote_html(q).replace('<img ','<img data-reveal="left" ',1).replace('<blockquote>','<blockquote data-reveal data-delay="2">',1)
+
+
+VIDEOS = [
+  ("Xfwcl9_sG_Q", "El inicio de Maisha, hasta hoy", "Fernanda junto a un grupo de chilenos viajaron a Kenia en 2015 y se comprometieron con una iniciativa local. Así nació Fundación Maisha.", "Fundación Maisha"),
+  ("n8yXzrLkWOE", "La campeona Provida", "La historia de Domtila Ayot, el corazón y motor de Maisha.", "BARN Short Docs"),
+  ("Gam48_L3OrU", "Mi lugar en el mundo", "Fernanda es enfermera y vive en Nairobi. Desde hace 7 años acompaña a mujeres embarazadas con partos dignos y sin violencia obstétrica.", "Capítulo 2"),
+  ("baW57_EZH1M", "Siempre hay un chileno", "Sinopsis de nuestra historia en el capítulo de Siempre hay un Chileno en Nairobi.", "Sinopsis"),
+  ("DWMm_LqEFuI", "Una chilena en Nairobi", "Capítulo completo de Siempre hay un Chileno en Nairobi. Maisha aparece en el minuto 19:00.", "Capítulo completo"),
+  ("KAhoDj_Bq88", "Desconocidos TV", "Sebastián y Wenceslao, médicos y cofundadores de Maisha, cuentan su experiencia.", "Capítulo 87"),
+]
+PLAY = '<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></span>'
+
+
+def video_link(vid, title, cls, inner):
+    return (f'<a class="{cls}" href="https://www.youtube.com/watch?v={vid}" target="_blank" rel="noopener" data-video="{vid}" '
+            f'aria-label="Ver video: {e(title)}">{inner}</a>')
 
 
 def prog_cards():
@@ -386,6 +403,11 @@ def build_home():
       </div>
     </div>
   </div>
+</div></section>
+
+<section class="sec" style="padding-top:20px"><div class="wrap">
+  <div data-reveal="fade">{video_link("Xfwcl9_sG_Q", "El inicio de Maisha, hasta hoy", "vfeature", '<img src="img/videos/Xfwcl9_sG_Q.jpg" alt="" loading="lazy">' + PLAY + '<span class="vtext"><span class="eyebrow">Conoce nuestra historia</span><b>El inicio de Maisha, hasta hoy</b><span>Fernanda junto a un grupo de chilenos viajaron a Kenia en 2015 y se comprometieron con una iniciativa local. Así nació Fundación Maisha.</span></span>')}</div>
+  <p class="vmore" data-reveal="fade"><a class="link" href="nosotros.html#medios">Ver más videos de Maisha en los medios →</a></p>
 </div></section>
 
 {quote_html_reveal(("Disfruté mucho de mi experiencia en la casa Maisha. Me sentí muy apoyada durante mi embarazo. Disfruté de la costura y de las charlas de salud. ¡Muchas gracias por tenerme en Maisha!", "Vivian Emali", "Madre Maisha, mamá de CJay · Memoria 2025", "testimonios/vivian-emali"))}
@@ -556,7 +578,7 @@ def build_nosotros():
     <figure class="phero-photo"><img src="img/historia-equipo.jpg" alt="Equipo Maisha junto a madres de Kibera"><span class="hand">Chile ♥ Kenia</span></figure>
   </div>
   <nav class="subnav" aria-label="En esta página"><ul>
-    <li><a href="#somos">Quiénes somos</a></li><li><a href="#historia">Historia</a></li><li><a href="#kibera">Kenia y Kibera</a></li><li><a href="#equipo">Equipo</a></li><li><a href="#memorias">Memorias</a></li>
+    <li><a href="#somos">Quiénes somos</a></li><li><a href="#historia">Historia</a></li><li><a href="#kibera">Kenia y Kibera</a></li><li><a href="#equipo">Equipo</a></li><li><a href="#medios">En los medios</a></li><li><a href="#memorias">Memorias</a></li>
   </ul></nav>
 </div></section>
 
@@ -587,6 +609,14 @@ def build_nosotros():
     <p class="lead span2">Mama Domitila Ayot veía cómo muchas mujeres y adolescentes de su población quedaban embarazadas con escaso o nada de apoyo, en condiciones de pobreza extrema. Decidió aportar con lo poco que podía entregar.</p>
   </div>
   <ol class="timeline">{tl_html}</ol>
+</div></section>
+
+<section class="sec" id="medios" style="padding-top:20px"><div class="wrap">
+  <div class="g4 hist-head" style="margin-bottom:40px">
+    <div class="span2"><p class="eyebrow">Maisha en los medios</p><h2 class="h2" style="margin-top:12px">Nuestra historia, <em>en video</em></h2></div>
+    <p class="lead span2">Reportajes, documentales y entrevistas que cuentan cómo nació Maisha y quiénes la hacen posible.</p>
+  </div>
+  <div class="vgrid">{''.join(video_link(v, t, "vcard", f'<span class="vthumb"><img src="img/videos/{v}.jpg" alt="" loading="lazy">{PLAY}</span><span class="vbody"><span class="vtag">{e(tag)}</span><b>{e(t)}</b><span>{e(d)}</span></span>') for v, t, d, tag in VIDEOS)}</div>
 </div></section>
 
 <section class="sec" id="kibera"><div class="wrap">
