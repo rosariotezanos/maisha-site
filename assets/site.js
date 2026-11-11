@@ -24,3 +24,27 @@
   };
   window.maishaCart.badge();
 })();
+
+// Aparición suave de textos y tarjetas al hacer scroll + conteo de cifras
+(function(){
+  var els=[].slice.call(document.querySelectorAll('[data-reveal]'));
+  if(!els.length||!('IntersectionObserver' in window)) return;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function count(b){
+    var to=+b.getAttribute('data-count'), suf=b.getAttribute('data-suffix')||'', t0=null, dur=1400;
+    if(reduce||!to){return;}
+    function step(t){ if(!t0)t0=t; var k=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-k,3);
+      b.textContent=Math.round(to*e).toLocaleString('es-CL')+suf; if(k<1) requestAnimationFrame(step); }
+    b.textContent='0'+suf; requestAnimationFrame(step);
+  }
+  function show(el){ if(el.classList.contains('is-in')) return; el.classList.add('is-in');
+    el.querySelectorAll('[data-count]').forEach(count); }
+  // Lo que ya está en pantalla al cargar se queda visible; solo se anima lo que está más abajo
+  var vh=window.innerHeight;
+  els.forEach(function(el){ if(el.getBoundingClientRect().top<vh*0.92) el.classList.add('is-in'); });
+  document.documentElement.classList.add('reveal-on');
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ show(en.target); io.unobserve(en.target); } });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.12});
+  els.forEach(function(el){ if(!el.classList.contains('is-in')) io.observe(el); });
+})();

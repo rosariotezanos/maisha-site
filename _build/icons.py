@@ -75,4 +75,4 @@ ICONS = {
 
 
 def icon(name, cls='ico'):
-    return f'<svg class="{cls}" viewBox="0 0 48 48" aria-hidden="true">{ICONS[name]}</svg>'
+    return f'<svg class="{cls}" viewBox="-4 -4 56 56" aria-hidden="true">{ICONS[name]}</svg>'

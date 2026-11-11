@@ -12,6 +12,17 @@
 .hero-in{position:relative;z-index:2;padding:170px var(--edge) 64px;display:grid;gap:22px}
 .hero h1{font-size:var(--step-4);font-weight:700;line-height:1.08}
 .hero h1 span{display:block}
+@keyframes heroUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes heroFade{from{opacity:0}to{opacity:1}}
+@keyframes heroZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+@keyframes helpIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+.hero-box > img{animation:heroZoom 2.4s cubic-bezier(.2,.7,.2,1) both}
+.hero h1 span{animation:heroUp .9s cubic-bezier(.2,.7,.2,1) both}
+.hero h1 span + span{animation-delay:.15s}
+.hero .sub{animation:heroFade 1s .45s ease both}
+.hero .row{animation:heroUp .8s .6s cubic-bezier(.2,.7,.2,1) both}
+.help{animation:helpIn .8s .9s cubic-bezier(.2,.7,.2,1) both}
+@media (prefers-reduced-motion: reduce){.hero-box > img,.hero h1 span,.hero .sub,.hero .row,.help{animation:none}}
 .hero h1 em{font-style:normal;color:var(--orange)}
 .hero-in > p{font:400 var(--step-1)/1.4 var(--display);color:rgba(255,255,255,.9)}
 .hero .sub span{display:block}
@@ -74,7 +85,7 @@
             </ul>
           </li>
           <li class="has-drop"><a href="index.html#programas">Programas</a>
-            <ul class="drop"><li><a href="programa-acogida.html"><img src="img/acogida-hero.jpg" width="1400" height="933" alt=""><span style="color:inherit;font-size:.95rem">Acogida<span>Al llegar</span></span></a></li><li><a href="programa-salud.html"><img src="img/salud-hero.jpg" width="1400" height="933" alt=""><span style="color:inherit;font-size:.95rem">Salud<span>Embarazo y parto</span></span></a></li><li><a href="programa-educacion.html"><img src="img/educacion-hero.jpg" width="1400" height="1050" alt=""><span style="color:inherit;font-size:.95rem">Educación<span>Crianza</span></span></a></li><li><a href="programa-sustentabilidad.html"><img src="img/sustentabilidad-hero.jpg" width="1400" height="933" alt=""><span style="color:inherit;font-size:.95rem">Sustentabilidad<span>Autonomía</span></span></a></li><li><a href="programa-derechos.html"><img src="img/derechos-hero.jpg" width="1400" height="1050" alt=""><span style="color:inherit;font-size:.95rem">Derechos Humanos<span>En todo el camino</span></span></a></li></ul>
+            <ul class="drop"><li><a href="programa-acogida.html"><img src="img/acogida-hero.jpg" width="1400" height="933" alt=""><span style="color:inherit;font-size:.95rem">Acogida<span>Al llegar</span></span></a></li><li><a href="programa-salud.html"><img src="img/salud-hero.jpg" width="1400" height="933" alt=""><span style="color:inherit;font-size:.95rem">Salud<span>Embarazo y parto</span></span></a></li><li><a href="programa-educacion.html"><img src="img/educacion-hero.jpg" width="1400" height="1050" alt=""><span style="color:inherit;font-size:.95rem">Educación Sexual<span>Crianza</span></span></a></li><li><a href="programa-sustentabilidad.html"><img src="img/sustentabilidad-hero.jpg" width="1400" height="933" alt=""><span style="color:inherit;font-size:.95rem">Sustentabilidad<span>Autonomía</span></span></a></li><li><a href="programa-derechos.html"><img src="img/derechos-hero.jpg" width="1400" height="1050" alt=""><span style="color:inherit;font-size:.95rem">Derechos Humanos<span>En todo el camino</span></span></a></li></ul>
           </li>
           <li><a href="voluntariado.html">Voluntariado</a></li>
           <li><a href="market.html">Maisha Market</a></li>
@@ -91,7 +102,7 @@
     </div>
     <div class="mobile" id="mobile-menu" hidden>
       <details><summary>Nosotros</summary><div><a href="nosotros.html#somos">Quiénes somos</a><a href="nosotros.html#historia">Nuestra historia</a><a href="nosotros.html#kibera">Kenia y Kibera</a><a href="nosotros.html#equipo">Equipo</a><a href="nosotros.html#memorias">Memorias</a></div></details>
-      <details><summary>Programas</summary><div><a href="programa-acogida.html">Acogida</a><a href="programa-salud.html">Salud</a><a href="programa-educacion.html">Educación</a><a href="programa-sustentabilidad.html">Sustentabilidad</a><a href="programa-derechos.html">Derechos Humanos</a></div></details>
+      <details><summary>Programas</summary><div><a href="programa-acogida.html">Acogida</a><a href="programa-salud.html">Salud</a><a href="programa-educacion.html">Educación Sexual</a><a href="programa-sustentabilidad.html">Sustentabilidad</a><a href="programa-derechos.html">Derechos Humanos</a></div></details>
       <a href="voluntariado.html">Voluntariado</a>
       <a href="market.html">Maisha Market</a>
       <a href="#contacto">Contacto · ES / EN</a>
@@ -117,12 +128,12 @@
 
 <section class="sec"><div class="wrap intro">
   <div>
-    <p class="eyebrow" style="margin-bottom:18px">Maisha significa vida</p>
-    <p class="statement">Nacimos en el corazón de Kibera para <span>acompañar a cada madre</span> desde el embarazo hasta su autonomía.</p>
-    <p class="lead" style="margin-top:22px">Desde 2016, junto a Mama Domitila y el Centro de Esperanza Edel Quinn, somos una red de apoyo entre Chile y Kenia para que toda madre reciba a su hijo en condiciones dignas.</p>
-    <a class="btn btn-navy" href="nosotros.html#historia" style="margin-top:28px">Nuestra historia</a>
+    <p class="eyebrow" style="margin-bottom:18px" data-reveal>Maisha significa vida</p>
+    <p class="statement" data-reveal data-delay="1">Nacimos en el corazón de Kibera para <span>acompañar a cada madre</span> desde el embarazo hasta su autonomía.</p>
+    <p class="lead" style="margin-top:22px" data-reveal data-delay="2">Desde 2016, junto a Mama Domitila y el Centro de Esperanza Edel Quinn, somos una red de apoyo entre Chile y Kenia para que toda madre reciba a su hijo en condiciones dignas.</p>
+    <a class="btn btn-navy" href="nosotros.html#historia" style="margin-top:28px" data-reveal data-delay="3">Nuestra historia</a>
   </div>
-  <figure class="collage">
+  <figure class="collage" data-reveal="right" data-delay="1">
     <img class="a" src="img/equipo.jpg" alt="Madres con sus bebés y voluntarias de Maisha en Kibera">
     <img class="b" src="img/domitila.jpg" alt="Mujer de la comunidad de Kibera">
     <span class="hand">Karibu, bienvenida</span>
@@ -131,48 +142,48 @@
 
 <section class="sec" id="programas" style="padding-top:20px"><div class="wrap">
   <div class="head">
-    <p class="eyebrow">Nuestros programas</p>
-    <h2 class="h2">Cinco programas que siguen <em>el camino de cada madre</em></h2>
-    <p class="lead">Detrás de cada mujer hay una historia que merece ser acompañada.</p>
+    <p class="eyebrow" data-reveal>Nuestros programas</p>
+    <h2 class="h2" data-reveal data-delay="1">Cinco programas que siguen <em>el camino de cada madre</em></h2>
+    <p class="lead" data-reveal data-delay="2">Detrás de cada mujer hay una historia que merece ser acompañada.</p>
   </div>
-  <div style="padding-top:30px"><ol class="prog-grid"><svg class="thread" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C 150 0, 250 60, 360 30 S 600 0, 720 34 S 960 60, 1080 24 S 1180 20, 1200 30" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 9" stroke-linecap="round"/></svg><li><a class="prog" href="programa-acogida.html">
+  <div style="padding-top:30px"><ol class="prog-grid"><svg class="thread" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C 150 0, 250 60, 360 30 S 600 0, 720 34 S 960 60, 1080 24 S 1180 20, 1200 30" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 9" stroke-linecap="round"/></svg><li data-reveal data-delay="1"><a class="prog" href="programa-acogida.html">
       <img src="img/acogida-hero.jpg" width="1400" height="933" alt="" loading="lazy">
-      <span class="badge"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path class="l" d="M7 22 24 8l17 14v17a3 3 0 0 1-3 3H10a3 3 0 0 1-3-3z"/><path class="f" d="M24 36c-5.6-3.7-8.6-6.6-8.6-10a4.3 4.3 0 0 1 8.6-1.4 4.3 4.3 0 0 1 8.6 1.4c0 3.4-3 6.3-8.6 10z"/></svg></span>
+      <span class="badge"><svg class="ico" viewBox="-4 -4 56 56" aria-hidden="true"><path class="l" d="M7 22 24 8l17 14v17a3 3 0 0 1-3 3H10a3 3 0 0 1-3-3z"/><path class="f" d="M24 36c-5.6-3.7-8.6-6.6-8.6-10a4.3 4.3 0 0 1 8.6-1.4 4.3 4.3 0 0 1 8.6 1.4c0 3.4-3 6.3-8.6 10z"/></svg></span>
       <div class="body"><span class="stage">Al llegar</span><h3>Acogida</h3><p>Acompañamiento integral a embarazadas en crisis durante el embarazo y el postparto.</p><span class="go">Conocer →</span></div>
-    </a></li><li><a class="prog" href="programa-salud.html">
+    </a></li><li data-reveal data-delay="2"><a class="prog" href="programa-salud.html">
       <img src="img/salud-hero.jpg" width="1400" height="933" alt="" loading="lazy">
-      <span class="badge"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path class="l" d="M11 5v11a8 8 0 0 0 16 0V5M8 5h6M24 5h6M19 24v5a10 10 0 0 0 20 0v-4"/><circle class="f" cx="39" cy="21" r="5"/><circle class="l" cx="39" cy="21" r="5"/></svg></span>
+      <span class="badge"><svg class="ico" viewBox="-4 -4 56 56" aria-hidden="true"><path class="l" d="M11 5v11a8 8 0 0 0 16 0V5M8 5h6M24 5h6M19 24v5a10 10 0 0 0 20 0v-4"/><circle class="f" cx="39" cy="21" r="5"/><circle class="l" cx="39" cy="21" r="5"/></svg></span>
       <div class="body"><span class="stage">Embarazo y parto</span><h3>Salud</h3><p>Controles prenatales, atención del parto y consejería en lactancia materna.</p><span class="go">Conocer →</span></div>
-    </a></li><li><a class="prog" href="programa-educacion.html">
+    </a></li><li data-reveal data-delay="3"><a class="prog" href="programa-educacion.html">
       <img src="img/educacion-hero.jpg" width="1400" height="1050" alt="" loading="lazy">
-      <span class="badge"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path class="f" d="M24 9a11.5 11.5 0 0 0-6.8 20.8c1.1.9 1.8 2.1 1.8 3.5V34h10v-.7c0-1.4.7-2.6 1.8-3.5A11.5 11.5 0 0 0 24 9z"/><path class="l" d="M19 38.5h10M20.5 43h7M24 2.5V5M7 20.5H4.5M43.5 20.5H41M11.5 8l1.8 1.8M36.5 8l-1.8 1.8"/></svg></span>
-      <div class="body"><span class="stage">Crianza</span><h3>Educación</h3><p>Educación afectiva y sexual, y la iniciativa Menstruación Sin Reglas.</p><span class="go">Conocer →</span></div>
-    </a></li><li><a class="prog" href="programa-sustentabilidad.html">
+      <span class="badge"><svg class="ico" viewBox="-4 -4 56 56" aria-hidden="true"><path class="f" d="M24 9a11.5 11.5 0 0 0-6.8 20.8c1.1.9 1.8 2.1 1.8 3.5V34h10v-.7c0-1.4.7-2.6 1.8-3.5A11.5 11.5 0 0 0 24 9z"/><path class="l" d="M19 38.5h10M20.5 43h7M24 2.5V5M7 20.5H4.5M43.5 20.5H41M11.5 8l1.8 1.8M36.5 8l-1.8 1.8"/></svg></span>
+      <div class="body"><span class="stage">Crianza</span><h3>Educación Sexual</h3><p>Educación afectiva y sexual, y la iniciativa Menstruación Sin Reglas.</p><span class="go">Conocer →</span></div>
+    </a></li><li data-reveal data-delay="4"><a class="prog" href="programa-sustentabilidad.html">
       <img src="img/sustentabilidad-hero.jpg" width="1400" height="933" alt="" loading="lazy">
-      <span class="badge"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect class="f" x="7" y="31" width="8" height="11" rx="1.5"/><rect class="f" x="20" y="24" width="8" height="18" rx="1.5"/><rect class="f" x="33" y="16" width="8" height="26" rx="1.5"/><path class="l" d="M6 22 31 7M23.5 6.5H31V14"/></svg></span>
+      <span class="badge"><svg class="ico" viewBox="-4 -4 56 56" aria-hidden="true"><rect class="f" x="7" y="31" width="8" height="11" rx="1.5"/><rect class="f" x="20" y="24" width="8" height="18" rx="1.5"/><rect class="f" x="33" y="16" width="8" height="26" rx="1.5"/><path class="l" d="M6 22 31 7M23.5 6.5H31V14"/></svg></span>
       <div class="body"><span class="stage">Autonomía</span><h3>Sustentabilidad</h3><p>Oficios, ahorro y emprendimiento para sostener a la familia de forma autónoma.</p><span class="go">Conocer →</span></div>
-    </a></li><li><a class="prog" href="programa-derechos.html">
+    </a></li><li data-reveal data-delay="5"><a class="prog" href="programa-derechos.html">
       <img src="img/derechos-hero.jpg" width="1400" height="1050" alt="" loading="lazy">
-      <span class="badge"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><g transform="translate(12 22) scale(0.9)"><rect class="l" x="-7" y="0" width="14" height="13" rx="5"/><path class="l" d="M-5 1v-9M-1.7 0v-12M1.7 0v-11M5 1v-8M-7 7l-4-5"/></g><g transform="translate(36 22) scale(0.9)"><rect class="l" x="-7" y="0" width="14" height="13" rx="5"/><path class="l" d="M-5 1v-9M-1.7 0v-12M1.7 0v-11M5 1v-8M-7 7l-4-5"/></g><g transform="translate(24 20) scale(1.15)"><rect class="f" x="-7" y="0" width="14" height="13" rx="5"/><path class="fs" d="M-5 1v-9M-1.7 0v-12M1.7 0v-11M5 1v-8M-7 7l-4-5"/></g></svg></span>
+      <span class="badge"><svg class="ico" viewBox="-4 -4 56 56" aria-hidden="true"><g transform="translate(12 22) scale(0.9)"><rect class="l" x="-7" y="0" width="14" height="13" rx="5"/><path class="l" d="M-5 1v-9M-1.7 0v-12M1.7 0v-11M5 1v-8M-7 7l-4-5"/></g><g transform="translate(36 22) scale(0.9)"><rect class="l" x="-7" y="0" width="14" height="13" rx="5"/><path class="l" d="M-5 1v-9M-1.7 0v-12M1.7 0v-11M5 1v-8M-7 7l-4-5"/></g><g transform="translate(24 20) scale(1.15)"><rect class="f" x="-7" y="0" width="14" height="13" rx="5"/><path class="fs" d="M-5 1v-9M-1.7 0v-12M1.7 0v-11M5 1v-8M-7 7l-4-5"/></g></svg></span>
       <div class="body"><span class="stage">En todo el camino</span><h3>Derechos Humanos</h3><p>Educación cívica para que madres y jóvenes conozcan y defiendan sus derechos.</p><span class="go">Conocer →</span></div>
     </a></li></ol></div>
 </div></section>
 
 <section class="sec" style="padding-top:20px"><div class="wrap">
-  <div class="navy-panel impact">
+  <div class="navy-panel impact" data-reveal="fade">
     <span class="mark map" aria-hidden="true"></span>
     <div class="impact-grid">
       <div>
         <p class="eyebrow">#ImpactoMaisha</p>
-        <h2 class="h2" style="margin-top:12px">Lo que hemos logrado juntos en Kibera</h2>
+        <h2 class="h2" style="margin-top:12px" data-reveal data-delay="1">Lo que hemos logrado juntos en Kibera</h2>
         <div class="stats">
-          <div class="stat"><svg class="ico stat-ico" viewBox="0 0 48 48" aria-hidden="true"><circle class="l" cx="22" cy="7.5" r="4.3"/><path class="l" d="M20 13.6c-2.6 2.4-3.9 6.5-3.9 11 0 3.9 1.2 7.2 3.4 9.7V44M24.5 13.6c1.6 1.6 1.7 3.7 1.2 6 6.3 1.5 10 5.3 10 9.6 0 4.4-3.6 7.5-8.8 7.8V44"/><path class="f" d="M30.4 32.6c-3.3-2.2-5-3.9-5-5.9a2.5 2.5 0 0 1 5-.8 2.5 2.5 0 0 1 5 .8c0 2-1.7 3.7-5 5.9z"/></svg><b>435</b><strong>Mujeres</strong><p>acompañadas durante su embarazo y postparto.</p></div>
-          <div class="stat"><svg class="ico stat-ico" viewBox="0 0 48 48" aria-hidden="true"><path class="l" d="M7 22 24 8l17 14v17a3 3 0 0 1-3 3H10a3 3 0 0 1-3-3z"/><path class="f" d="M24 36c-5.6-3.7-8.6-6.6-8.6-10a4.3 4.3 0 0 1 8.6-1.4 4.3 4.3 0 0 1 8.6 1.4c0 3.4-3 6.3-8.6 10z"/></svg><b>133</b><strong>Madres</strong><p>han vivido en el centro de acogida.</p></div>
-          <div class="stat"><svg class="ico stat-ico" viewBox="0 0 48 48" aria-hidden="true"><circle class="l" cx="11" cy="18" r="4.3"/><circle class="l" cx="37" cy="18" r="4.3"/><path class="l" d="M3 38v-2.5a8 8 0 0 1 12.5-6.6M45 38v-2.5a8 8 0 0 0-12.5-6.6M14 42v-3.5a10 10 0 0 1 20 0V42"/><circle class="f" cx="24" cy="16" r="5.6"/></svg><b>482</b><strong>Talleres</strong><p>y convivencias realizadas.</p></div>
-          <div class="stat"><svg class="ico stat-ico" viewBox="0 0 48 48" aria-hidden="true"><path class="l" d="M24 41C12 33.4 6 27.3 6 19.6A9.6 9.6 0 0 1 24 15a9.6 9.6 0 0 1 18 4.6C42 27.3 36 33.4 24 41z"/><path class="fs" d="M12 25h6.5l3-5 4 9 3-4H36"/></svg><b>100%</b><strong>De las madres</strong><p>continuaron con su embarazo.</p></div>
+          <div class="stat" data-reveal data-delay="2"><svg class="ico stat-ico" viewBox="-4 -4 56 56" aria-hidden="true"><circle class="l" cx="22" cy="7.5" r="4.3"/><path class="l" d="M20 13.6c-2.6 2.4-3.9 6.5-3.9 11 0 3.9 1.2 7.2 3.4 9.7V44M24.5 13.6c1.6 1.6 1.7 3.7 1.2 6 6.3 1.5 10 5.3 10 9.6 0 4.4-3.6 7.5-8.8 7.8V44"/><path class="f" d="M30.4 32.6c-3.3-2.2-5-3.9-5-5.9a2.5 2.5 0 0 1 5-.8 2.5 2.5 0 0 1 5 .8c0 2-1.7 3.7-5 5.9z"/></svg><b data-count="435" data-suffix="">435</b><strong>Mujeres</strong><p>acompañadas durante su embarazo y postparto.</p></div>
+          <div class="stat" data-reveal data-delay="3"><svg class="ico stat-ico" viewBox="-4 -4 56 56" aria-hidden="true"><path class="l" d="M7 22 24 8l17 14v17a3 3 0 0 1-3 3H10a3 3 0 0 1-3-3z"/><path class="f" d="M24 36c-5.6-3.7-8.6-6.6-8.6-10a4.3 4.3 0 0 1 8.6-1.4 4.3 4.3 0 0 1 8.6 1.4c0 3.4-3 6.3-8.6 10z"/></svg><b data-count="133" data-suffix="">133</b><strong>Madres</strong><p>han vivido en el centro de acogida.</p></div>
+          <div class="stat" data-reveal data-delay="4"><svg class="ico stat-ico" viewBox="-4 -4 56 56" aria-hidden="true"><circle class="l" cx="11" cy="18" r="4.3"/><circle class="l" cx="37" cy="18" r="4.3"/><path class="l" d="M3 38v-2.5a8 8 0 0 1 12.5-6.6M45 38v-2.5a8 8 0 0 0-12.5-6.6M14 42v-3.5a10 10 0 0 1 20 0V42"/><circle class="f" cx="24" cy="16" r="5.6"/></svg><b data-count="482" data-suffix="">482</b><strong>Talleres</strong><p>y convivencias realizadas.</p></div>
+          <div class="stat" data-reveal data-delay="5"><svg class="ico stat-ico" viewBox="-4 -4 56 56" aria-hidden="true"><path class="l" d="M24 41C12 33.4 6 27.3 6 19.6A9.6 9.6 0 0 1 24 15a9.6 9.6 0 0 1 18 4.6C42 27.3 36 33.4 24 41z"/><path class="fs" d="M12 25h6.5l3-5 4 9 3-4H36"/></svg><b data-count="100" data-suffix="%">100%</b><strong>De las madres</strong><p>continuaron con su embarazo.</p></div>
         </div>
       </div>
-      <div class="memo">
+      <div class="memo" data-reveal="right" data-delay="2">
         <img src="img/memoria-2025.jpg" width="1196" height="1479" alt="Portada de la Memoria 2025">
         <p>Testimonios y resultados en nuestra memoria anual.</p>
         <a class="btn btn-donate btn-sm" href="memorias/memoria-2025-es.pdf" target="_blank" rel="noopener">Leer Memoria 2025</a>
@@ -182,22 +193,22 @@
 </div></section>
 
 <section class="sec"><div class="wrap quote">
-  <img src="img/acogida-testimonio.jpg" width="1400" height="933" alt="" loading="lazy">
-  <blockquote><p>Recibir y acoger a cada mamá Maisha, escuchar sus historias, llegar a un nivel de intimidad donde me confiaron sus vivencias, sus alegrías y sus tristezas. De pronto habíamos atravesado todas las barreras culturales. En ese momento éramos dos mujeres completamente distintas y tan similares a la vez, riendo y llorando juntas.</p><cite><strong>Margarita Cury</strong>Voluntaria Acogida 2022</cite></blockquote>
+  <img data-reveal="left" src="img/testimonios/vivian-emali.jpg" alt="Vivian Emali" loading="lazy">
+  <blockquote data-reveal data-delay="2"><p>Disfruté mucho de mi experiencia en la casa Maisha. Me sentí muy apoyada durante mi embarazo. Disfruté de la costura y de las charlas de salud. ¡Muchas gracias por tenerme en Maisha!</p><cite><strong>Vivian Emali</strong>Madre Maisha, mamá de CJay · Memoria 2025</cite></blockquote>
 </div></section>
 
 <section class="sec" style="padding-top:20px"><div class="wrap">
-  <div class="head"><p class="eyebrow">¡Involúcrate!</p><h2 class="h2">Sé parte de la familia Maisha</h2></div>
+  <div class="head"><p class="eyebrow" data-reveal>¡Involúcrate!</p><h2 class="h2" data-reveal data-delay="1">Sé parte de la familia Maisha</h2></div>
   <div class="ways">
-    <a class="way" href="voluntariado.html"><img src="img/voluntaria.jpg" width="766" height="782" alt="" loading="lazy"><div><p class="eyebrow" style="color:var(--orange)">Voluntariado</p><h3>Viaja a Kenia y sé un puente de esperanza</h3><span class="go">Postular →</span></div></a>
-    <a class="way" href="dona.html#socio"><img src="img/acogida-5.jpg" width="1400" height="933" alt="" loading="lazy"><div><p class="eyebrow" style="color:var(--orange)">Socios</p><h3>Aporta cada mes</h3><span class="go">Hazte socio →</span></div></a>
-    <a class="way" href="market.html"><img src="img/market-feria.jpg" width="1280" height="958" alt="" loading="lazy"><div><p class="eyebrow" style="color:var(--orange)">Tienda</p><h3>The Maisha Market</h3><span class="go">Ir a la tienda →</span></div></a>
+    <a class="way" href="voluntariado.html" data-reveal data-delay="1"><img src="img/voluntaria.jpg" width="766" height="782" alt="" loading="lazy"><div><p class="eyebrow" style="color:var(--orange)">Voluntariado</p><h3>Viaja a Kenia y sé un puente de esperanza</h3><span class="go">Postular →</span></div></a>
+    <a class="way" href="dona.html#socio" data-reveal data-delay="2"><img src="img/acogida-5.jpg" width="1400" height="933" alt="" loading="lazy"><div><p class="eyebrow" style="color:var(--orange)">Socios</p><h3>Aporta cada mes</h3><span class="go">Hazte socio →</span></div></a>
+    <a class="way" href="market.html" data-reveal data-delay="3"><img src="img/market-feria.jpg" width="1280" height="958" alt="" loading="lazy"><div><p class="eyebrow" style="color:var(--orange)">Tienda</p><h3>The Maisha Market</h3><span class="go">Ir a la tienda →</span></div></a>
   </div>
 </div></section>
 
 <section class="sec tight"><div class="wrap">
   <p class="eyebrow" style="margin-bottom:26px">Alianzas por el mundo</p>
-  <div class="allies">
+  <div class="allies" data-reveal="fade">
     <span class="mark" style="-webkit-mask-image:url(img/logo-aiep.png);mask-image:url(img/logo-aiep.png)" role="img" aria-label="AIEP"></span>
     <span class="mark" style="-webkit-mask-image:url(img/logo-totocarebox.png);mask-image:url(img/logo-totocarebox.png)" role="img" aria-label="TotoCareBox"></span>
     <span class="mark" style="-webkit-mask-image:url(img/logo-teenstar.png);mask-image:url(img/logo-teenstar.png)" role="img" aria-label="Teen STAR"></span>

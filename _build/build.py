@@ -47,8 +47,8 @@ PROGRAMS = [
               ("136","Toto Care Box","donadas, con un ajuar completo para los primeros meses.","regalo"),
               ("100%","Continuó su embarazo","de las madres acompañadas por el programa.","corazon")],
        gallery=["acogida-1","acogida-2","acogida-3","acogida-totocarebox","acogida-4"],
-       quote=("Recibir y acoger a cada mamá Maisha, escuchar sus historias, llegar a un nivel de intimidad donde me confiaron sus vivencias, sus alegrías y sus tristezas. De pronto habíamos atravesado todas las barreras culturales. En ese momento éramos dos mujeres completamente distintas y tan similares a la vez, riendo y llorando juntas.",
-              "Margarita Cury","Voluntaria Acogida 2022","acogida-testimonio")),
+       quote=('Ver cómo confiaban en mí, cómo me contaban de ellas y de sus vidas, y cómo compartíamos tristezas y alegrías fue, lejos, lo más significativo para mí. Creo que eso es lo que hace tan especial ser voluntaria de acogida: te permite una cercanía con todas las mamás de la casa en lo cotidiano.',
+              'Jacinta Fernández','Voluntaria de Acogida · Memoria 2025','testimonios/jacinta-fernandez')),
   dict(slug="salud", name="Salud", stage="Embarazo y parto", img="salud-hero",
        short="Controles prenatales, atención del parto y consejería en lactancia materna.",
        title="Atención digna antes, durante y después del parto",
@@ -64,9 +64,9 @@ PROGRAMS = [
               ("123","Madres capacitadas","en prevención y cuidado de ellas y sus recién nacidos.","birrete"),
               ("327","Personal de salud","local capacitado.","grupo")],
        gallery=["salud-equipo","salud-1","salud-2","salud-3","salud-4"],
-       quote=("Levantas un poco la vista y entre la lluvia y el viento miles de techos de zinc se asoman sobre uno de los slums más grandes del mundo. Y es aquí el origen de cada una de las mamás de Maisha. Un origen adverso, que con el correr de los años estando en Kenia no deja de sorprenderme y revolverme la cabeza, el corazón y la guata.",
-              "Catalina Bustos","Asesora Programa Salud","salud-1")),
-  dict(slug="educacion", name="Educación", stage="Crianza", img="educacion-hero",
+       quote=('Gracias por encargarse de mis gastos del hospital. Tuve una cesárea y agradecí mucho que me ayudaran con todos los gastos. ¡Gracias a Dios estoy viva! Disfruté de todos los talleres. Todo lo que hicimos fue beneficioso.',
+              'Mitchel Auma','Madre Maisha, mamá de Velt · Memoria 2025','testimonios/mitchel-auma')),
+  dict(slug="educacion", name="Educación Sexual", stage="Crianza", img="educacion-hero",
        short="Educación afectiva y sexual, y la iniciativa Menstruación Sin Reglas.",
        title="Decidir con libertad y responsabilidad",
        intro="Acompañamos a niños, niñas, adolescentes y jóvenes en las diferentes etapas de su desarrollo bajo una mirada personalista de su afectividad y sexualidad.",
@@ -83,8 +83,8 @@ PROGRAMS = [
               ("14.899","Toallas reutilizables","entregadas a niñas y adolescentes por Menstruación Sin Reglas.","toalla"),
               ("3.916","Beneficiarias","de la campaña educativa: 3.841 en Kenia y 75 en Chile.","grupo")],
        gallery=["educacion-1","educacion-2","educacion-3","educacion-4","educacion-5"],
-       quote=("Puedo decir que el programa de toallitas higiénicas ha creado autoestima entre las niñas. También ha reducido la carga para los padres porque es reutilizable. Gracias a la comunidad Maisha por las toallas sanitarias reutilizables.",
-              "Corazon Ong’ayo","Profesora, Grace Humanitas Educational Centre","educacion-3")),
+       quote=('Gracias Maisha por pagar mis gastos del hospital y ayudarme a criar a mi hija. Me encantó TeenSTAR y estoy usando lo que he aprendido para enseñarles a mis hermanas pequeñas en casa.',
+              'Florence Joan','Madre Maisha, mamá de Killan · Memoria 2025','testimonios/florence-joan')),
   dict(slug="sustentabilidad", name="Sustentabilidad", stage="Autonomía", img="sustentabilidad-hero",
        short="Oficios, ahorro y emprendimiento para sostener a la familia de forma autónoma.",
        title="Herramientas para salir adelante",
@@ -97,8 +97,8 @@ PROGRAMS = [
               ("803","Sesiones","impartidas para fortalecer el aprendizaje.","sesiones"),
               ("50","Mujeres","capacitadas en costura y finanzas con el Fondo Chile en 2025.","hilo")],
        gallery=["sustentabilidad-1","sustentabilidad-2","sustentabilidad-3","sustentabilidad-4","market-feria"],
-       quote=("Le quiero decir a Maisha que continúen con los programas que les entregan a las mamás. Es bueno ver cómo hay mujeres a las que se les paga por producir toallitas reutilizables y con eso pueden comprar la leche para sus hijos.",
-              "Tall Oluoko","Profesor de Costura, Programa Sustentabilidad","sustentabilidad-2")),
+       quote=('Aprendí muchísimas habilidades: computación, costura y cocina. Conseguí un trabajo temporal gracias a mis conocimientos de computación. Actualmente, estoy produciendo toallas higiénicas reutilizables para Maisha y estoy ganando dinero con ello.',
+              'Seline Atieno','Madre Maisha, mamá de Kyle · Memoria 2025','testimonios/seline-atieno')),
   dict(slug="derechos", name="Derechos Humanos", stage="En todo el camino", img="derechos-hero",
        short="Educación cívica para que madres y jóvenes conozcan y defiendan sus derechos.",
        title="Conocer y defender los propios derechos",
@@ -236,17 +236,21 @@ def quote_html(q):
     if not q: return ''
     text, who, role, img = q
     return f'''<section class="sec"><div class="wrap quote">
-  <img src="img/{img}.jpg" alt="" loading="lazy">
+  <img src="img/{img}.jpg" alt="{e(who)}" loading="lazy">
   <blockquote><p>{e(text)}</p><cite><strong>{e(who)}</strong>{e(role)}</cite></blockquote>
 </div></section>'''
 
 
+def quote_html_reveal(q):
+    return quote_html(q).replace('<img ','<img data-reveal="left" ',1).replace('<blockquote>','<blockquote data-reveal data-delay="2">',1)
+
+
 def prog_cards():
-    cards = ''.join(f'''<li><a class="prog" href="programa-{p["slug"]}.html">
+    cards = ''.join(f'''<li data-reveal data-delay="{i+1}"><a class="prog" href="programa-{p["slug"]}.html">
       <img src="img/{p["img"]}.jpg" alt="" loading="lazy">
       <span class="badge">{icon(p["slug"])}</span>
       <div class="body"><span class="stage">{e(p["stage"])}</span><h3>{e(p["name"])}</h3><p>{e(p["short"])}</p><span class="go">Conocer →</span></div>
-    </a></li>''' for p in PROGRAMS)
+    </a></li>''' for i, p in enumerate(PROGRAMS))
     thread = ('<svg class="thread" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">'
               '<path d="M0 40 C 150 0, 250 60, 360 30 S 600 0, 720 34 S 960 60, 1080 24 S 1180 20, 1200 30" '
               'fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 9" stroke-linecap="round"/></svg>')
@@ -265,6 +269,17 @@ def build_home():
 .hero-in{position:relative;z-index:2;padding:170px var(--edge) 64px;display:grid;gap:22px}
 .hero h1{font-size:var(--step-4);font-weight:700;line-height:1.08}
 .hero h1 span{display:block}
+@keyframes heroUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes heroFade{from{opacity:0}to{opacity:1}}
+@keyframes heroZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+@keyframes helpIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+.hero-box > img{animation:heroZoom 2.4s cubic-bezier(.2,.7,.2,1) both}
+.hero h1 span{animation:heroUp .9s cubic-bezier(.2,.7,.2,1) both}
+.hero h1 span + span{animation-delay:.15s}
+.hero .sub{animation:heroFade 1s .45s ease both}
+.hero .row{animation:heroUp .8s .6s cubic-bezier(.2,.7,.2,1) both}
+.help{animation:helpIn .8s .9s cubic-bezier(.2,.7,.2,1) both}
+@media (prefers-reduced-motion: reduce){.hero-box > img,.hero h1 span,.hero .sub,.hero .row,.help{animation:none}}
 .hero h1 em{font-style:normal;color:var(--orange)}
 .hero-in > p{font:400 var(--step-1)/1.4 var(--display);color:rgba(255,255,255,.9)}
 .hero .sub span{display:block}
@@ -329,12 +344,12 @@ def build_home():
 
 <section class="sec"><div class="wrap intro">
   <div>
-    <p class="eyebrow" style="margin-bottom:18px">Maisha significa vida</p>
-    <p class="statement">Nacimos en el corazón de Kibera para <span>acompañar a cada madre</span> desde el embarazo hasta su autonomía.</p>
-    <p class="lead" style="margin-top:22px">Desde 2016, junto a Mama Domitila y el Centro de Esperanza Edel Quinn, somos una red de apoyo entre Chile y Kenia para que toda madre reciba a su hijo en condiciones dignas.</p>
-    <a class="btn btn-navy" href="nosotros.html#historia" style="margin-top:28px">Nuestra historia</a>
+    <p class="eyebrow" style="margin-bottom:18px" data-reveal>Maisha significa vida</p>
+    <p class="statement" data-reveal data-delay="1">Nacimos en el corazón de Kibera para <span>acompañar a cada madre</span> desde el embarazo hasta su autonomía.</p>
+    <p class="lead" style="margin-top:22px" data-reveal data-delay="2">Desde 2016, junto a Mama Domitila y el Centro de Esperanza Edel Quinn, somos una red de apoyo entre Chile y Kenia para que toda madre reciba a su hijo en condiciones dignas.</p>
+    <a class="btn btn-navy" href="nosotros.html#historia" style="margin-top:28px" data-reveal data-delay="3">Nuestra historia</a>
   </div>
-  <figure class="collage">
+  <figure class="collage" data-reveal="right" data-delay="1">
     <img class="a" src="img/equipo.jpg" alt="Madres con sus bebés y voluntarias de Maisha en Kibera">
     <img class="b" src="img/domitila.jpg" alt="Mujer de la comunidad de Kibera">
     <span class="hand">Karibu, bienvenida</span>
@@ -343,28 +358,28 @@ def build_home():
 
 <section class="sec" id="programas" style="padding-top:20px"><div class="wrap">
   <div class="head">
-    <p class="eyebrow">Nuestros programas</p>
-    <h2 class="h2">Cinco programas que siguen <em>el camino de cada madre</em></h2>
-    <p class="lead">Detrás de cada mujer hay una historia que merece ser acompañada.</p>
+    <p class="eyebrow" data-reveal>Nuestros programas</p>
+    <h2 class="h2" data-reveal data-delay="1">Cinco programas que siguen <em>el camino de cada madre</em></h2>
+    <p class="lead" data-reveal data-delay="2">Detrás de cada mujer hay una historia que merece ser acompañada.</p>
   </div>
   <div style="padding-top:30px">{prog_cards()}</div>
 </div></section>
 
 <section class="sec" style="padding-top:20px"><div class="wrap">
-  <div class="navy-panel impact">
+  <div class="navy-panel impact" data-reveal="fade">
     <span class="mark map" aria-hidden="true"></span>
     <div class="impact-grid">
       <div>
         <p class="eyebrow">#ImpactoMaisha</p>
-        <h2 class="h2" style="margin-top:12px">Lo que hemos logrado juntos en Kibera</h2>
+        <h2 class="h2" style="margin-top:12px" data-reveal data-delay="1">Lo que hemos logrado juntos en Kibera</h2>
         <div class="stats">
-          <div class="stat">{icon("embarazada", "ico stat-ico")}<b>435</b><strong>Mujeres</strong><p>acompañadas durante su embarazo y postparto.</p></div>
-          <div class="stat">{icon("casa", "ico stat-ico")}<b>133</b><strong>Madres</strong><p>han vivido en el centro de acogida.</p></div>
-          <div class="stat">{icon("grupo", "ico stat-ico")}<b>482</b><strong>Talleres</strong><p>y convivencias realizadas.</p></div>
-          <div class="stat">{icon("corazon", "ico stat-ico")}<b>100%</b><strong>De las madres</strong><p>continuaron con su embarazo.</p></div>
+          <div class="stat" data-reveal data-delay="2">{icon("embarazada", "ico stat-ico")}<b data-count="435" data-suffix="">435</b><strong>Mujeres</strong><p>acompañadas durante su embarazo y postparto.</p></div>
+          <div class="stat" data-reveal data-delay="3">{icon("casa", "ico stat-ico")}<b data-count="133" data-suffix="">133</b><strong>Madres</strong><p>han vivido en el centro de acogida.</p></div>
+          <div class="stat" data-reveal data-delay="4">{icon("grupo", "ico stat-ico")}<b data-count="482" data-suffix="">482</b><strong>Talleres</strong><p>y convivencias realizadas.</p></div>
+          <div class="stat" data-reveal data-delay="5">{icon("corazon", "ico stat-ico")}<b data-count="100" data-suffix="%">100%</b><strong>De las madres</strong><p>continuaron con su embarazo.</p></div>
         </div>
       </div>
-      <div class="memo">
+      <div class="memo" data-reveal="right" data-delay="2">
         <img src="img/memoria-2025.jpg" alt="Portada de la Memoria 2025">
         <p>Testimonios y resultados en nuestra memoria anual.</p>
         <a class="btn btn-donate btn-sm" href="memorias/memoria-2025-es.pdf" target="_blank" rel="noopener">Leer Memoria 2025</a>
@@ -373,20 +388,20 @@ def build_home():
   </div>
 </div></section>
 
-{quote_html(PROG["acogida"]["quote"])}
+{quote_html_reveal(("Disfruté mucho de mi experiencia en la casa Maisha. Me sentí muy apoyada durante mi embarazo. Disfruté de la costura y de las charlas de salud. ¡Muchas gracias por tenerme en Maisha!", "Vivian Emali", "Madre Maisha, mamá de CJay · Memoria 2025", "testimonios/vivian-emali"))}
 
 <section class="sec" style="padding-top:20px"><div class="wrap">
-  <div class="head"><p class="eyebrow">¡Involúcrate!</p><h2 class="h2">Sé parte de la familia Maisha</h2></div>
+  <div class="head"><p class="eyebrow" data-reveal>¡Involúcrate!</p><h2 class="h2" data-reveal data-delay="1">Sé parte de la familia Maisha</h2></div>
   <div class="ways">
-    <a class="way" href="voluntariado.html"><img src="img/voluntaria.jpg" alt="" loading="lazy"><div><p class="eyebrow" style="color:var(--orange)">Voluntariado</p><h3>Viaja a Kenia y sé un puente de esperanza</h3><span class="go">Postular →</span></div></a>
-    <a class="way" href="dona.html#socio"><img src="img/acogida-5.jpg" alt="" loading="lazy"><div><p class="eyebrow" style="color:var(--orange)">Socios</p><h3>Aporta cada mes</h3><span class="go">Hazte socio →</span></div></a>
-    <a class="way" href="market.html"><img src="img/market-feria.jpg" alt="" loading="lazy"><div><p class="eyebrow" style="color:var(--orange)">Tienda</p><h3>The Maisha Market</h3><span class="go">Ir a la tienda →</span></div></a>
+    <a class="way" href="voluntariado.html" data-reveal data-delay="1"><img src="img/voluntaria.jpg" alt="" loading="lazy"><div><p class="eyebrow" style="color:var(--orange)">Voluntariado</p><h3>Viaja a Kenia y sé un puente de esperanza</h3><span class="go">Postular →</span></div></a>
+    <a class="way" href="dona.html#socio" data-reveal data-delay="2"><img src="img/acogida-5.jpg" alt="" loading="lazy"><div><p class="eyebrow" style="color:var(--orange)">Socios</p><h3>Aporta cada mes</h3><span class="go">Hazte socio →</span></div></a>
+    <a class="way" href="market.html" data-reveal data-delay="3"><img src="img/market-feria.jpg" alt="" loading="lazy"><div><p class="eyebrow" style="color:var(--orange)">Tienda</p><h3>The Maisha Market</h3><span class="go">Ir a la tienda →</span></div></a>
   </div>
 </div></section>
 
 <section class="sec tight"><div class="wrap">
   <p class="eyebrow" style="margin-bottom:26px">Alianzas por el mundo</p>
-  <div class="allies">
+  <div class="allies" data-reveal="fade">
     <span class="mark" style="-webkit-mask-image:url(img/logo-aiep.png);mask-image:url(img/logo-aiep.png)" role="img" aria-label="AIEP"></span>
     <span class="mark" style="-webkit-mask-image:url(img/logo-totocarebox.png);mask-image:url(img/logo-totocarebox.png)" role="img" aria-label="TotoCareBox"></span>
     <span class="mark" style="-webkit-mask-image:url(img/logo-teenstar.png);mask-image:url(img/logo-teenstar.png)" role="img" aria-label="Teen STAR"></span>
@@ -422,7 +437,7 @@ def build_nosotros():
 .values-wrap > .eyebrow{margin-bottom:20px}
 .value{display:grid;gap:10px;align-content:start;background:var(--sand);border-radius:var(--r);padding:28px 26px 30px;transition:transform .25s ease}
 .value:hover{transform:translateY(-4px)}
-.val-ico{width:36px;height:36px;padding:14px;box-sizing:content-box;border-radius:50%;background:#FFFFFF;color:#3E4659;box-shadow:0 8px 20px rgba(8,19,38,.08);margin-bottom:6px}
+.val-ico{width:42px;height:42px;padding:11px;box-sizing:content-box;border-radius:50%;background:#FFFFFF;color:#3E4659;box-shadow:0 8px 20px rgba(8,19,38,.08);margin-bottom:6px}
 .value:hover .val-ico{transform:translateY(-4px) scale(1.05)}
 .value:hover .ico .f,.value:hover .ico .fs{transform:scale(1.18)}
 .value h3{font-size:1.15rem;font-weight:600}
@@ -456,7 +471,7 @@ def build_nosotros():
 .kib-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(56px,8vw,128px)}
 .kib-head{display:flex;align-items:center;gap:18px}
 .kib-head .eyebrow{margin-bottom:4px}
-.kib-ico{width:52px;height:52px;padding:12px;box-sizing:content-box;border-radius:50%;background:#FFFFFF;color:#3E4659;box-shadow:0 8px 20px rgba(8,19,38,.10);flex:none}
+.kib-ico{width:58px;height:58px;padding:9px;box-sizing:content-box;border-radius:50%;background:#FFFFFF;color:#3E4659;box-shadow:0 8px 20px rgba(8,19,38,.10);flex:none}
 .kib-mean{margin-top:18px;padding:14px 18px;border-radius:14px;background:var(--card);border-left:3px solid var(--orange);font-size:1rem;color:var(--muted)}
 .kib-mean b{color:var(--ink);font-weight:600}
 .kib-grid > *{min-width:0}
@@ -642,7 +657,7 @@ PROG_CSS = '''
 .others{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .other{display:flex;gap:14px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:18px;text-decoration:none;background:var(--card);transition:border-color .15s}
 .other:hover{border-color:var(--orange)}
-.oico{width:56px;height:56px;border-radius:16px;background:var(--sand);display:grid;place-items:center;flex:none}.oico .ico{width:34px;height:34px}
+.oico{width:56px;height:56px;border-radius:16px;background:var(--sand);display:grid;place-items:center;flex:none}.oico .ico{width:40px;height:40px}
 .other b{display:block;font:600 1rem var(--display)}
 .other span{font-size:.82rem;color:var(--muted)}
 @media (max-width:1000px){.others{grid-template-columns:1fr 1fr}}
@@ -753,6 +768,7 @@ def build_voluntariado():
   <img src="img/voluntariado-1.jpg" alt="" loading="lazy"><img src="img/voluntariado-2.jpg" alt="" loading="lazy"><img src="img/acogida-testimonio.jpg" alt="" loading="lazy"><img src="img/salud-2.jpg" alt="" loading="lazy"><img src="img/voluntariado-4.jpg" alt="" loading="lazy">
 </div></div></section>
 
+{quote_html(("Maisha no solo acompaña embarazos; acompaña vidas. Ser parte de este proceso, aunque sea por unos meses, es algo que llevaré siempre conmigo. Asante sana, Maisha, por enseñarme tanto durante este tiempo.", "Dominga Acosta", "Voluntaria de Sustentabilidad · Memoria 2025", "testimonios/dominga-acosta"))}
 <section class="sec" id="postular" style="padding-top:20px"><div class="wrap">
   <div class="panel vform">
     <img src="img/voluntariado-3.jpg" alt="Grupo de voluntarios Maisha con la bandera de la fundación">
