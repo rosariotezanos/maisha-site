@@ -452,10 +452,14 @@ def build_nosotros():
 .span2{grid-column:span 2}
 .about{align-items:stretch}
 .about .about-intro{grid-row:1 / span 2}
-.about .mv p:not(.eyebrow){font-size:1.02rem;line-height:1.5}
-.mv-navy p:not(.eyebrow) b{color:var(--on-navy);font-weight:600}
-.mv-orange p:not(.eyebrow){color:rgba(8,19,38,.8)}.mv-orange p:not(.eyebrow) b{color:#081326;font-weight:600}
-.about .mv .eyebrow{font-size:1rem;letter-spacing:.06em;text-transform:none;font-weight:600}
+.qa{border-radius:var(--r);padding:28px 26px 30px;display:grid;gap:10px;align-content:start;background:var(--sand);transition:transform .25s ease,background-color .25s ease}
+.qa-warm{background:var(--orange-soft)}
+.qa:hover{transform:translateY(-4px)}
+.qa h3{font-size:var(--step-1);font-weight:600;color:var(--ink)}
+.qa p{font-size:1rem;line-height:1.5;color:var(--muted)}
+.qa p b{color:var(--ink);font-weight:600}
+.qa-ico{width:38px;height:38px;padding:11px;box-sizing:content-box;border-radius:50%;background:#FFFFFF;color:#3E4659;box-shadow:0 4px 14px rgba(8,19,38,.07);margin-bottom:6px}
+.qa:hover .ico .f,.qa:hover .ico .fs{transform:scale(1.18)}
 
 .about-intro{grid-column:span 2;display:grid;gap:16px;align-content:center;padding-right:clamp(0px,4vw,56px)}
 .about-intro .h2 em{font-style:normal;color:var(--orange-ink)}
@@ -603,10 +607,10 @@ def build_nosotros():
       <h2 class="h2">Nació del encuentro entre <em>Chile</em> y <em>Kenia</em></h2>
       <p class="lead">Con una misión clara: acompañar a mujeres embarazadas para que puedan vivir su embarazo y maternidad con apoyo, seguridad y dignidad. Desde 2019, ambos países trabajan juntos bajo una misma convicción: que ninguna mujer debería enfrentar un embarazo sola y que toda madre merece la oportunidad de construir un futuro mejor para ella y sus hijos.</p>
     </div>
-    <div class="mv mv-navy"><p class="eyebrow">¿Para quién?</p><p><b>Mujeres y jóvenes de Kibera,</b> Nairobi, sin red de apoyo, salud digna ni un espacio seguro donde ser acogidas.</p></div>
-    <div class="mv mv-orange"><p class="eyebrow">¿Por qué?</p><p><b>Ninguna madre debería estar sola</b> en el momento más vulnerable de su vida. Cuando una mujer tiene una red que la sostiene, <b>cambia su historia y la de su familia.</b></p></div>
-    <div class="mv mv-orange"><p class="eyebrow">¿Cómo?</p><p><b>Acompañamiento cercano y continuo,</b> con equipos locales y voluntarios, porque el cambio real lo construyen quienes viven en el territorio.</p></div>
-    <div class="mv mv-navy"><p class="eyebrow">¿Qué?</p><p>Fundación Maisha <b>acompaña a mujeres embarazadas, madres y jóvenes en Kenia.</b> Maisha significa vida en suajili, y es exactamente lo que defendemos.</p></div>
+    <div class="qa qa-warm">{icon("embarazada", "ico qa-ico")}<h3>¿Para quién?</h3><p><b>Mujeres y jóvenes de Kibera,</b> Nairobi, sin red de apoyo, salud digna ni un espacio seguro donde ser acogidas.</p></div>
+    <div class="qa">{icon("corazon", "ico qa-ico")}<h3>¿Por qué?</h3><p><b>Ninguna madre debería estar sola</b> en el momento más vulnerable de su vida. Cuando una mujer tiene una red que la sostiene, <b>cambia su historia y la de su familia.</b></p></div>
+    <div class="qa">{icon("mano", "ico qa-ico")}<h3>¿Cómo?</h3><p><b>Acompañamiento cercano y continuo,</b> con equipos locales y voluntarios, porque el cambio real lo construyen quienes viven en el territorio.</p></div>
+    <div class="qa qa-warm">{icon("casa", "ico qa-ico")}<h3>¿Qué?</h3><p>Fundación Maisha <b>acompaña a mujeres embarazadas, madres y jóvenes en Kenia.</b> Maisha significa vida en suajili, y es exactamente lo que defendemos.</p></div>
   </div>
   <div class="values-wrap">
     <p class="eyebrow">Nuestros valores</p>
