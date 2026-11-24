@@ -711,7 +711,7 @@ footer.site{margin-top:40px}
   if (/claude\.(ai|site)|anthropic/.test(top)) return;
   var VERCEL = &#x27;https://maisha-site.vercel.app/&#x27;;
   // Sitio de Wix publicado: dirección base de sus páginas
-  var WIX_PATHS = { &#x27;https://rosariotezanos.wixsite.com&#x27;: &#x27;/my-site-9&#x27; };
+  var WIX_PATHS = {};
   var published = top &amp;&amp; !/(^|\.)wix\.com$|editor\.wix|wixstudio\.com$|filesusr\.com$|parastorage/.test(top.replace(/^https?:\/\//,&#x27;&#x27;));
   var base = published ? top + (WIX_PATHS[top] || &#x27;&#x27;) : &#x27;&#x27;;
   document.addEventListener(&#x27;click&#x27;, function(ev){
@@ -724,8 +724,10 @@ footer.site{margin-top:40px}
     ev.preventDefault();
     var page = m[1] === &#x27;index&#x27; ? &#x27;&#x27; : m[1];
     if (base) {
-      var url = base + (page ? &#x27;/&#x27; + page : &#x27;&#x27;);
-      try { window.top.location.href = url; } catch (e) { window.open(url, &#x27;_top&#x27;); }
+      // Wix bloquea que el recuadro cambie la página: se le pide a Wix (código Velo de la página)
+      window.parent.postMessage({ type: &#x27;maisha-goto&#x27;, path: &#x27;/&#x27; + page }, &#x27;*&#x27;);
+      // Respaldo: si Wix no tiene el código Velo, se abre dentro del mismo recuadro
+      setTimeout(function(){ location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;); }, 900);
     } else {
       // Vista previa / editor de Wix: mostrar la página dentro del mismo recuadro
       location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;);
@@ -1450,7 +1452,7 @@ footer.site{margin-top:40px}
   if (/claude\.(ai|site)|anthropic/.test(top)) return;
   var VERCEL = &#x27;https://maisha-site.vercel.app/&#x27;;
   // Sitio de Wix publicado: dirección base de sus páginas
-  var WIX_PATHS = { &#x27;https://rosariotezanos.wixsite.com&#x27;: &#x27;/my-site-9&#x27; };
+  var WIX_PATHS = {};
   var published = top &amp;&amp; !/(^|\.)wix\.com$|editor\.wix|wixstudio\.com$|filesusr\.com$|parastorage/.test(top.replace(/^https?:\/\//,&#x27;&#x27;));
   var base = published ? top + (WIX_PATHS[top] || &#x27;&#x27;) : &#x27;&#x27;;
   document.addEventListener(&#x27;click&#x27;, function(ev){
@@ -1463,8 +1465,10 @@ footer.site{margin-top:40px}
     ev.preventDefault();
     var page = m[1] === &#x27;index&#x27; ? &#x27;&#x27; : m[1];
     if (base) {
-      var url = base + (page ? &#x27;/&#x27; + page : &#x27;&#x27;);
-      try { window.top.location.href = url; } catch (e) { window.open(url, &#x27;_top&#x27;); }
+      // Wix bloquea que el recuadro cambie la página: se le pide a Wix (código Velo de la página)
+      window.parent.postMessage({ type: &#x27;maisha-goto&#x27;, path: &#x27;/&#x27; + page }, &#x27;*&#x27;);
+      // Respaldo: si Wix no tiene el código Velo, se abre dentro del mismo recuadro
+      setTimeout(function(){ location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;); }, 900);
     } else {
       // Vista previa / editor de Wix: mostrar la página dentro del mismo recuadro
       location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;);
@@ -2044,7 +2048,7 @@ footer.site{margin-top:40px}
   if (/claude\.(ai|site)|anthropic/.test(top)) return;
   var VERCEL = &#x27;https://maisha-site.vercel.app/&#x27;;
   // Sitio de Wix publicado: dirección base de sus páginas
-  var WIX_PATHS = { &#x27;https://rosariotezanos.wixsite.com&#x27;: &#x27;/my-site-9&#x27; };
+  var WIX_PATHS = {};
   var published = top &amp;&amp; !/(^|\.)wix\.com$|editor\.wix|wixstudio\.com$|filesusr\.com$|parastorage/.test(top.replace(/^https?:\/\//,&#x27;&#x27;));
   var base = published ? top + (WIX_PATHS[top] || &#x27;&#x27;) : &#x27;&#x27;;
   document.addEventListener(&#x27;click&#x27;, function(ev){
@@ -2057,8 +2061,10 @@ footer.site{margin-top:40px}
     ev.preventDefault();
     var page = m[1] === &#x27;index&#x27; ? &#x27;&#x27; : m[1];
     if (base) {
-      var url = base + (page ? &#x27;/&#x27; + page : &#x27;&#x27;);
-      try { window.top.location.href = url; } catch (e) { window.open(url, &#x27;_top&#x27;); }
+      // Wix bloquea que el recuadro cambie la página: se le pide a Wix (código Velo de la página)
+      window.parent.postMessage({ type: &#x27;maisha-goto&#x27;, path: &#x27;/&#x27; + page }, &#x27;*&#x27;);
+      // Respaldo: si Wix no tiene el código Velo, se abre dentro del mismo recuadro
+      setTimeout(function(){ location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;); }, 900);
     } else {
       // Vista previa / editor de Wix: mostrar la página dentro del mismo recuadro
       location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;);
@@ -2661,7 +2667,7 @@ footer.site{margin-top:40px}
   if (/claude\.(ai|site)|anthropic/.test(top)) return;
   var VERCEL = &#x27;https://maisha-site.vercel.app/&#x27;;
   // Sitio de Wix publicado: dirección base de sus páginas
-  var WIX_PATHS = { &#x27;https://rosariotezanos.wixsite.com&#x27;: &#x27;/my-site-9&#x27; };
+  var WIX_PATHS = {};
   var published = top &amp;&amp; !/(^|\.)wix\.com$|editor\.wix|wixstudio\.com$|filesusr\.com$|parastorage/.test(top.replace(/^https?:\/\//,&#x27;&#x27;));
   var base = published ? top + (WIX_PATHS[top] || &#x27;&#x27;) : &#x27;&#x27;;
   document.addEventListener(&#x27;click&#x27;, function(ev){
@@ -2674,8 +2680,10 @@ footer.site{margin-top:40px}
     ev.preventDefault();
     var page = m[1] === &#x27;index&#x27; ? &#x27;&#x27; : m[1];
     if (base) {
-      var url = base + (page ? &#x27;/&#x27; + page : &#x27;&#x27;);
-      try { window.top.location.href = url; } catch (e) { window.open(url, &#x27;_top&#x27;); }
+      // Wix bloquea que el recuadro cambie la página: se le pide a Wix (código Velo de la página)
+      window.parent.postMessage({ type: &#x27;maisha-goto&#x27;, path: &#x27;/&#x27; + page }, &#x27;*&#x27;);
+      // Respaldo: si Wix no tiene el código Velo, se abre dentro del mismo recuadro
+      setTimeout(function(){ location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;); }, 900);
     } else {
       // Vista previa / editor de Wix: mostrar la página dentro del mismo recuadro
       location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;);
@@ -3324,7 +3332,7 @@ footer.site{margin-top:40px}
   if (/claude\.(ai|site)|anthropic/.test(top)) return;
   var VERCEL = &#x27;https://maisha-site.vercel.app/&#x27;;
   // Sitio de Wix publicado: dirección base de sus páginas
-  var WIX_PATHS = { &#x27;https://rosariotezanos.wixsite.com&#x27;: &#x27;/my-site-9&#x27; };
+  var WIX_PATHS = {};
   var published = top &amp;&amp; !/(^|\.)wix\.com$|editor\.wix|wixstudio\.com$|filesusr\.com$|parastorage/.test(top.replace(/^https?:\/\//,&#x27;&#x27;));
   var base = published ? top + (WIX_PATHS[top] || &#x27;&#x27;) : &#x27;&#x27;;
   document.addEventListener(&#x27;click&#x27;, function(ev){
@@ -3337,8 +3345,10 @@ footer.site{margin-top:40px}
     ev.preventDefault();
     var page = m[1] === &#x27;index&#x27; ? &#x27;&#x27; : m[1];
     if (base) {
-      var url = base + (page ? &#x27;/&#x27; + page : &#x27;&#x27;);
-      try { window.top.location.href = url; } catch (e) { window.open(url, &#x27;_top&#x27;); }
+      // Wix bloquea que el recuadro cambie la página: se le pide a Wix (código Velo de la página)
+      window.parent.postMessage({ type: &#x27;maisha-goto&#x27;, path: &#x27;/&#x27; + page }, &#x27;*&#x27;);
+      // Respaldo: si Wix no tiene el código Velo, se abre dentro del mismo recuadro
+      setTimeout(function(){ location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;); }, 900);
     } else {
       // Vista previa / editor de Wix: mostrar la página dentro del mismo recuadro
       location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;);
@@ -3934,7 +3944,7 @@ footer.site{margin-top:40px}
   if (/claude\.(ai|site)|anthropic/.test(top)) return;
   var VERCEL = &#x27;https://maisha-site.vercel.app/&#x27;;
   // Sitio de Wix publicado: dirección base de sus páginas
-  var WIX_PATHS = { &#x27;https://rosariotezanos.wixsite.com&#x27;: &#x27;/my-site-9&#x27; };
+  var WIX_PATHS = {};
   var published = top &amp;&amp; !/(^|\.)wix\.com$|editor\.wix|wixstudio\.com$|filesusr\.com$|parastorage/.test(top.replace(/^https?:\/\//,&#x27;&#x27;));
   var base = published ? top + (WIX_PATHS[top] || &#x27;&#x27;) : &#x27;&#x27;;
   document.addEventListener(&#x27;click&#x27;, function(ev){
@@ -3947,8 +3957,10 @@ footer.site{margin-top:40px}
     ev.preventDefault();
     var page = m[1] === &#x27;index&#x27; ? &#x27;&#x27; : m[1];
     if (base) {
-      var url = base + (page ? &#x27;/&#x27; + page : &#x27;&#x27;);
-      try { window.top.location.href = url; } catch (e) { window.open(url, &#x27;_top&#x27;); }
+      // Wix bloquea que el recuadro cambie la página: se le pide a Wix (código Velo de la página)
+      window.parent.postMessage({ type: &#x27;maisha-goto&#x27;, path: &#x27;/&#x27; + page }, &#x27;*&#x27;);
+      // Respaldo: si Wix no tiene el código Velo, se abre dentro del mismo recuadro
+      setTimeout(function(){ location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;); }, 900);
     } else {
       // Vista previa / editor de Wix: mostrar la página dentro del mismo recuadro
       location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;);
@@ -4523,7 +4535,7 @@ footer.site{margin-top:40px}
   if (/claude\.(ai|site)|anthropic/.test(top)) return;
   var VERCEL = &#x27;https://maisha-site.vercel.app/&#x27;;
   // Sitio de Wix publicado: dirección base de sus páginas
-  var WIX_PATHS = { &#x27;https://rosariotezanos.wixsite.com&#x27;: &#x27;/my-site-9&#x27; };
+  var WIX_PATHS = {};
   var published = top &amp;&amp; !/(^|\.)wix\.com$|editor\.wix|wixstudio\.com$|filesusr\.com$|parastorage/.test(top.replace(/^https?:\/\//,&#x27;&#x27;));
   var base = published ? top + (WIX_PATHS[top] || &#x27;&#x27;) : &#x27;&#x27;;
   document.addEventListener(&#x27;click&#x27;, function(ev){
@@ -4536,8 +4548,10 @@ footer.site{margin-top:40px}
     ev.preventDefault();
     var page = m[1] === &#x27;index&#x27; ? &#x27;&#x27; : m[1];
     if (base) {
-      var url = base + (page ? &#x27;/&#x27; + page : &#x27;&#x27;);
-      try { window.top.location.href = url; } catch (e) { window.open(url, &#x27;_top&#x27;); }
+      // Wix bloquea que el recuadro cambie la página: se le pide a Wix (código Velo de la página)
+      window.parent.postMessage({ type: &#x27;maisha-goto&#x27;, path: &#x27;/&#x27; + page }, &#x27;*&#x27;);
+      // Respaldo: si Wix no tiene el código Velo, se abre dentro del mismo recuadro
+      setTimeout(function(){ location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;); }, 900);
     } else {
       // Vista previa / editor de Wix: mostrar la página dentro del mismo recuadro
       location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;);
@@ -4548,7 +4562,7 @@ footer.site{margin-top:40px}
 
 &lt;/body&gt;&lt;/html&gt;</textarea>
 </section><section class="it">
-  <div class="top"><div><h2>Educación Sexual</h2><p>URL de la página en Wix: <code>programa-educacion</code> · 46 KB</p></div>
+  <div class="top"><div><h2>Educación Sexual</h2><p>URL de la página en Wix: <code>programa-educacion</code> · 47 KB</p></div>
   <button type="button" data-i="programa-educacion">Copiar código</button></div>
   <textarea id="c-programa-educacion" readonly spellcheck="false">&lt;!doctype html&gt;&lt;html lang=&quot;es&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, viewport-fit=cover&quot;&gt;&lt;style&gt;:root{color-scheme:light;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}body{margin:0}[hidden]{display:none!important}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
 &lt;title&gt;Educación Sexual · Fundación Maisha&lt;/title&gt;
@@ -5115,7 +5129,7 @@ footer.site{margin-top:40px}
   if (/claude\.(ai|site)|anthropic/.test(top)) return;
   var VERCEL = &#x27;https://maisha-site.vercel.app/&#x27;;
   // Sitio de Wix publicado: dirección base de sus páginas
-  var WIX_PATHS = { &#x27;https://rosariotezanos.wixsite.com&#x27;: &#x27;/my-site-9&#x27; };
+  var WIX_PATHS = {};
   var published = top &amp;&amp; !/(^|\.)wix\.com$|editor\.wix|wixstudio\.com$|filesusr\.com$|parastorage/.test(top.replace(/^https?:\/\//,&#x27;&#x27;));
   var base = published ? top + (WIX_PATHS[top] || &#x27;&#x27;) : &#x27;&#x27;;
   document.addEventListener(&#x27;click&#x27;, function(ev){
@@ -5128,8 +5142,10 @@ footer.site{margin-top:40px}
     ev.preventDefault();
     var page = m[1] === &#x27;index&#x27; ? &#x27;&#x27; : m[1];
     if (base) {
-      var url = base + (page ? &#x27;/&#x27; + page : &#x27;&#x27;);
-      try { window.top.location.href = url; } catch (e) { window.open(url, &#x27;_top&#x27;); }
+      // Wix bloquea que el recuadro cambie la página: se le pide a Wix (código Velo de la página)
+      window.parent.postMessage({ type: &#x27;maisha-goto&#x27;, path: &#x27;/&#x27; + page }, &#x27;*&#x27;);
+      // Respaldo: si Wix no tiene el código Velo, se abre dentro del mismo recuadro
+      setTimeout(function(){ location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;); }, 900);
     } else {
       // Vista previa / editor de Wix: mostrar la página dentro del mismo recuadro
       location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;);
@@ -5704,7 +5720,7 @@ footer.site{margin-top:40px}
   if (/claude\.(ai|site)|anthropic/.test(top)) return;
   var VERCEL = &#x27;https://maisha-site.vercel.app/&#x27;;
   // Sitio de Wix publicado: dirección base de sus páginas
-  var WIX_PATHS = { &#x27;https://rosariotezanos.wixsite.com&#x27;: &#x27;/my-site-9&#x27; };
+  var WIX_PATHS = {};
   var published = top &amp;&amp; !/(^|\.)wix\.com$|editor\.wix|wixstudio\.com$|filesusr\.com$|parastorage/.test(top.replace(/^https?:\/\//,&#x27;&#x27;));
   var base = published ? top + (WIX_PATHS[top] || &#x27;&#x27;) : &#x27;&#x27;;
   document.addEventListener(&#x27;click&#x27;, function(ev){
@@ -5717,8 +5733,10 @@ footer.site{margin-top:40px}
     ev.preventDefault();
     var page = m[1] === &#x27;index&#x27; ? &#x27;&#x27; : m[1];
     if (base) {
-      var url = base + (page ? &#x27;/&#x27; + page : &#x27;&#x27;);
-      try { window.top.location.href = url; } catch (e) { window.open(url, &#x27;_top&#x27;); }
+      // Wix bloquea que el recuadro cambie la página: se le pide a Wix (código Velo de la página)
+      window.parent.postMessage({ type: &#x27;maisha-goto&#x27;, path: &#x27;/&#x27; + page }, &#x27;*&#x27;);
+      // Respaldo: si Wix no tiene el código Velo, se abre dentro del mismo recuadro
+      setTimeout(function(){ location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;); }, 900);
     } else {
       // Vista previa / editor de Wix: mostrar la página dentro del mismo recuadro
       location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;);
@@ -6290,7 +6308,7 @@ footer.site{margin-top:40px}
   if (/claude\.(ai|site)|anthropic/.test(top)) return;
   var VERCEL = &#x27;https://maisha-site.vercel.app/&#x27;;
   // Sitio de Wix publicado: dirección base de sus páginas
-  var WIX_PATHS = { &#x27;https://rosariotezanos.wixsite.com&#x27;: &#x27;/my-site-9&#x27; };
+  var WIX_PATHS = {};
   var published = top &amp;&amp; !/(^|\.)wix\.com$|editor\.wix|wixstudio\.com$|filesusr\.com$|parastorage/.test(top.replace(/^https?:\/\//,&#x27;&#x27;));
   var base = published ? top + (WIX_PATHS[top] || &#x27;&#x27;) : &#x27;&#x27;;
   document.addEventListener(&#x27;click&#x27;, function(ev){
@@ -6303,8 +6321,10 @@ footer.site{margin-top:40px}
     ev.preventDefault();
     var page = m[1] === &#x27;index&#x27; ? &#x27;&#x27; : m[1];
     if (base) {
-      var url = base + (page ? &#x27;/&#x27; + page : &#x27;&#x27;);
-      try { window.top.location.href = url; } catch (e) { window.open(url, &#x27;_top&#x27;); }
+      // Wix bloquea que el recuadro cambie la página: se le pide a Wix (código Velo de la página)
+      window.parent.postMessage({ type: &#x27;maisha-goto&#x27;, path: &#x27;/&#x27; + page }, &#x27;*&#x27;);
+      // Respaldo: si Wix no tiene el código Velo, se abre dentro del mismo recuadro
+      setTimeout(function(){ location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;); }, 900);
     } else {
       // Vista previa / editor de Wix: mostrar la página dentro del mismo recuadro
       location.href = VERCEL + (page || &#x27;&#x27;) + (m[2] || &#x27;&#x27;);

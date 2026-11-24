@@ -79,7 +79,7 @@
   if (/claude\.(ai|site)|anthropic/.test(top)) return;
   var VERCEL = 'https://maisha-site.vercel.app/';
   // Sitio de Wix publicado: dirección base de sus páginas
-  var WIX_PATHS = { 'https://rosariotezanos.wixsite.com': '/my-site-9' };
+  var WIX_PATHS = {};
   var published = top && !/(^|\.)wix\.com$|editor\.wix|wixstudio\.com$|filesusr\.com$|parastorage/.test(top.replace(/^https?:\/\//,''));
   var base = published ? top + (WIX_PATHS[top] || '') : '';
   document.addEventListener('click', function(ev){
@@ -92,8 +92,10 @@
     ev.preventDefault();
     var page = m[1] === 'index' ? '' : m[1];
     if (base) {
-      var url = base + (page ? '/' + page : '');
-      try { window.top.location.href = url; } catch (e) { window.open(url, '_top'); }
+      // Wix bloquea que el recuadro cambie la página: se le pide a Wix (código Velo de la página)
+      window.parent.postMessage({ type: 'maisha-goto', path: '/' + page }, '*');
+      // Respaldo: si Wix no tiene el código Velo, se abre dentro del mismo recuadro
+      setTimeout(function(){ location.href = VERCEL + (page || '') + (m[2] || ''); }, 900);
     } else {
       // Vista previa / editor de Wix: mostrar la página dentro del mismo recuadro
       location.href = VERCEL + (page || '') + (m[2] || '');
