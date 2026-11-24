@@ -64,8 +64,10 @@
     
     // Videos: se reproducen dentro de la página en el sitio publicado; si la página está embebida (vista previa), se abren en YouTube
     (function(){
-      var embedded; try{ embedded = window.self !== window.top; }catch(e){ embedded = true; }
-      if(embedded) return;
+      // En la vista previa de Claude no se pueden incrustar videos: ahí se abren en YouTube
+      var ao = location.ancestorOrigins, inClaude = false;
+      if (ao) for (var i = 0; i < ao.length; i++) if (/claude\.(ai|site)|anthropic/.test(ao[i])) inClaude = true;
+      if(inClaude) return;
       document.querySelectorAll('[data-video]').forEach(function(a){
         a.addEventListener('click',function(ev){
           ev.preventDefault();
