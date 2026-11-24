@@ -83,6 +83,29 @@
       });
     })();
     
+    // Dentro de Wix: los links entre páginas abren la página de Wix correspondiente (cada una con su propia dirección)
+    (function(){
+      var ao = location.ancestorOrigins, top = '';
+      if (ao && ao.length) top = ao[ao.length - 1];
+      else if (document.referrer) { try { top = new URL(document.referrer).origin; } catch(e){} }
+      if (!top || top === location.origin) return;
+      if (/claude\.(ai|site)|anthropic|editor\.wix\.com|wix\.com$/.test(top)) return;
+      // Sitio gratuito de Wix: rosariotezanos.wixsite.com/my-site-9 ; con dominio propio: la raíz
+      var WIX_PATHS = { 'https://rosariotezanos.wixsite.com': '/my-site-9' };
+      var base = top + (WIX_PATHS[top] || '');
+      document.addEventListener('click', function(ev){
+        var a = ev.target.closest && ev.target.closest('a[href]');
+        if (!a || a.target === '_blank' || a.hasAttribute('data-video')) return;
+        var href = a.getAttribute('href');
+        if (/^(https?:|mailto:|tel:)/.test(href) || /\.pdf$/.test(href)) return;
+        var m = href.match(/^([\w-]+)(?:\.html)?(#[\w-]*)?$/);
+        if (!m) return; // anclas dentro de la misma página (#equipo) siguen funcionando aquí
+        var page = m[1] === 'index' ? '' : '/' + m[1];
+        ev.preventDefault();
+        window.top.location.href = base + page;
+      }, true);
+    })();
+    
     
     (function(){
       var tabs=[].slice.call(document.querySelectorAll('.tabs button'));

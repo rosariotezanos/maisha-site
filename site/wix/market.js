@@ -83,6 +83,29 @@
       });
     })();
     
+    // Dentro de Wix: los links entre páginas abren la página de Wix correspondiente (cada una con su propia dirección)
+    (function(){
+      var ao = location.ancestorOrigins, top = '';
+      if (ao && ao.length) top = ao[ao.length - 1];
+      else if (document.referrer) { try { top = new URL(document.referrer).origin; } catch(e){} }
+      if (!top || top === location.origin) return;
+      if (/claude\.(ai|site)|anthropic|editor\.wix\.com|wix\.com$/.test(top)) return;
+      // Sitio gratuito de Wix: rosariotezanos.wixsite.com/my-site-9 ; con dominio propio: la raíz
+      var WIX_PATHS = { 'https://rosariotezanos.wixsite.com': '/my-site-9' };
+      var base = top + (WIX_PATHS[top] || '');
+      document.addEventListener('click', function(ev){
+        var a = ev.target.closest && ev.target.closest('a[href]');
+        if (!a || a.target === '_blank' || a.hasAttribute('data-video')) return;
+        var href = a.getAttribute('href');
+        if (/^(https?:|mailto:|tel:)/.test(href) || /\.pdf$/.test(href)) return;
+        var m = href.match(/^([\w-]+)(?:\.html)?(#[\w-]*)?$/);
+        if (!m) return; // anclas dentro de la misma página (#equipo) siguen funcionando aquí
+        var page = m[1] === 'index' ? '' : '/' + m[1];
+        ev.preventDefault();
+        window.top.location.href = base + page;
+      }, true);
+    })();
+    
     var PRODUCTS=[{"n": "Necessaire", "c": "Accesorios", "p": 12000, "img": "img/market/p00.jpg"}, {"n": "Joyero", "c": "Accesorios", "p": 14000, "img": "img/market/p01.jpg"}, {"n": "Simio", "c": "Deco", "p": 15000, "img": "img/market/p02.jpg"}, {"n": "Estrellita Nyota", "c": "Deco", "p": 5500, "img": "img/market/p03.jpg"}, {"n": "Lanyard Masai Mara", "c": "Accesorios", "p": 8000, "img": "img/market/p04.jpg"}, {"n": "Kesi Big", "c": "Accesorios", "p": 8000, "img": "img/market/p05.jpg"}, {"n": "Tote Bag Nairobi", "c": "Accesorios", "p": 8500, "img": "img/market/p06.jpg"}, {"n": "Tote Bag Wambui", "c": "Accesorios", "p": 12000, "img": "img/market/p07.jpg"}, {"n": "Corazón Sagrado Big", "c": "Corazón Sagrado", "p": 8000, "img": "img/market/p08.jpg"}, {"n": "Porta chupetes Baby", "c": "Infantil", "p": 9500, "img": "img/market/p09.jpg"}, {"n": "Babero Baby", "c": "Infantil", "p": 8500, "img": "img/market/p10.jpg"}, {"n": "Jirafa L", "c": "Deco", "p": 12000, "img": "img/market/p11.jpg"}, {"n": "Elefante M", "c": "Deco", "p": 8000, "img": "img/market/p12.jpg"}];
     (function(){
       var C=window.maishaCart, cart=C.read(), dr=document.getElementById('drawer'), lines=document.getElementById('lines'), tot=document.getElementById('total'), msg=document.getElementById('co-msg');
