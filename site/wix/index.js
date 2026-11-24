@@ -85,14 +85,16 @@
     
     // Dentro de Wix: los links entre páginas abren la página de Wix correspondiente (cada una con su propia dirección)
     (function(){
+      if (window.self === window.top) return;
       var ao = location.ancestorOrigins, top = '';
       if (ao && ao.length) top = ao[ao.length - 1];
       else if (document.referrer) { try { top = new URL(document.referrer).origin; } catch(e){} }
-      if (!top || top === location.origin) return;
-      if (/claude\.(ai|site)|anthropic|editor\.wix\.com|wix\.com$/.test(top)) return;
-      // Sitio gratuito de Wix: rosariotezanos.wixsite.com/my-site-9 ; con dominio propio: la raíz
+      if (/claude\.(ai|site)|anthropic/.test(top)) return;
+      var VERCEL = 'https://maisha-site.vercel.app/';
+      // Sitio de Wix publicado: dirección base de sus páginas
       var WIX_PATHS = { 'https://rosariotezanos.wixsite.com': '/my-site-9' };
-      var base = top + (WIX_PATHS[top] || '');
+      var published = top && !/(^|\.)wix\.com$|editor\.wix|wixstudio\.com$|filesusr\.com$|parastorage/.test(top.replace(/^https?:\/\//,''));
+      var base = published ? top + (WIX_PATHS[top] || '') : '';
       document.addEventListener('click', function(ev){
         var a = ev.target.closest && ev.target.closest('a[href]');
         if (!a || a.target === '_blank' || a.hasAttribute('data-video')) return;
@@ -100,9 +102,15 @@
         if (/^(https?:|mailto:|tel:)/.test(href) || /\.pdf$/.test(href)) return;
         var m = href.match(/^([\w-]+)(?:\.html)?(#[\w-]*)?$/);
         if (!m) return; // anclas dentro de la misma página (#equipo) siguen funcionando aquí
-        var page = m[1] === 'index' ? '' : '/' + m[1];
         ev.preventDefault();
-        window.top.location.href = base + page;
+        var page = m[1] === 'index' ? '' : m[1];
+        if (base) {
+          var url = base + (page ? '/' + page : '');
+          try { window.top.location.href = url; } catch (e) { window.open(url, '_top'); }
+        } else {
+          // Vista previa / editor de Wix: mostrar la página dentro del mismo recuadro
+          location.href = VERCEL + (page || '') + (m[2] || '');
+        }
       }, true);
     })();
     
