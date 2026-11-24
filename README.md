@@ -10,6 +10,6 @@ Prototipo estático del rediseño de maishafoundation.com. Más adelante se migr
 
 ## Actualizar
 ```bash
-python3 _build/build.py --deploy && python3 _build/wix.py
+python3 _build/build.py --deploy && python3 _build/wix.py && python3 _build/wix_codigo.py
 ```
 Haz commit y push: Vercel publica `site/` automáticamente.
